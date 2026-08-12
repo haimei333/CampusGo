@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>取消订单</title>
+    <style id="theme-vars">
+/* CampusGo Soft UI Design Token — Brand CSS */
+/* Brand prefix: cg */
+
+:root {
+  /* ===== Brand Colors ===== */
+  --cg-brand: #3D9B8F;
+  --cg-brand-pressed: #34857B;
+  --cg-brand-soft: #E6F5F2;
+
+  /* ===== Accent ===== */
+  --cg-accent: #E8A87C;
+  --cg-accent-soft: #FFF1E6;
+
+  /* ===== Semantic Colors ===== */
+  --cg-danger: #E57373;
+  --cg-danger-soft: #FDECEC;
+  --cg-warning: #F0B429;
+  --cg-success: #5BAE7A;
+  --cg-emergency: #E8896B;
+
+  /* ===== Neutral / Surface ===== */
+  --cg-bg-app: #F3F5F8;
+  --cg-bg-card: #FFFFFF;
+  --cg-bg-input: #F0F2F5;
+  --cg-text-primary: #2C3340;
+  --cg-text-secondary: #6B7380;
+  --cg-text-tertiary: #9AA3B2;
+  --cg-text-on-brand: #FFFFFF;
+  --cg-divider: #E8ECF1;
+  --cg-overlay: rgba(44, 51, 64, 0.4);
+
+  /* ===== Tag / Semantic Label Colors ===== */
+  --cg-tag-normal-bg: #EEF1F5;
+  --cg-tag-normal-text: #5A6575;
+  --cg-tag-group-bg: #E6F5F2;
+  --cg-tag-group-text: #2F7A70;
+  --cg-tag-emergency-bg: #FFF0EA;
+  --cg-tag-emergency-text: #C45C3E;
+  --cg-tag-reserve-bg: #EAF0FB;
+  --cg-tag-reserve-text: #4A6FA5;
+  --cg-tag-draft-bg: #F5F5F5;
+  --cg-tag-draft-text: #8A9099;
+
+  /* ===== Radius ===== */
+  --cg-radius-sm: 12px;
+  --cg-radius-md: 16px;
+  --cg-radius-lg: 24px;
+  --cg-radius-full: 9999px;
+
+  /* ===== Shadows (Soft) ===== */
+  --cg-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --cg-shadow-2: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --cg-shadow-3: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --cg-shadow-fab: 0 4px 12px rgba(61, 155, 143, 0.25);
+
+  /* ===== Semantic Aliases (required by apply-html-head-contract) ===== */
+  --cg-background: #F3F5F8;
+  --cg-foreground: #2C3340;
+  --cg-card: #FFFFFF;
+  --cg-card-foreground: #2C3340;
+  --cg-popover: #FFFFFF;
+  --cg-popover-foreground: #2C3340;
+  --cg-primary: #3D9B8F;
+  --cg-primary-foreground: #FFFFFF;
+  --cg-muted: #F0F2F5;
+  --cg-muted-foreground: #6B7380;
+  --cg-border: #E8ECF1;
+  --cg-input: #F0F2F5;
+  --cg-ring: rgba(61, 155, 143, 0.45);
+
+  /* ===== Typography ===== */
+  --cg-font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --cg-font-hero: 28px;
+  --cg-font-h1: 22px;
+  --cg-font-h2: 18px;
+  --cg-font-h3: 16px;
+  --cg-font-body: 14px;
+  --cg-font-caption: 12px;
+  --cg-font-amount: 20px;
+
+  --cg-font-weight-semibold: 600;
+  --cg-font-weight-medium: 500;
+  --cg-font-weight-regular: 400;
+
+  --cg-line-height-tight: 1.25;
+  --cg-line-height-normal: 1.5;
+  --cg-line-height-relaxed: 1.75;
+}
+
+/* ===== Base Styles ===== */
+body {
+  font-family: var(--cg-font-family);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  color: var(--cg-text-primary);
+  background-color: var(--cg-bg-app);
+  line-height: var(--cg-line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Typography Classes ===== */
+.cg-hero {
+  font-size: var(--cg-font-hero);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h1 {
+  font-size: var(--cg-font-h1);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h2 {
+  font-size: var(--cg-font-h2);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h3 {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-body {
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+}
+
+.cg-caption {
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+  color: var(--cg-text-secondary);
+}
+
+.cg-amount {
+  font-size: var(--cg-font-amount);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-text-secondary {
+  color: var(--cg-text-secondary);
+}
+
+.cg-text-tertiary {
+  color: var(--cg-text-tertiary);
+}
+
+/* ===== Component Base Classes ===== */
+.cg-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-2);
+}
+
+.cg-btn-primary:active {
+  transform: scale(0.97);
+  background: var(--cg-brand-pressed);
+}
+
+.cg-btn-primary:disabled {
+  background: #B7D9D3;
+  box-shadow: none;
+  transform: none;
+}
+
+.cg-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-bg-card);
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-btn-secondary:active {
+  transform: scale(0.97);
+}
+
+.cg-btn-danger-text {
+  background: none;
+  border: none;
+  color: var(--cg-danger);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  cursor: pointer;
+  padding: 12px 0;
+}
+
+.cg-card {
+  background: var(--cg-bg-card);
+  border-radius: var(--cg-radius-lg);
+  padding: 16px;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-input {
+  height: 50px;
+  padding: 0 20px;
+  background: var(--cg-bg-input);
+  border-radius: var(--cg-radius-md);
+  border: none;
+  font-size: var(--cg-font-body);
+  font-family: var(--cg-font-family);
+  color: var(--cg-text-primary);
+  outline: none;
+  transition: all 200ms ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cg-input:focus {
+  background: var(--cg-bg-card);
+  box-shadow: 0 0 0 2px var(--cg-ring);
+}
+
+.cg-input::placeholder {
+  color: var(--cg-text-tertiary);
+}
+
+.cg-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--cg-radius-sm);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-medium);
+  line-height: 1.4;
+}
+
+.cg-tag-normal {
+  background: var(--cg-tag-normal-bg);
+  color: var(--cg-tag-normal-text);
+}
+
+.cg-tag-group {
+  background: var(--cg-tag-group-bg);
+  color: var(--cg-tag-group-text);
+}
+
+.cg-tag-emergency {
+  background: var(--cg-tag-emergency-bg);
+  color: var(--cg-tag-emergency-text);
+}
+
+.cg-tag-reserve {
+  background: var(--cg-tag-reserve-bg);
+  color: var(--cg-tag-reserve-text);
+}
+
+.cg-tag-draft {
+  background: var(--cg-tag-draft-bg);
+  color: var(--cg-tag-draft-text);
+}
+
+/* ===== Bottom Navigation ===== */
+.cg-bottom-nav {
+  background: var(--cg-bg-card);
+  height: 56px;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+}
+
+.cg-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+  height: 100%;
+  color: var(--cg-text-tertiary);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-regular);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 200ms ease;
+  min-width: 0;
+}
+
+.cg-bottom-nav-item svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.cg-bottom-nav-item.active {
+  color: var(--cg-brand);
+}
+
+.cg-bottom-nav-item.active .nav-icon-bg {
+  background: var(--cg-brand-soft);
+  border-radius: var(--cg-radius-md);
+  padding: 4px;
+}
+
+/* ===== FAB ===== */
+.cg-fab {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--cg-radius-full);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--cg-shadow-fab);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  z-index: 50;
+  font-size: 24px;
+  font-weight: var(--cg-font-weight-regular);
+}
+
+.cg-fab:active {
+  transform: scale(0.95);
+}
+
+/* ===== Top Bar ===== */
+.cg-topbar {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 16px;
+  background: var(--cg-bg-card);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.cg-topbar-title {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  color: var(--cg-text-primary);
+  flex: 1;
+  text-align: center;
+}
+
+.cg-topbar-back {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-text-primary);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+.cg-topbar-action {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+/* ===== Status Banner ===== */
+.cg-status-banner {
+  padding: 10px 16px;
+  border-radius: var(--cg-radius-md);
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-medium);
+}
+
+.cg-status-pending { background: #FFF8E7; color: #B8860B; }
+.cg-status-accepted { background: var(--cg-brand-soft); color: var(--cg-brand); }
+.cg-status-delivering { background: #E8F4FD; color: #2E7DB5; }
+.cg-status-confirming { background: #FFF1E6; color: #C4763E; }
+.cg-status-done { background: #E8F5EC; color: #3D7A52; }
+.cg-status-cancelled { background: #F5F5F5; color: #8A9099; }
+
+/* ===== Utility ===== */
+.cg-divider {
+  height: 1px;
+  background: var(--cg-divider);
+  border: none;
+  margin: 0;
+}
+
+.cg-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--cg-background);
+    --color-foreground: var(--cg-foreground);
+    --color-card: var(--cg-card);
+    --color-card-foreground: var(--cg-card-foreground);
+    --color-popover: var(--cg-popover);
+    --color-popover-foreground: var(--cg-popover-foreground);
+    --color-primary: var(--cg-primary);
+    --color-primary-foreground: var(--cg-primary-foreground);
+    --color-muted: var(--cg-muted);
+    --color-muted-foreground: var(--cg-muted-foreground);
+    --color-accent: var(--cg-accent);
+    --color-border: var(--cg-border);
+    --color-input: var(--cg-input);
+    --color-ring: var(--cg-ring);
+    --radius-sm: var(--cg-radius-sm);
+    --radius-md: var(--cg-radius-md);
+    --radius-lg: var(--cg-radius-lg);
+  }
+  @layer base {
+    body { background: var(--cg-background); color: var(--cg-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--cg-background); }
+      .text-background { color: var(--cg-background); }
+      .border-background { border-color: var(--cg-background); }
+      .ring-background { --tw-ring-color: var(--cg-background); }
+      .bg-foreground { background-color: var(--cg-foreground); }
+      .text-foreground { color: var(--cg-foreground); }
+      .border-foreground { border-color: var(--cg-foreground); }
+      .ring-foreground { --tw-ring-color: var(--cg-foreground); }
+      .bg-card { background-color: var(--cg-card); }
+      .text-card { color: var(--cg-card); }
+      .border-card { border-color: var(--cg-card); }
+      .ring-card { --tw-ring-color: var(--cg-card); }
+      .bg-card-foreground { background-color: var(--cg-card-foreground); }
+      .text-card-foreground { color: var(--cg-card-foreground); }
+      .border-card-foreground { border-color: var(--cg-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--cg-card-foreground); }
+      .bg-popover { background-color: var(--cg-popover); }
+      .text-popover { color: var(--cg-popover); }
+      .border-popover { border-color: var(--cg-popover); }
+      .ring-popover { --tw-ring-color: var(--cg-popover); }
+      .bg-popover-foreground { background-color: var(--cg-popover-foreground); }
+      .text-popover-foreground { color: var(--cg-popover-foreground); }
+      .border-popover-foreground { border-color: var(--cg-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--cg-popover-foreground); }
+      .bg-primary { background-color: var(--cg-primary); }
+      .text-primary { color: var(--cg-primary); }
+      .border-primary { border-color: var(--cg-primary); }
+      .ring-primary { --tw-ring-color: var(--cg-primary); }
+      .bg-primary-foreground { background-color: var(--cg-primary-foreground); }
+      .text-primary-foreground { color: var(--cg-primary-foreground); }
+      .border-primary-foreground { border-color: var(--cg-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--cg-primary-foreground); }
+      .bg-muted { background-color: var(--cg-muted); }
+      .text-muted { color: var(--cg-muted); }
+      .border-muted { border-color: var(--cg-muted); }
+      .ring-muted { --tw-ring-color: var(--cg-muted); }
+      .bg-muted-foreground { background-color: var(--cg-muted-foreground); }
+      .text-muted-foreground { color: var(--cg-muted-foreground); }
+      .border-muted-foreground { border-color: var(--cg-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--cg-muted-foreground); }
+      .bg-accent { background-color: var(--cg-accent); }
+      .text-accent { color: var(--cg-accent); }
+      .border-accent { border-color: var(--cg-accent); }
+      .ring-accent { --tw-ring-color: var(--cg-accent); }
+      .bg-border { background-color: var(--cg-border); }
+      .text-border { color: var(--cg-border); }
+      .border-border { border-color: var(--cg-border); }
+      .ring-border { --tw-ring-color: var(--cg-border); }
+      .bg-input { background-color: var(--cg-input); }
+      .text-input { color: var(--cg-input); }
+      .border-input { border-color: var(--cg-input); }
+      .ring-input { --tw-ring-color: var(--cg-input); }
+      .bg-ring { background-color: var(--cg-ring); }
+      .text-ring { color: var(--cg-ring); }
+      .border-ring { border-color: var(--cg-ring); }
+      .ring-ring { --tw-ring-color: var(--cg-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main>
+        <!-- Dark overlay -->
+        <div class="fixed inset-0 z-50" style="background: rgba(0,0,0,0.5);" onclick="void(0)"></div>
+
+        <!-- Bottom Sheet -->
+        <div class="fixed bottom-0 left-0 right-0 z-50 bg-white flex flex-col animate-slide-up" style="border-radius: 20px 20px 0 0; max-height: 90vh; overflow-y: auto;">
+
+            <!-- Drag handle -->
+            <div class="flex justify-center pt-3 pb-2">
+                <div style="width: 36px; height: 4px; border-radius: 2px; background: #D0D5DD;"></div>
+            </div>
+
+            <!-- Title -->
+            <h2 class="text-center font-semibold py-2" style="font-size: 18px; color: #2C3340;">取消订单</h2>
+
+            <!-- Cancel Reasons -->
+            <div class="px-5 mt-4 space-y-0">
+                <div class="cancel-reason-item selected flex items-center justify-between py-3.5 cursor-pointer" data-reason="信息填写错误">
+                    <span class="text-sm font-medium" style="color: #2C3340;">信息填写错误</span>
+                    <div class="radio-circle selected">
+                        <div class="radio-inner"></div>
+                    </div>
+                </div>
+                <hr class="border-0" style="height: 1px; background: #E8ECF1; margin: 0;">
+                <div class="cancel-reason-item flex items-center justify-between py-3.5 cursor-pointer" data-reason="不需要了">
+                    <span class="text-sm font-medium" style="color: #2C3340;">不需要了</span>
+                    <div class="radio-circle">
+                        <div class="radio-inner"></div>
+                    </div>
+                </div>
+                <hr class="border-0" style="height: 1px; background: #E8ECF1; margin: 0;">
+                <div class="cancel-reason-item flex items-center justify-between py-3.5 cursor-pointer" data-reason="配送费用太高">
+                    <span class="text-sm font-medium" style="color: #2C3340;">配送费用太高</span>
+                    <div class="radio-circle">
+                        <div class="radio-inner"></div>
+                    </div>
+                </div>
+                <hr class="border-0" style="height: 1px; background: #E8ECF1; margin: 0;">
+                <div class="cancel-reason-item flex items-center justify-between py-3.5 cursor-pointer" data-reason="重复下单">
+                    <span class="text-sm font-medium" style="color: #2C3340;">重复下单</span>
+                    <div class="radio-circle">
+                        <div class="radio-inner"></div>
+                    </div>
+                </div>
+                <hr class="border-0" style="height: 1px; background: #E8ECF1; margin: 0;">
+                <div class="cancel-reason-item flex items-center justify-between py-3.5 cursor-pointer" data-reason="其他原因">
+                    <span class="text-sm font-medium" style="color: #2C3340;">其他原因</span>
+                    <div class="radio-circle">
+                        <div class="radio-inner"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Refund Info -->
+            <div class="mx-5 mt-4 p-3.5 flex items-start gap-2.5" style="background: #F5F7FA; border-radius: 12px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7380" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0 mt-0.5" style="min-width: 18px;">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <div class="flex flex-col gap-1">
+                    <div class="flex items-center gap-1.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6B7380" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        <span class="text-xs font-medium" style="color: #6B7380;">退款说明</span>
+                    </div>
+                    <p class="text-xs leading-relaxed" style="color: #6B7380;">待接单状态取消，费用将全额退回钱包</p>
+                    <p class="text-xs leading-relaxed" style="color: #6B7380;">已接单后取消，可能扣除少量取消费</p>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="px-5 mt-5 mb-6 flex flex-col gap-3">
+                <button class="w-full flex items-center justify-center font-semibold text-base cursor-pointer border-0 transition-all duration-200 active:scale-[0.97]" style="height: 48px; border-radius: 24px; background: #FF4D4F; color: #FFFFFF;">确认取消</button>
+                <button class="w-full flex items-center justify-center text-sm font-medium cursor-pointer border-0 bg-transparent transition-all duration-200" style="color: #9AA3B2; padding: 8px 0;">暂不取消</button>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        /* Radio circle styling */
+        .radio-circle {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 2px solid #D0D5DD;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 200ms ease;
+        }
+        .radio-circle.selected {
+            border-color: #3D9B8F;
+            background: #3D9B8F;
+        }
+        .radio-inner {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            transition: all 200ms ease;
+            opacity: 0;
+            transform: scale(0);
+        }
+        .radio-circle.selected .radio-inner {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Slide-up animation */
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+        .animate-slide-up {
+            animation: slideUp 300ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Cancel reason item hover */
+        .cancel-reason-item:active {
+            background: #F5F7FA;
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const reasonItems = document.querySelectorAll('.cancel-reason-item');
+            reasonItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    reasonItems.forEach(function(i) {
+                        i.querySelector('.radio-circle').classList.remove('selected');
+                    });
+                    this.querySelector('.radio-circle').classList.add('selected');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

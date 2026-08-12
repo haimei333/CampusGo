@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="task_timeline_steps">
+        <item>任务发布</item>
+        <item>跑腿员接单</item>
+        <item>开始配送</item>
+        <item>确认完成</item>
+    </string-array>
+
+    <string-array name="cancel_reasons">
+        <item>信息填写错误</item>
+        <item>不需要了</item>
+        <item>配送费用太高</item>
+        <item>重复下单</item>
+        <item>其他原因</item>
+    </string-array>
+
+    <string-array name="review_star_labels">
+        <item>非常差</item>
+        <item>较差</item>
+        <item>一般</item>
+        <item>不错</item>
+        <item>太棒了！</item>
+    </string-array>
+
+    <string-array name="review_tags_publisher">
+        <item>服务态度好</item>
+        <item>送达速度快</item>
+        <item>物品完好</item>
+        <item>沟通及时</item>
+        <item>准时送达</item>
+    </string-array>
+
+    <string-array name="review_tags_runner">
+        <item>发布清晰</item>
+        <item>沟通及时</item>
+        <item>定位准确</item>
+        <item>付款及时</item>
+        <item>态度友好</item>
+    </string-array>
+
+    <string-array name="complaint_types">
+        <item>物品损坏</item>
+        <item>未按时送达</item>
+        <item>物品丢失</item>
+        <item>服务态度差</item>
+        <item>其他问题</item>
+    </string-array>
+</resources>

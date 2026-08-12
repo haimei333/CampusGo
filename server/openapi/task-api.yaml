@@ -1,0 +1,631 @@
+openapi: 3.0.3
+info:
+  title: CampusGo Task API
+  description: |
+    Task 模块 API 契约（与 Android `TaskListItem` / `TaskDetail` / `PublishDraft` 对齐）。
+    当前实现为 **Mock Controller**，数据在内存中，重启后重置（草稿除外可写内存）。
+    金额字段：`rewardCent` 为准（分），`rewardYuan` 仅展示。
+  version: 0.1.0-mock
+  contact:
+    name: CampusGo
+
+servers:
+  - url: http://localhost:8080
+    description: Local
+
+tags:
+  - name: TaskDraft
+    description: 发布草稿
+  - name: Task
+    description: 任务列表与详情
+  - name: TaskAction
+    description: 任务状态动作
+
+security:
+  - bearerAuth: []
+
+paths:
+  /api/v1/tasks/drafts:
+    get:
+      tags: [TaskDraft]
+      summary: 草稿列表
+      operationId: listDrafts
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskDraftList'
+    post:
+      tags: [TaskDraft]
+      summary: 新建草稿
+      operationId: createDraft
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveDraftRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskDraft'
+
+  /api/v1/tasks/drafts/{id}:
+    put:
+      tags: [TaskDraft]
+      summary: 更新草稿
+      operationId: updateDraft
+      parameters:
+        - $ref: '#/components/parameters/TaskId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SaveDraftRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskDraft'
+    delete:
+      tags: [TaskDraft]
+      summary: 删除草稿
+      operationId: deleteDraft
+      parameters:
+        - $ref: '#/components/parameters/TaskId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseVoid'
+
+  /api/v1/tasks/publish:
+    post:
+      tags: [Task]
+      summary: 发布任务
+      description: Mock 阶段仅校验并返回 taskId，不做真实扣款。
+      operationId: publishTask
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PublishTaskRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponsePublishTask'
+
+  /api/v1/tasks/hall:
+    get:
+      tags: [Task]
+      summary: 任务大厅（跑腿员）
+      operationId: listHall
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskListPage'
+
+  /api/v1/tasks/pool:
+    get:
+      tags: [Task]
+      summary: 拼单池
+      operationId: listPool
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskListPage'
+
+  /api/v1/tasks/mine/published:
+    get:
+      tags: [Task]
+      summary: 我的发布（含草稿项由 /drafts 单独拉取，此接口不含 DRAFT）
+      operationId: listMinePublished
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskListPage'
+
+  /api/v1/tasks/mine/accepted:
+    get:
+      tags: [Task]
+      summary: 我的接单
+      operationId: listMineAccepted
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskListPage'
+
+  /api/v1/tasks/mine/reservations:
+    get:
+      tags: [Task]
+      summary: 我的预约
+      operationId: listMineReservations
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskListPage'
+
+  /api/v1/tasks/{id}:
+    get:
+      tags: [Task]
+      summary: 任务详情
+      operationId: getTaskDetail
+      parameters:
+        - $ref: '#/components/parameters/TaskId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskDetail'
+
+  /api/v1/tasks/{id}/grab:
+    post:
+      tags: [TaskAction]
+      summary: 抢单
+      operationId: grabTask
+      parameters:
+        - $ref: '#/components/parameters/TaskId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskDetail'
+        description: |
+          业务码 40900 表示已被抢。
+
+  /api/v1/tasks/{id}/deliver/start:
+    post:
+      tags: [TaskAction]
+      summary: 开始配送
+      operationId: startDeliver
+      parameters:
+        - $ref: '#/components/parameters/TaskId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskDetail'
+
+  /api/v1/tasks/{id}/deliver/photo:
+    post:
+      tags: [TaskAction]
+      summary: 上传送达照（Mock 无需 multipart）
+      operationId: uploadDeliveryPhoto
+      parameters:
+        - $ref: '#/components/parameters/TaskId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                photoUrl:
+                  type: string
+                  example: https://mock.campusgo.local/delivery/photo.jpg
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskDetail'
+
+  /api/v1/tasks/{id}/confirm:
+    post:
+      tags: [TaskAction]
+      summary: 发布者确认收货
+      operationId: confirmTask
+      parameters:
+        - $ref: '#/components/parameters/TaskId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskDetail'
+
+  /api/v1/tasks/{id}/raise-price:
+    post:
+      tags: [TaskAction]
+      summary: 加价
+      operationId: raisePrice
+      parameters:
+        - $ref: '#/components/parameters/TaskId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [addCent]
+              properties:
+                addCent:
+                  type: integer
+                  description: 加价金额（分）
+                  example: 500
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskDetail'
+
+  /api/v1/tasks/{id}/emergency:
+    post:
+      tags: [TaskAction]
+      summary: 转紧急
+      operationId: toEmergency
+      parameters:
+        - $ref: '#/components/parameters/TaskId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskDetail'
+
+  /api/v1/tasks/{id}/cancel:
+    post:
+      tags: [TaskAction]
+      summary: 取消任务
+      operationId: cancelTask
+      parameters:
+        - $ref: '#/components/parameters/TaskId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reason:
+                  type: string
+                  example: 临时有事
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseTaskDetail'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    TaskId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      example: h1
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    PageSize:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 50
+        default: 20
+
+  schemas:
+    ApiResponseVoid:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 0
+        message:
+          type: string
+          example: ok
+        data:
+          nullable: true
+        traceId:
+          type: string
+
+    ApiResponseTaskDraft:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponseVoid'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/TaskDraftDto'
+
+    ApiResponseTaskDraftList:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponseVoid'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/TaskDraftDto'
+
+    ApiResponsePublishTask:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponseVoid'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/PublishTaskResponse'
+
+    ApiResponseTaskListPage:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponseVoid'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/PageTaskListItem'
+
+    ApiResponseTaskDetail:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponseVoid'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/TaskDetailDto'
+
+    PageTaskListItem:
+      type: object
+      properties:
+        list:
+          type: array
+          items:
+            $ref: '#/components/schemas/TaskListItemDto'
+        page:
+          type: integer
+        pageSize:
+          type: integer
+        total:
+          type: integer
+
+    TaskListItemDto:
+      type: object
+      description: 对齐 Android TaskListItem
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        statusLabel:
+          type: string
+        description:
+          type: string
+        priceCent:
+          type: integer
+        priceYuan:
+          type: string
+          example: "15.00"
+        category:
+          $ref: '#/components/schemas/TaskCategory'
+        mode:
+          $ref: '#/components/schemas/TaskMode'
+        status:
+          $ref: '#/components/schemas/TaskStatus'
+        navTarget:
+          type: string
+          enum: [T01, T06, T07]
+        reserveForRole:
+          $ref: '#/components/schemas/UserRole'
+
+    TaskDetailDto:
+      type: object
+      description: 对齐 Android TaskDetail
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        categoryLabel:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TaskMode'
+        status:
+          $ref: '#/components/schemas/TaskStatus'
+        pickupAddress:
+          type: string
+        deliveryAddress:
+          type: string
+        timeLabel:
+          type: string
+        description:
+          type: string
+        rewardCent:
+          type: integer
+        rewardYuan:
+          type: string
+        orderNo:
+          type: string
+        runner:
+          $ref: '#/components/schemas/RunnerSummaryDto'
+
+    RunnerSummaryDto:
+      type: object
+      nullable: true
+      properties:
+        name:
+          type: string
+        rating:
+          type: number
+          format: float
+        creditScore:
+          type: integer
+        completedOrders:
+          type: integer
+
+    TaskDraftDto:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        description:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TaskMode'
+        category:
+          $ref: '#/components/schemas/TaskCategory'
+        pickupAddress:
+          type: string
+        deliveryAddress:
+          type: string
+        timeLabel:
+          type: string
+        rewardCent:
+          type: integer
+        rewardYuan:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+
+    SaveDraftRequest:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TaskMode'
+        category:
+          $ref: '#/components/schemas/TaskCategory'
+        pickupAddress:
+          type: string
+        deliveryAddress:
+          type: string
+        timeLabel:
+          type: string
+        rewardCent:
+          type: integer
+
+    PublishTaskRequest:
+      type: object
+      required: [title, mode, category, pickupAddress, deliveryAddress, rewardCent]
+      properties:
+        draftId:
+          type: string
+          description: 若从草稿发布，发布后删除草稿
+        title:
+          type: string
+        description:
+          type: string
+        mode:
+          $ref: '#/components/schemas/TaskMode'
+        category:
+          $ref: '#/components/schemas/TaskCategory'
+        pickupAddress:
+          type: string
+        deliveryAddress:
+          type: string
+        timeLabel:
+          type: string
+        rewardCent:
+          type: integer
+        groupTargetCount:
+          type: integer
+          description: 拼单人数 2-10
+        reserveAt:
+          type: string
+          format: date-time
+
+    PublishTaskResponse:
+      type: object
+      properties:
+        taskId:
+          type: string
+        taskNo:
+          type: string
+        status:
+          $ref: '#/components/schemas/TaskStatus'
+
+    TaskStatus:
+      type: string
+      enum:
+        - DRAFT
+        - GROUPING
+        - RESERVING
+        - PENDING
+        - ACCEPTED
+        - DELIVERING
+        - CONFIRMING
+        - COMPLETED
+        - REVIEWED
+        - CANCELLED
+
+    TaskMode:
+      type: string
+      enum: [NORMAL, GROUP, EMERGENCY, RESERVE]
+
+    TaskCategory:
+      type: string
+      enum: [EXPRESS, BUY, ERRAND, OTHER]
+
+    UserRole:
+      type: string
+      enum: [PUBLISHER, RUNNER]

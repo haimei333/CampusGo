@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的</title>
+    <style id="theme-vars">
+/* CampusGo Soft UI Design Token — Brand CSS */
+/* Brand prefix: cg */
+
+:root {
+  /* ===== Brand Colors ===== */
+  --cg-brand: #3D9B8F;
+  --cg-brand-pressed: #34857B;
+  --cg-brand-soft: #E6F5F2;
+
+  /* ===== Accent ===== */
+  --cg-accent: #E8A87C;
+  --cg-accent-soft: #FFF1E6;
+
+  /* ===== Semantic Colors ===== */
+  --cg-danger: #E57373;
+  --cg-danger-soft: #FDECEC;
+  --cg-warning: #F0B429;
+  --cg-success: #5BAE7A;
+  --cg-emergency: #E8896B;
+
+  /* ===== Neutral / Surface ===== */
+  --cg-bg-app: #F3F5F8;
+  --cg-bg-card: #FFFFFF;
+  --cg-bg-input: #F0F2F5;
+  --cg-text-primary: #2C3340;
+  --cg-text-secondary: #6B7380;
+  --cg-text-tertiary: #9AA3B2;
+  --cg-text-on-brand: #FFFFFF;
+  --cg-divider: #E8ECF1;
+  --cg-overlay: rgba(44, 51, 64, 0.4);
+
+  /* ===== Tag / Semantic Label Colors ===== */
+  --cg-tag-normal-bg: #EEF1F5;
+  --cg-tag-normal-text: #5A6575;
+  --cg-tag-group-bg: #E6F5F2;
+  --cg-tag-group-text: #2F7A70;
+  --cg-tag-emergency-bg: #FFF0EA;
+  --cg-tag-emergency-text: #C45C3E;
+  --cg-tag-reserve-bg: #EAF0FB;
+  --cg-tag-reserve-text: #4A6FA5;
+  --cg-tag-draft-bg: #F5F5F5;
+  --cg-tag-draft-text: #8A9099;
+
+  /* ===== Radius ===== */
+  --cg-radius-sm: 12px;
+  --cg-radius-md: 16px;
+  --cg-radius-lg: 24px;
+  --cg-radius-full: 9999px;
+
+  /* ===== Shadows (Soft) ===== */
+  --cg-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --cg-shadow-2: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --cg-shadow-3: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --cg-shadow-fab: 0 4px 12px rgba(61, 155, 143, 0.25);
+
+  /* ===== Semantic Aliases (required by apply-html-head-contract) ===== */
+  --cg-background: #F3F5F8;
+  --cg-foreground: #2C3340;
+  --cg-card: #FFFFFF;
+  --cg-card-foreground: #2C3340;
+  --cg-popover: #FFFFFF;
+  --cg-popover-foreground: #2C3340;
+  --cg-primary: #3D9B8F;
+  --cg-primary-foreground: #FFFFFF;
+  --cg-muted: #F0F2F5;
+  --cg-muted-foreground: #6B7380;
+  --cg-border: #E8ECF1;
+  --cg-input: #F0F2F5;
+  --cg-ring: rgba(61, 155, 143, 0.45);
+
+  /* ===== Typography ===== */
+  --cg-font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --cg-font-hero: 28px;
+  --cg-font-h1: 22px;
+  --cg-font-h2: 18px;
+  --cg-font-h3: 16px;
+  --cg-font-body: 14px;
+  --cg-font-caption: 12px;
+  --cg-font-amount: 20px;
+
+  --cg-font-weight-semibold: 600;
+  --cg-font-weight-medium: 500;
+  --cg-font-weight-regular: 400;
+
+  --cg-line-height-tight: 1.25;
+  --cg-line-height-normal: 1.5;
+  --cg-line-height-relaxed: 1.75;
+}
+
+/* ===== Base Styles ===== */
+body {
+  font-family: var(--cg-font-family);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  color: var(--cg-text-primary);
+  background-color: var(--cg-bg-app);
+  line-height: var(--cg-line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Typography Classes ===== */
+.cg-hero {
+  font-size: var(--cg-font-hero);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h1 {
+  font-size: var(--cg-font-h1);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h2 {
+  font-size: var(--cg-font-h2);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h3 {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-body {
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+}
+
+.cg-caption {
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+  color: var(--cg-text-secondary);
+}
+
+.cg-amount {
+  font-size: var(--cg-font-amount);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-text-secondary {
+  color: var(--cg-text-secondary);
+}
+
+.cg-text-tertiary {
+  color: var(--cg-text-tertiary);
+}
+
+/* ===== Component Base Classes ===== */
+.cg-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-2);
+}
+
+.cg-btn-primary:active {
+  transform: scale(0.97);
+  background: var(--cg-brand-pressed);
+}
+
+.cg-btn-primary:disabled {
+  background: #B7D9D3;
+  box-shadow: none;
+  transform: none;
+}
+
+.cg-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-bg-card);
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-btn-secondary:active {
+  transform: scale(0.97);
+}
+
+.cg-btn-danger-text {
+  background: none;
+  border: none;
+  color: var(--cg-danger);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  cursor: pointer;
+  padding: 12px 0;
+}
+
+.cg-card {
+  background: var(--cg-bg-card);
+  border-radius: var(--cg-radius-lg);
+  padding: 16px;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-input {
+  height: 50px;
+  padding: 0 20px;
+  background: var(--cg-bg-input);
+  border-radius: var(--cg-radius-md);
+  border: none;
+  font-size: var(--cg-font-body);
+  font-family: var(--cg-font-family);
+  color: var(--cg-text-primary);
+  outline: none;
+  transition: all 200ms ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cg-input:focus {
+  background: var(--cg-bg-card);
+  box-shadow: 0 0 0 2px var(--cg-ring);
+}
+
+.cg-input::placeholder {
+  color: var(--cg-text-tertiary);
+}
+
+.cg-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--cg-radius-sm);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-medium);
+  line-height: 1.4;
+}
+
+.cg-tag-normal {
+  background: var(--cg-tag-normal-bg);
+  color: var(--cg-tag-normal-text);
+}
+
+.cg-tag-group {
+  background: var(--cg-tag-group-bg);
+  color: var(--cg-tag-group-text);
+}
+
+.cg-tag-emergency {
+  background: var(--cg-tag-emergency-bg);
+  color: var(--cg-tag-emergency-text);
+}
+
+.cg-tag-reserve {
+  background: var(--cg-tag-reserve-bg);
+  color: var(--cg-tag-reserve-text);
+}
+
+.cg-tag-draft {
+  background: var(--cg-tag-draft-bg);
+  color: var(--cg-tag-draft-text);
+}
+
+/* ===== Bottom Navigation ===== */
+.cg-bottom-nav {
+  background: var(--cg-bg-card);
+  height: 56px;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+}
+
+.cg-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+  height: 100%;
+  color: var(--cg-text-tertiary);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-regular);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 200ms ease;
+  min-width: 0;
+}
+
+.cg-bottom-nav-item svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.cg-bottom-nav-item.active {
+  color: var(--cg-brand);
+}
+
+.cg-bottom-nav-item.active .nav-icon-bg {
+  background: var(--cg-brand-soft);
+  border-radius: var(--cg-radius-md);
+  padding: 4px;
+}
+
+/* ===== FAB ===== */
+.cg-fab {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--cg-radius-full);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--cg-shadow-fab);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  z-index: 50;
+  font-size: 24px;
+  font-weight: var(--cg-font-weight-regular);
+}
+
+.cg-fab:active {
+  transform: scale(0.95);
+}
+
+/* ===== Top Bar ===== */
+.cg-topbar {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 16px;
+  background: var(--cg-bg-card);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.cg-topbar-title {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  color: var(--cg-text-primary);
+  flex: 1;
+  text-align: center;
+}
+
+.cg-topbar-back {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-text-primary);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+.cg-topbar-action {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+/* ===== Status Banner ===== */
+.cg-status-banner {
+  padding: 10px 16px;
+  border-radius: var(--cg-radius-md);
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-medium);
+}
+
+.cg-status-pending { background: #FFF8E7; color: #B8860B; }
+.cg-status-accepted { background: var(--cg-brand-soft); color: var(--cg-brand); }
+.cg-status-delivering { background: #E8F4FD; color: #2E7DB5; }
+.cg-status-confirming { background: #FFF1E6; color: #C4763E; }
+.cg-status-done { background: #E8F5EC; color: #3D7A52; }
+.cg-status-cancelled { background: #F5F5F5; color: #8A9099; }
+
+/* ===== Utility ===== */
+.cg-divider {
+  height: 1px;
+  background: var(--cg-divider);
+  border: none;
+  margin: 0;
+}
+
+.cg-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--cg-background);
+    --color-foreground: var(--cg-foreground);
+    --color-card: var(--cg-card);
+    --color-card-foreground: var(--cg-card-foreground);
+    --color-popover: var(--cg-popover);
+    --color-popover-foreground: var(--cg-popover-foreground);
+    --color-primary: var(--cg-primary);
+    --color-primary-foreground: var(--cg-primary-foreground);
+    --color-muted: var(--cg-muted);
+    --color-muted-foreground: var(--cg-muted-foreground);
+    --color-accent: var(--cg-accent);
+    --color-border: var(--cg-border);
+    --color-input: var(--cg-input);
+    --color-ring: var(--cg-ring);
+    --radius-sm: var(--cg-radius-sm);
+    --radius-md: var(--cg-radius-md);
+    --radius-lg: var(--cg-radius-lg);
+  }
+  @layer base {
+    body { background: var(--cg-background); color: var(--cg-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--cg-background); }
+      .text-background { color: var(--cg-background); }
+      .border-background { border-color: var(--cg-background); }
+      .ring-background { --tw-ring-color: var(--cg-background); }
+      .bg-foreground { background-color: var(--cg-foreground); }
+      .text-foreground { color: var(--cg-foreground); }
+      .border-foreground { border-color: var(--cg-foreground); }
+      .ring-foreground { --tw-ring-color: var(--cg-foreground); }
+      .bg-card { background-color: var(--cg-card); }
+      .text-card { color: var(--cg-card); }
+      .border-card { border-color: var(--cg-card); }
+      .ring-card { --tw-ring-color: var(--cg-card); }
+      .bg-card-foreground { background-color: var(--cg-card-foreground); }
+      .text-card-foreground { color: var(--cg-card-foreground); }
+      .border-card-foreground { border-color: var(--cg-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--cg-card-foreground); }
+      .bg-popover { background-color: var(--cg-popover); }
+      .text-popover { color: var(--cg-popover); }
+      .border-popover { border-color: var(--cg-popover); }
+      .ring-popover { --tw-ring-color: var(--cg-popover); }
+      .bg-popover-foreground { background-color: var(--cg-popover-foreground); }
+      .text-popover-foreground { color: var(--cg-popover-foreground); }
+      .border-popover-foreground { border-color: var(--cg-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--cg-popover-foreground); }
+      .bg-primary { background-color: var(--cg-primary); }
+      .text-primary { color: var(--cg-primary); }
+      .border-primary { border-color: var(--cg-primary); }
+      .ring-primary { --tw-ring-color: var(--cg-primary); }
+      .bg-primary-foreground { background-color: var(--cg-primary-foreground); }
+      .text-primary-foreground { color: var(--cg-primary-foreground); }
+      .border-primary-foreground { border-color: var(--cg-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--cg-primary-foreground); }
+      .bg-muted { background-color: var(--cg-muted); }
+      .text-muted { color: var(--cg-muted); }
+      .border-muted { border-color: var(--cg-muted); }
+      .ring-muted { --tw-ring-color: var(--cg-muted); }
+      .bg-muted-foreground { background-color: var(--cg-muted-foreground); }
+      .text-muted-foreground { color: var(--cg-muted-foreground); }
+      .border-muted-foreground { border-color: var(--cg-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--cg-muted-foreground); }
+      .bg-accent { background-color: var(--cg-accent); }
+      .text-accent { color: var(--cg-accent); }
+      .border-accent { border-color: var(--cg-accent); }
+      .ring-accent { --tw-ring-color: var(--cg-accent); }
+      .bg-border { background-color: var(--cg-border); }
+      .text-border { color: var(--cg-border); }
+      .border-border { border-color: var(--cg-border); }
+      .ring-border { --tw-ring-color: var(--cg-border); }
+      .bg-input { background-color: var(--cg-input); }
+      .text-input { color: var(--cg-input); }
+      .border-input { border-color: var(--cg-input); }
+      .ring-input { --tw-ring-color: var(--cg-input); }
+      .bg-ring { background-color: var(--cg-ring); }
+      .text-ring { color: var(--cg-ring); }
+      .border-ring { border-color: var(--cg-ring); }
+      .ring-ring { --tw-ring-color: var(--cg-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased bg-[var(--cg-bg-app)]">
+    <main class="max-w-md mx-auto px-4 pb-[72px]">
+
+      <!-- Profile Header Card -->
+      <div class="mt-4 rounded-[24px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.05)] overflow-hidden">
+        <div class="h-20 bg-gradient-to-b from-[#E6F5F2] to-white"></div>
+        <div class="px-4 pb-5 -mt-10 flex flex-col items-center text-center">
+          <div class="w-16 h-16 rounded-full bg-[#3D9B8F] flex items-center justify-center shadow-[0_2px_8px_rgba(61,155,143,0.2)]">
+            <svg class="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          </div>
+          <h2 class="mt-2 text-lg font-semibold text-[#2C3340]">同学小明</h2>
+          <p class="text-xs text-[#9AA3B2] mt-0.5">学号 2024001234</p>
+          <button type="button" onclick="location.href='a03-edit-profile.html'" class="mt-3 px-5 py-1.5 border border-[#E8ECF1] rounded-full text-xs font-medium text-[#6B7380] bg-white hover:bg-[#F3F5F8] transition-colors cursor-pointer">编辑资料</button>
+        </div>
+      </div>
+
+      <!-- Credit Score Banner -->
+      <div class="mt-3 rounded-[24px] bg-white px-5 py-4 shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-xs text-[#9AA3B2]">信用分</p>
+            <div class="flex items-baseline gap-1 mt-0.5">
+              <span class="text-3xl font-bold text-[#3D9B8F]">720</span>
+              <span class="text-xs text-[#3D9B8F] font-medium">分</span>
+            </div>
+            <span class="inline-block mt-1 px-2 py-0.5 rounded-full bg-[#E6F5F2] text-[11px] font-medium text-[#3D9B8F]">信用良好</span>
+          </div>
+          <div class="w-20 h-20 relative">
+            <svg class="w-full h-full -rotate-90" viewBox="0 0 80 80">
+              <circle cx="40" cy="40" r="34" fill="none" stroke="#E8ECF1" stroke-width="5"/>
+              <circle cx="40" cy="40" r="34" fill="none" stroke="#3D9B8F" stroke-width="5" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="59.8"/>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center">
+              <svg class="w-8 h-8 text-[#3D9B8F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            </div>
+          </div>
+        </div>
+        <p class="mt-3 text-[11px] text-[#9AA3B2]">范围 0–1000，初始 500；≥600 可接全部，&lt;400 暂停接单</p>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="mt-3 rounded-[24px] bg-white px-4 py-4 shadow-[0_2px_8px_rgba(0,0,0,0.05)]">
+        <div class="grid grid-cols-3 divide-x divide-[#E8ECF1]">
+          <div class="flex flex-col items-center px-2">
+            <span class="text-xl font-bold text-[#2C3340]">12</span>
+            <span class="text-[11px] text-[#9AA3B2] mt-1">发布任务</span>
+          </div>
+          <div class="flex flex-col items-center px-2">
+            <span class="text-xl font-bold text-[#2C3340]">8</span>
+            <span class="text-[11px] text-[#9AA3B2] mt-1">接单完成</span>
+          </div>
+          <div class="flex flex-col items-center px-2">
+            <span class="text-xl font-bold text-[#E8A87C]">100%</span>
+            <span class="text-[11px] text-[#9AA3B2] mt-1">好评率</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Menu List -->
+      <div class="mt-3 rounded-[24px] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.05)] overflow-hidden">
+
+        <!-- 我的钱包 -->
+        <div class="flex items-center h-[52px] px-4 cursor-pointer hover:bg-[#F9FAFB] transition-colors" onclick="location.href='w01-wallet.html'">
+          <div class="w-8 h-8 rounded-full bg-[#E6F5F2] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#3D9B8F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+          </div>
+          <span class="ml-3 text-sm text-[#2C3340] flex-1">我的钱包</span>
+          <span class="text-xs text-[#9AA3B2] mr-1">余额 ¥128.00</span>
+          <svg class="w-4 h-4 text-[#CDD2D9] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="mx-4 h-px bg-[#E8ECF1]"></div>
+
+        <!-- 我的认证 -->
+        <div class="flex items-center h-[52px] px-4 cursor-pointer hover:bg-[#F9FAFB] transition-colors" onclick="location.href='s01-verify.html'">
+          <div class="w-8 h-8 rounded-full bg-[#E6F5F2] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#3D9B8F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <span class="ml-3 text-sm text-[#2C3340] flex-1">我的认证</span>
+          <span class="text-xs text-[#5BAE7A] mr-1">已认证</span>
+          <svg class="w-4 h-4 text-[#CDD2D9] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="mx-4 h-px bg-[#E8ECF1]"></div>
+
+        <!-- 任务记录 -->
+        <div class="flex items-center h-[52px] px-4 cursor-pointer hover:bg-[#F9FAFB] transition-colors" onclick="location.href='tasks.html?role=publisher'">
+          <div class="w-8 h-8 rounded-full bg-[#E6F5F2] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#3D9B8F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <span class="ml-3 text-sm text-[#2C3340] flex-1">任务记录</span>
+          <svg class="w-4 h-4 text-[#CDD2D9] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="mx-4 h-px bg-[#E8ECF1]"></div>
+
+        <!-- 数据看板 -->
+        <div class="flex items-center h-[52px] px-4 cursor-pointer hover:bg-[#F9FAFB] transition-colors" onclick="location.href='d01-dashboard.html'">
+          <div class="w-8 h-8 rounded-full bg-[#E6F5F2] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#3D9B8F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          </div>
+          <span class="ml-3 text-sm text-[#2C3340] flex-1">数据看板</span>
+          <span class="text-xs text-[#9AA3B2] mr-1">收入/排行</span>
+          <svg class="w-4 h-4 text-[#CDD2D9] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="mx-4 h-px bg-[#E8ECF1]"></div>
+
+        <!-- 积分商城 -->
+        <div class="flex items-center h-[52px] px-4 cursor-pointer hover:bg-[#F9FAFB] transition-colors" onclick="location.href='g01-mall.html'">
+          <div class="w-8 h-8 rounded-full bg-[#FFF1E6] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#E8A87C]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          </div>
+          <span class="ml-3 text-sm text-[#2C3340] flex-1">积分商城</span>
+          <span class="text-xs text-[#9AA3B2] mr-1">30 积分</span>
+          <svg class="w-4 h-4 text-[#CDD2D9] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="mx-4 h-px bg-[#E8ECF1]"></div>
+
+        <!-- 评价管理 -->
+        <div class="flex items-center h-[52px] px-4 cursor-pointer hover:bg-[#F9FAFB] transition-colors">
+          <div class="w-8 h-8 rounded-full bg-[#E6F5F2] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#3D9B8F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <span class="ml-3 text-sm text-[#2C3340] flex-1">评价管理</span>
+          <svg class="w-4 h-4 text-[#CDD2D9] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="mx-4 h-px bg-[#E8ECF1]"></div>
+
+        <!-- 常用地址 -->
+        <div class="flex items-center h-[52px] px-4 cursor-pointer hover:bg-[#F9FAFB] transition-colors" onclick="location.href='t04-address.html'">
+          <div class="w-8 h-8 rounded-full bg-[#E6F5F2] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#3D9B8F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span class="ml-3 text-sm text-[#2C3340] flex-1">常用地址</span>
+          <svg class="w-4 h-4 text-[#CDD2D9] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="mx-4 h-px bg-[#E8ECF1]"></div>
+
+        <!-- 投诉记录 -->
+        <div class="flex items-center h-[52px] px-4 cursor-pointer hover:bg-[#F9FAFB] transition-colors" onclick="location.href='s03-complaint-records.html'">
+          <div class="w-8 h-8 rounded-full bg-[#E6F5F2] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#3D9B8F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <span class="ml-3 text-sm text-[#2C3340] flex-1">投诉记录</span>
+          <svg class="w-4 h-4 text-[#CDD2D9] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="mx-4 h-px bg-[#E8ECF1]"></div>
+
+        <!-- 帮助中心 -->
+        <div class="flex items-center h-[52px] px-4 cursor-pointer hover:bg-[#F9FAFB] transition-colors" onclick="location.href='s06-help.html'">
+          <div class="w-8 h-8 rounded-full bg-[#E6F5F2] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#3D9B8F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <span class="ml-3 text-sm text-[#2C3340] flex-1">帮助中心</span>
+          <svg class="w-4 h-4 text-[#CDD2D9] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="mx-4 h-px bg-[#E8ECF1]"></div>
+
+        <!-- 设置 -->
+        <div class="flex items-center h-[52px] px-4 cursor-pointer hover:bg-[#F9FAFB] transition-colors" onclick="location.href='s05-settings.html'">
+          <div class="w-8 h-8 rounded-full bg-[#E6F5F2] flex items-center justify-center shrink-0">
+            <svg class="w-4 h-4 text-[#3D9B8F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <span class="ml-3 text-sm text-[#2C3340] flex-1">设置</span>
+          <svg class="w-4 h-4 text-[#CDD2D9] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+
+      <!-- Logout Button -->
+      <div class="mt-6 mb-4 text-center">
+        <button type="button" onclick="if(confirm('确认退出登录？'))location.href='a01-login.html'" class="text-sm font-medium text-[#E57373] bg-transparent border-none cursor-pointer py-2 px-6 hover:opacity-80 transition-opacity">退出登录</button>
+      </div>
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav data-mobile-nav="global" class="fixed bottom-0 left-0 right-0 bg-white h-[56px] z-50" style="box-shadow: 0 -1px 4px rgba(0,0,0,0.03)">
+      <div class="w-full max-w-md mx-auto grid grid-cols-4 h-full">
+        <a href="home-publisher.html" data-nav-key="home" data-dom-id="nav-home" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">首页</span>
+        </a>
+        <a href="tasks.html" data-nav-key="tasks" data-dom-id="nav-tasks" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">任务</span>
+        </a>
+        <a href="messages.html" data-nav-key="messages" data-dom-id="nav-messages" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">消息</span>
+        </a>
+        <a href="profile.html" data-nav-key="profile" data-dom-id="nav-profile" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#3D9B8F]" data-active="true">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">我的</span>
+        </a>
+      </div>
+    </nav>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>

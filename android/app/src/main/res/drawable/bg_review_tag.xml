@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/cg_brand" />
+            <corners android:radius="9999dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/cg_bg_card" />
+            <stroke
+                android:width="1.5dp"
+                android:color="@color/cg_divider" />
+            <corners android:radius="9999dp" />
+        </shape>
+    </item>
+</selector>

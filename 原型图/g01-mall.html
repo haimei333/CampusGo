@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>积分商城</title>
+    <style id="theme-vars">
+/* CampusGo Soft UI Design Token — Brand CSS */
+/* Brand prefix: cg */
+
+:root {
+  /* ===== Brand Colors ===== */
+  --cg-brand: #3D9B8F;
+  --cg-brand-pressed: #34857B;
+  --cg-brand-soft: #E6F5F2;
+
+  /* ===== Accent ===== */
+  --cg-accent: #E8A87C;
+  --cg-accent-soft: #FFF1E6;
+
+  /* ===== Semantic Colors ===== */
+  --cg-danger: #E57373;
+  --cg-danger-soft: #FDECEC;
+  --cg-warning: #F0B429;
+  --cg-success: #5BAE7A;
+  --cg-emergency: #E8896B;
+
+  /* ===== Neutral / Surface ===== */
+  --cg-bg-app: #F3F5F8;
+  --cg-bg-card: #FFFFFF;
+  --cg-bg-input: #F0F2F5;
+  --cg-text-primary: #2C3340;
+  --cg-text-secondary: #6B7380;
+  --cg-text-tertiary: #9AA3B2;
+  --cg-text-on-brand: #FFFFFF;
+  --cg-divider: #E8ECF1;
+  --cg-overlay: rgba(44, 51, 64, 0.4);
+
+  /* ===== Tag / Semantic Label Colors ===== */
+  --cg-tag-normal-bg: #EEF1F5;
+  --cg-tag-normal-text: #5A6575;
+  --cg-tag-group-bg: #E6F5F2;
+  --cg-tag-group-text: #2F7A70;
+  --cg-tag-emergency-bg: #FFF0EA;
+  --cg-tag-emergency-text: #C45C3E;
+  --cg-tag-reserve-bg: #EAF0FB;
+  --cg-tag-reserve-text: #4A6FA5;
+  --cg-tag-draft-bg: #F5F5F5;
+  --cg-tag-draft-text: #8A9099;
+
+  /* ===== Radius ===== */
+  --cg-radius-sm: 12px;
+  --cg-radius-md: 16px;
+  --cg-radius-lg: 24px;
+  --cg-radius-full: 9999px;
+
+  /* ===== Shadows (Soft) ===== */
+  --cg-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --cg-shadow-2: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --cg-shadow-3: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --cg-shadow-fab: 0 4px 12px rgba(61, 155, 143, 0.25);
+
+  /* ===== Semantic Aliases (required by apply-html-head-contract) ===== */
+  --cg-background: #F3F5F8;
+  --cg-foreground: #2C3340;
+  --cg-card: #FFFFFF;
+  --cg-card-foreground: #2C3340;
+  --cg-popover: #FFFFFF;
+  --cg-popover-foreground: #2C3340;
+  --cg-primary: #3D9B8F;
+  --cg-primary-foreground: #FFFFFF;
+  --cg-muted: #F0F2F5;
+  --cg-muted-foreground: #6B7380;
+  --cg-border: #E8ECF1;
+  --cg-input: #F0F2F5;
+  --cg-ring: rgba(61, 155, 143, 0.45);
+
+  /* ===== Typography ===== */
+  --cg-font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --cg-font-hero: 28px;
+  --cg-font-h1: 22px;
+  --cg-font-h2: 18px;
+  --cg-font-h3: 16px;
+  --cg-font-body: 14px;
+  --cg-font-caption: 12px;
+  --cg-font-amount: 20px;
+
+  --cg-font-weight-semibold: 600;
+  --cg-font-weight-medium: 500;
+  --cg-font-weight-regular: 400;
+
+  --cg-line-height-tight: 1.25;
+  --cg-line-height-normal: 1.5;
+  --cg-line-height-relaxed: 1.75;
+}
+
+/* ===== Base Styles ===== */
+body {
+  font-family: var(--cg-font-family);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  color: var(--cg-text-primary);
+  background-color: var(--cg-bg-app);
+  line-height: var(--cg-line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Typography Classes ===== */
+.cg-hero {
+  font-size: var(--cg-font-hero);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h1 {
+  font-size: var(--cg-font-h1);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h2 {
+  font-size: var(--cg-font-h2);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h3 {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-body {
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+}
+
+.cg-caption {
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+  color: var(--cg-text-secondary);
+}
+
+.cg-amount {
+  font-size: var(--cg-font-amount);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-text-secondary {
+  color: var(--cg-text-secondary);
+}
+
+.cg-text-tertiary {
+  color: var(--cg-text-tertiary);
+}
+
+/* ===== Component Base Classes ===== */
+.cg-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-2);
+}
+
+.cg-btn-primary:active {
+  transform: scale(0.97);
+  background: var(--cg-brand-pressed);
+}
+
+.cg-btn-primary:disabled {
+  background: #B7D9D3;
+  box-shadow: none;
+  transform: none;
+}
+
+.cg-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-bg-card);
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-btn-secondary:active {
+  transform: scale(0.97);
+}
+
+.cg-btn-danger-text {
+  background: none;
+  border: none;
+  color: var(--cg-danger);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  cursor: pointer;
+  padding: 12px 0;
+}
+
+.cg-card {
+  background: var(--cg-bg-card);
+  border-radius: var(--cg-radius-lg);
+  padding: 16px;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-input {
+  height: 50px;
+  padding: 0 20px;
+  background: var(--cg-bg-input);
+  border-radius: var(--cg-radius-md);
+  border: none;
+  font-size: var(--cg-font-body);
+  font-family: var(--cg-font-family);
+  color: var(--cg-text-primary);
+  outline: none;
+  transition: all 200ms ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cg-input:focus {
+  background: var(--cg-bg-card);
+  box-shadow: 0 0 0 2px var(--cg-ring);
+}
+
+.cg-input::placeholder {
+  color: var(--cg-text-tertiary);
+}
+
+.cg-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--cg-radius-sm);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-medium);
+  line-height: 1.4;
+}
+
+.cg-tag-normal {
+  background: var(--cg-tag-normal-bg);
+  color: var(--cg-tag-normal-text);
+}
+
+.cg-tag-group {
+  background: var(--cg-tag-group-bg);
+  color: var(--cg-tag-group-text);
+}
+
+.cg-tag-emergency {
+  background: var(--cg-tag-emergency-bg);
+  color: var(--cg-tag-emergency-text);
+}
+
+.cg-tag-reserve {
+  background: var(--cg-tag-reserve-bg);
+  color: var(--cg-tag-reserve-text);
+}
+
+.cg-tag-draft {
+  background: var(--cg-tag-draft-bg);
+  color: var(--cg-tag-draft-text);
+}
+
+/* ===== Bottom Navigation ===== */
+.cg-bottom-nav {
+  background: var(--cg-bg-card);
+  height: 56px;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+}
+
+.cg-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+  height: 100%;
+  color: var(--cg-text-tertiary);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-regular);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 200ms ease;
+  min-width: 0;
+}
+
+.cg-bottom-nav-item svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.cg-bottom-nav-item.active {
+  color: var(--cg-brand);
+}
+
+.cg-bottom-nav-item.active .nav-icon-bg {
+  background: var(--cg-brand-soft);
+  border-radius: var(--cg-radius-md);
+  padding: 4px;
+}
+
+/* ===== FAB ===== */
+.cg-fab {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--cg-radius-full);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--cg-shadow-fab);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  z-index: 50;
+  font-size: 24px;
+  font-weight: var(--cg-font-weight-regular);
+}
+
+.cg-fab:active {
+  transform: scale(0.95);
+}
+
+/* ===== Top Bar ===== */
+.cg-topbar {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 16px;
+  background: var(--cg-bg-card);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.cg-topbar-title {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  color: var(--cg-text-primary);
+  flex: 1;
+  text-align: center;
+}
+
+.cg-topbar-back {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-text-primary);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+.cg-topbar-action {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+/* ===== Status Banner ===== */
+.cg-status-banner {
+  padding: 10px 16px;
+  border-radius: var(--cg-radius-md);
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-medium);
+}
+
+.cg-status-pending { background: #FFF8E7; color: #B8860B; }
+.cg-status-accepted { background: var(--cg-brand-soft); color: var(--cg-brand); }
+.cg-status-delivering { background: #E8F4FD; color: #2E7DB5; }
+.cg-status-confirming { background: #FFF1E6; color: #C4763E; }
+.cg-status-done { background: #E8F5EC; color: #3D7A52; }
+.cg-status-cancelled { background: #F5F5F5; color: #8A9099; }
+
+/* ===== Utility ===== */
+.cg-divider {
+  height: 1px;
+  background: var(--cg-divider);
+  border: none;
+  margin: 0;
+}
+
+.cg-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--cg-background);
+    --color-foreground: var(--cg-foreground);
+    --color-card: var(--cg-card);
+    --color-card-foreground: var(--cg-card-foreground);
+    --color-popover: var(--cg-popover);
+    --color-popover-foreground: var(--cg-popover-foreground);
+    --color-primary: var(--cg-primary);
+    --color-primary-foreground: var(--cg-primary-foreground);
+    --color-muted: var(--cg-muted);
+    --color-muted-foreground: var(--cg-muted-foreground);
+    --color-accent: var(--cg-accent);
+    --color-border: var(--cg-border);
+    --color-input: var(--cg-input);
+    --color-ring: var(--cg-ring);
+    --radius-sm: var(--cg-radius-sm);
+    --radius-md: var(--cg-radius-md);
+    --radius-lg: var(--cg-radius-lg);
+  }
+  @layer base {
+    body { background: var(--cg-background); color: var(--cg-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--cg-background); }
+      .text-background { color: var(--cg-background); }
+      .border-background { border-color: var(--cg-background); }
+      .ring-background { --tw-ring-color: var(--cg-background); }
+      .bg-foreground { background-color: var(--cg-foreground); }
+      .text-foreground { color: var(--cg-foreground); }
+      .border-foreground { border-color: var(--cg-foreground); }
+      .ring-foreground { --tw-ring-color: var(--cg-foreground); }
+      .bg-card { background-color: var(--cg-card); }
+      .text-card { color: var(--cg-card); }
+      .border-card { border-color: var(--cg-card); }
+      .ring-card { --tw-ring-color: var(--cg-card); }
+      .bg-card-foreground { background-color: var(--cg-card-foreground); }
+      .text-card-foreground { color: var(--cg-card-foreground); }
+      .border-card-foreground { border-color: var(--cg-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--cg-card-foreground); }
+      .bg-popover { background-color: var(--cg-popover); }
+      .text-popover { color: var(--cg-popover); }
+      .border-popover { border-color: var(--cg-popover); }
+      .ring-popover { --tw-ring-color: var(--cg-popover); }
+      .bg-popover-foreground { background-color: var(--cg-popover-foreground); }
+      .text-popover-foreground { color: var(--cg-popover-foreground); }
+      .border-popover-foreground { border-color: var(--cg-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--cg-popover-foreground); }
+      .bg-primary { background-color: var(--cg-primary); }
+      .text-primary { color: var(--cg-primary); }
+      .border-primary { border-color: var(--cg-primary); }
+      .ring-primary { --tw-ring-color: var(--cg-primary); }
+      .bg-primary-foreground { background-color: var(--cg-primary-foreground); }
+      .text-primary-foreground { color: var(--cg-primary-foreground); }
+      .border-primary-foreground { border-color: var(--cg-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--cg-primary-foreground); }
+      .bg-muted { background-color: var(--cg-muted); }
+      .text-muted { color: var(--cg-muted); }
+      .border-muted { border-color: var(--cg-muted); }
+      .ring-muted { --tw-ring-color: var(--cg-muted); }
+      .bg-muted-foreground { background-color: var(--cg-muted-foreground); }
+      .text-muted-foreground { color: var(--cg-muted-foreground); }
+      .border-muted-foreground { border-color: var(--cg-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--cg-muted-foreground); }
+      .bg-accent { background-color: var(--cg-accent); }
+      .text-accent { color: var(--cg-accent); }
+      .border-accent { border-color: var(--cg-accent); }
+      .ring-accent { --tw-ring-color: var(--cg-accent); }
+      .bg-border { background-color: var(--cg-border); }
+      .text-border { color: var(--cg-border); }
+      .border-border { border-color: var(--cg-border); }
+      .ring-border { --tw-ring-color: var(--cg-border); }
+      .bg-input { background-color: var(--cg-input); }
+      .text-input { color: var(--cg-input); }
+      .border-input { border-color: var(--cg-input); }
+      .ring-input { --tw-ring-color: var(--cg-input); }
+      .bg-ring { background-color: var(--cg-ring); }
+      .text-ring { color: var(--cg-ring); }
+      .border-ring { border-color: var(--cg-ring); }
+      .ring-ring { --tw-ring-color: var(--cg-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+
+    <!-- Top Bar -->
+    <div class="cg-topbar">
+        <button class="cg-topbar-back" onclick="history.back()">
+            <i data-lucide="chevron-left" style="width:24px;height:24px;"></i>
+        </button>
+        <span class="cg-topbar-title">积分商城</span>
+        <div class="cg-topbar-action"></div>
+    </div>
+
+    <!-- Points Balance Card -->
+    <div class="px-4 pt-4">
+        <div class="relative overflow-hidden" style="background: linear-gradient(135deg, var(--cg-brand) 0%, #2E7D73 100%); border-radius: var(--cg-radius-lg); padding: 20px; box-shadow: var(--cg-shadow-3);">
+            <!-- Decorative circles -->
+            <div style="position: absolute; top: -24px; right: -12px; width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.08);"></div>
+            <div style="position: absolute; bottom: -16px; left: 20%; width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.06);"></div>
+            <div class="relative z-10 flex items-center justify-between">
+                <div>
+                    <p class="cg-caption" style="color: rgba(255,255,255,0.75);">我的积分</p>
+                    <p class="cg-hero" style="color: var(--cg-text-on-brand); font-size: 36px; margin-top: 4px;">2,860</p>
+                </div>
+                <button class="cg-btn-secondary" style="height: 36px; padding: 0 16px; font-size: 13px; background: rgba(255,255,255,0.2); color: var(--cg-text-on-brand); box-shadow: none; border: 1px solid rgba(255,255,255,0.3);">
+                    <i data-lucide="file-text" style="width:16px;height:16px;margin-right:4px;"></i>
+                    积分记录
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category Tabs -->
+    <div class="px-4 pt-4">
+        <div class="flex gap-2 overflow-x-auto no-scrollbar" id="categoryTabs">
+            <button class="category-tab active flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200" data-category="all" style="background: var(--cg-brand); color: var(--cg-text-on-brand);">热门推荐</button>
+            <button class="category-tab flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200" data-category="voucher" style="background: var(--cg-bg-input); color: var(--cg-text-secondary);">兑换券</button>
+            <button class="category-tab flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200" data-category="goods" style="background: var(--cg-bg-input); color: var(--cg-text-secondary);">实物好物</button>
+            <button class="category-tab flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all duration-200" data-category="flash" style="background: var(--cg-bg-input); color: var(--cg-text-secondary);">限时秒杀</button>
+        </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="px-4 pt-4 pb-[80px]">
+        <div class="grid grid-cols-2 gap-3" id="productGrid">
+            <!-- Product 1: 蜜雪冰城代金券 (voucher, hot) -->
+            <div class="product-card cg-card" data-categories="all voucher" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                <div class="product-image" style="height: 110px; background: linear-gradient(135deg, #FFE0E0 0%, #FF6B6B 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative;">
+                    🍦
+                </div>
+                <div style="padding: 10px 12px 12px; flex: 1; display: flex; flex-direction: column;">
+                    <p class="cg-h3" style="font-size:13px; margin-bottom: 2px;">蜜雪冰城代金券</p>
+                    <p class="cg-caption" style="font-size:11px; margin-bottom: 8px;">5元代金券</p>
+                    <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
+                        <span style="color: var(--cg-brand); font-weight: 600; font-size: 15px;">300分</span>
+                        <button class="cg-btn-primary" style="height: 28px; padding: 0 12px; font-size: 11px; border-radius: 14px;">兑换</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2: 麦当劳红包 (voucher, hot) -->
+            <div class="product-card cg-card" data-categories="all voucher" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                <div class="product-image" style="height: 110px; background: linear-gradient(135deg, #FFE8CC 0%, #FF9500 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative;">
+                    🍔
+                </div>
+                <div style="padding: 10px 12px 12px; flex: 1; display: flex; flex-direction: column;">
+                    <p class="cg-h3" style="font-size:13px; margin-bottom: 2px;">麦当劳红包</p>
+                    <p class="cg-caption" style="font-size:11px; margin-bottom: 8px;">满30减10元</p>
+                    <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
+                        <span style="color: var(--cg-brand); font-weight: 600; font-size: 15px;">500分</span>
+                        <button class="cg-btn-primary" style="height: 28px; padding: 0 12px; font-size: 11px; border-radius: 14px;">兑换</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3: 万达电影票 (voucher, hot) -->
+            <div class="product-card cg-card" data-categories="all voucher" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                <div class="product-image" style="height: 110px; background: linear-gradient(135deg, #D4E4FF 0%, #4A90D9 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative;">
+                    🎬
+                </div>
+                <div style="padding: 10px 12px 12px; flex: 1; display: flex; flex-direction: column;">
+                    <p class="cg-h3" style="font-size:13px; margin-bottom: 2px;">万达电影票</p>
+                    <p class="cg-caption" style="font-size:11px; margin-bottom: 8px;">2D/3D通兑券</p>
+                    <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
+                        <span style="color: var(--cg-brand); font-weight: 600; font-size: 15px;">800分</span>
+                        <button class="cg-btn-primary" style="height: 28px; padding: 0 12px; font-size: 11px; border-radius: 14px;">兑换</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4: 瑞幸咖啡券 (voucher) -->
+            <div class="product-card cg-card" data-categories="all voucher" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                <div class="product-image" style="height: 110px; background: linear-gradient(135deg, #F0E6DC 0%, #8B6F4E 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative;">
+                    ☕
+                </div>
+                <div style="padding: 10px 12px 12px; flex: 1; display: flex; flex-direction: column;">
+                    <p class="cg-h3" style="font-size:13px; margin-bottom: 2px;">瑞幸咖啡券</p>
+                    <p class="cg-caption" style="font-size:11px; margin-bottom: 8px;">生椰拿铁兑换券</p>
+                    <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
+                        <span style="color: var(--cg-brand); font-weight: 600; font-size: 15px;">200分</span>
+                        <button class="cg-btn-primary" style="height: 28px; padding: 0 12px; font-size: 11px; border-radius: 14px;">兑换</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 5: 校园文创帆布包 (goods) -->
+            <div class="product-card cg-card" data-categories="all goods" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                <div class="product-image" style="height: 110px; background: linear-gradient(135deg, #E8F5F2 0%, #3D9B8F 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative;">
+                    🎒
+                </div>
+                <div style="padding: 10px 12px 12px; flex: 1; display: flex; flex-direction: column;">
+                    <p class="cg-h3" style="font-size:13px; margin-bottom: 2px;">校园文创帆布包</p>
+                    <p class="cg-caption" style="font-size:11px; margin-bottom: 8px;">限定校园主题</p>
+                    <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
+                        <span style="color: var(--cg-brand); font-weight: 600; font-size: 15px;">1,500分</span>
+                        <button class="cg-btn-primary" style="height: 28px; padding: 0 12px; font-size: 11px; border-radius: 14px;">兑换</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 6: 316不锈钢保温杯 (goods) -->
+            <div class="product-card cg-card" data-categories="all goods" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                <div class="product-image" style="height: 110px; background: linear-gradient(135deg, #E3E8F0 0%, #6B7B8D 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative;">
+                    🫖
+                </div>
+                <div style="padding: 10px 12px 12px; flex: 1; display: flex; flex-direction: column;">
+                    <p class="cg-h3" style="font-size:13px; margin-bottom: 2px;">316不锈钢保温杯</p>
+                    <p class="cg-caption" style="font-size:11px; margin-bottom: 8px;">500ml 长效保温</p>
+                    <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
+                        <span style="color: var(--cg-brand); font-weight: 600; font-size: 15px;">2,000分</span>
+                        <button class="cg-btn-primary" style="height: 28px; padding: 0 12px; font-size: 11px; border-radius: 14px;">兑换</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 7: 充电宝 (flash, hot) -->
+            <div class="product-card cg-card" data-categories="all flash" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; position: relative;">
+                <div class="flash-badge" style="position: absolute; top: 8px; left: 8px; z-index: 10; background: var(--cg-danger); color: white; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 8px; display: flex; align-items: center; gap: 2px;">
+                    ⚡ 限时秒杀
+                </div>
+                <div class="product-image" style="height: 110px; background: linear-gradient(135deg, #FFF5E6 0%, #E8A87C 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative;">
+                    🔋
+                </div>
+                <div style="padding: 10px 12px 12px; flex: 1; display: flex; flex-direction: column;">
+                    <p class="cg-h3" style="font-size:13px; margin-bottom: 2px;">小米充电宝</p>
+                    <p class="cg-caption" style="font-size:11px; margin-bottom: 8px;">10000mAh快充</p>
+                    <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <span style="color: var(--cg-danger); font-weight: 600; font-size: 15px;">1,200分</span>
+                            <span style="color: var(--cg-text-tertiary); font-size: 11px; text-decoration: line-through; margin-left: 4px;">1,800</span>
+                        </div>
+                        <button class="cg-btn-primary" style="height: 28px; padding: 0 12px; font-size: 11px; border-radius: 14px; background: var(--cg-danger);">秒杀</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 8: 蓝牙耳机 (flash) -->
+            <div class="product-card cg-card" data-categories="all flash" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; position: relative;">
+                <div class="flash-badge" style="position: absolute; top: 8px; left: 8px; z-index: 10; background: var(--cg-danger); color: white; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 8px; display: flex; align-items: center; gap: 2px;">
+                    ⚡ 限时秒杀
+                </div>
+                <div class="product-image" style="height: 110px; background: linear-gradient(135deg, #E8EDF5 0%, #5B7FA5 100%); display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative;">
+                    🎧
+                </div>
+                <div style="padding: 10px 12px 12px; flex: 1; display: flex; flex-direction: column;">
+                    <p class="cg-h3" style="font-size:13px; margin-bottom: 2px;">蓝牙耳机</p>
+                    <p class="cg-caption" style="font-size:11px; margin-bottom: 8px;">降噪无线耳机</p>
+                    <div style="margin-top: auto; display: flex; align-items: center; justify-content: space-between;">
+                        <div>
+                            <span style="color: var(--cg-danger); font-weight: 600; font-size: 15px;">2,500分</span>
+                            <span style="color: var(--cg-text-tertiary); font-size: 11px; text-decoration: line-through; margin-left: 4px;">3,500</span>
+                        </div>
+                        <button class="cg-btn-primary" style="height: 28px; padding: 0 12px; font-size: 11px; border-radius: 14px; background: var(--cg-danger);">秒杀</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching logic
+        const tabs = document.querySelectorAll('.category-tab');
+        const productCards = document.querySelectorAll('.product-card');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+
+                // Update active tab style
+                tabs.forEach(t => {
+                    t.style.background = 'var(--cg-bg-input)';
+                    t.style.color = 'var(--cg-text-secondary)';
+                });
+                this.style.background = 'var(--cg-brand)';
+                this.style.color = 'var(--cg-text-on-brand)';
+
+                // Filter products
+                productCards.forEach(card => {
+                    const categories = card.getAttribute('data-categories');
+                    if (categories && categories.split(' ').includes(category)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+    <script>lucide.createIcons();</script>
+
+    <!-- Bottom Navigation -->
+    <nav data-mobile-nav="global" class="fixed bottom-0 left-0 right-0 bg-white h-[56px] z-50" style="box-shadow: 0 -1px 4px rgba(0,0,0,0.03)">
+      <div class="w-full max-w-md mx-auto grid grid-cols-4 h-full">
+        <a data-nav-key="home" data-dom-id="nav-home" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">首页</span>
+        </a>
+        <a data-nav-key="tasks" data-dom-id="nav-tasks" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">任务</span>
+        </a>
+        <a data-nav-key="messages" data-dom-id="nav-messages" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">消息</span>
+        </a>
+        <a data-nav-key="profile" data-dom-id="nav-profile" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">我的</span>
+        </a>
+      </div>
+    </nav>
+
+<script>
+function redeemItem(kind){
+  if (kind === 'physical') {
+    if (confirm('兑换实物需选择收货地址，前往地址管理？')) location.href = 't04-address.html?from=g01';
+    return;
+  }
+  alert('优惠券已发放到账户，发布任务确认步可选券');
+}
+document.querySelectorAll('button').forEach(btn => {
+  if ((btn.textContent||'').trim() !== '兑换') return;
+  const card = btn.closest('div')?.parentElement || btn.parentElement;
+  const text = (card && card.textContent) || '';
+  const physical = /帆布包|保温杯|实物|文创/.test(text);
+  btn.onclick = () => redeemItem(physical ? 'physical' : 'coupon');
+});
+// entry to checkin
+const header = document.querySelector('.cg-topbar, header, [class*="topbar"]');
+if (header && !document.getElementById('to-checkin')) {
+  const a = document.createElement('button');
+  a.id = 'to-checkin';
+  a.type = 'button';
+  a.textContent = '签到';
+  a.className = 'cg-topbar-action';
+  a.style.cssText = 'position:absolute;right:12px;top:12px;border:0;background:transparent;color:var(--cg-brand);cursor:pointer;font-size:13px';
+  a.onclick = () => location.href = 'g02-checkin.html';
+  document.body.appendChild(a);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>任务热力图</title>
+    <style id="theme-vars">
+/* CampusGo Soft UI Design Token — Brand CSS */
+/* Brand prefix: cg */
+
+:root {
+  /* ===== Brand Colors ===== */
+  --cg-brand: #3D9B8F;
+  --cg-brand-pressed: #34857B;
+  --cg-brand-soft: #E6F5F2;
+
+  /* ===== Accent ===== */
+  --cg-accent: #E8A87C;
+  --cg-accent-soft: #FFF1E6;
+
+  /* ===== Semantic Colors ===== */
+  --cg-danger: #E57373;
+  --cg-danger-soft: #FDECEC;
+  --cg-warning: #F0B429;
+  --cg-success: #5BAE7A;
+  --cg-emergency: #E8896B;
+
+  /* ===== Neutral / Surface ===== */
+  --cg-bg-app: #F3F5F8;
+  --cg-bg-card: #FFFFFF;
+  --cg-bg-input: #F0F2F5;
+  --cg-text-primary: #2C3340;
+  --cg-text-secondary: #6B7380;
+  --cg-text-tertiary: #9AA3B2;
+  --cg-text-on-brand: #FFFFFF;
+  --cg-divider: #E8ECF1;
+  --cg-overlay: rgba(44, 51, 64, 0.4);
+
+  /* ===== Tag / Semantic Label Colors ===== */
+  --cg-tag-normal-bg: #EEF1F5;
+  --cg-tag-normal-text: #5A6575;
+  --cg-tag-group-bg: #E6F5F2;
+  --cg-tag-group-text: #2F7A70;
+  --cg-tag-emergency-bg: #FFF0EA;
+  --cg-tag-emergency-text: #C45C3E;
+  --cg-tag-reserve-bg: #EAF0FB;
+  --cg-tag-reserve-text: #4A6FA5;
+  --cg-tag-draft-bg: #F5F5F5;
+  --cg-tag-draft-text: #8A9099;
+
+  /* ===== Radius ===== */
+  --cg-radius-sm: 12px;
+  --cg-radius-md: 16px;
+  --cg-radius-lg: 24px;
+  --cg-radius-full: 9999px;
+
+  /* ===== Shadows (Soft) ===== */
+  --cg-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --cg-shadow-2: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --cg-shadow-3: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --cg-shadow-fab: 0 4px 12px rgba(61, 155, 143, 0.25);
+
+  /* ===== Semantic Aliases (required by apply-html-head-contract) ===== */
+  --cg-background: #F3F5F8;
+  --cg-foreground: #2C3340;
+  --cg-card: #FFFFFF;
+  --cg-card-foreground: #2C3340;
+  --cg-popover: #FFFFFF;
+  --cg-popover-foreground: #2C3340;
+  --cg-primary: #3D9B8F;
+  --cg-primary-foreground: #FFFFFF;
+  --cg-muted: #F0F2F5;
+  --cg-muted-foreground: #6B7380;
+  --cg-border: #E8ECF1;
+  --cg-input: #F0F2F5;
+  --cg-ring: rgba(61, 155, 143, 0.45);
+
+  /* ===== Typography ===== */
+  --cg-font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --cg-font-hero: 28px;
+  --cg-font-h1: 22px;
+  --cg-font-h2: 18px;
+  --cg-font-h3: 16px;
+  --cg-font-body: 14px;
+  --cg-font-caption: 12px;
+  --cg-font-amount: 20px;
+
+  --cg-font-weight-semibold: 600;
+  --cg-font-weight-medium: 500;
+  --cg-font-weight-regular: 400;
+
+  --cg-line-height-tight: 1.25;
+  --cg-line-height-normal: 1.5;
+  --cg-line-height-relaxed: 1.75;
+}
+
+/* ===== Base Styles ===== */
+body {
+  font-family: var(--cg-font-family);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  color: var(--cg-text-primary);
+  background-color: var(--cg-bg-app);
+  line-height: var(--cg-line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Typography Classes ===== */
+.cg-hero {
+  font-size: var(--cg-font-hero);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h1 {
+  font-size: var(--cg-font-h1);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h2 {
+  font-size: var(--cg-font-h2);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h3 {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-body {
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+}
+
+.cg-caption {
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+  color: var(--cg-text-secondary);
+}
+
+.cg-amount {
+  font-size: var(--cg-font-amount);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-text-secondary {
+  color: var(--cg-text-secondary);
+}
+
+.cg-text-tertiary {
+  color: var(--cg-text-tertiary);
+}
+
+/* ===== Component Base Classes ===== */
+.cg-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-2);
+}
+
+.cg-btn-primary:active {
+  transform: scale(0.97);
+  background: var(--cg-brand-pressed);
+}
+
+.cg-btn-primary:disabled {
+  background: #B7D9D3;
+  box-shadow: none;
+  transform: none;
+}
+
+.cg-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-bg-card);
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-btn-secondary:active {
+  transform: scale(0.97);
+}
+
+.cg-btn-danger-text {
+  background: none;
+  border: none;
+  color: var(--cg-danger);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  cursor: pointer;
+  padding: 12px 0;
+}
+
+.cg-card {
+  background: var(--cg-bg-card);
+  border-radius: var(--cg-radius-lg);
+  padding: 16px;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-input {
+  height: 50px;
+  padding: 0 20px;
+  background: var(--cg-bg-input);
+  border-radius: var(--cg-radius-md);
+  border: none;
+  font-size: var(--cg-font-body);
+  font-family: var(--cg-font-family);
+  color: var(--cg-text-primary);
+  outline: none;
+  transition: all 200ms ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cg-input:focus {
+  background: var(--cg-bg-card);
+  box-shadow: 0 0 0 2px var(--cg-ring);
+}
+
+.cg-input::placeholder {
+  color: var(--cg-text-tertiary);
+}
+
+.cg-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--cg-radius-sm);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-medium);
+  line-height: 1.4;
+}
+
+.cg-tag-normal {
+  background: var(--cg-tag-normal-bg);
+  color: var(--cg-tag-normal-text);
+}
+
+.cg-tag-group {
+  background: var(--cg-tag-group-bg);
+  color: var(--cg-tag-group-text);
+}
+
+.cg-tag-emergency {
+  background: var(--cg-tag-emergency-bg);
+  color: var(--cg-tag-emergency-text);
+}
+
+.cg-tag-reserve {
+  background: var(--cg-tag-reserve-bg);
+  color: var(--cg-tag-reserve-text);
+}
+
+.cg-tag-draft {
+  background: var(--cg-tag-draft-bg);
+  color: var(--cg-tag-draft-text);
+}
+
+/* ===== Bottom Navigation ===== */
+.cg-bottom-nav {
+  background: var(--cg-bg-card);
+  height: 56px;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+}
+
+.cg-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+  height: 100%;
+  color: var(--cg-text-tertiary);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-regular);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 200ms ease;
+  min-width: 0;
+}
+
+.cg-bottom-nav-item svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.cg-bottom-nav-item.active {
+  color: var(--cg-brand);
+}
+
+.cg-bottom-nav-item.active .nav-icon-bg {
+  background: var(--cg-brand-soft);
+  border-radius: var(--cg-radius-md);
+  padding: 4px;
+}
+
+/* ===== FAB ===== */
+.cg-fab {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--cg-radius-full);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--cg-shadow-fab);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  z-index: 50;
+  font-size: 24px;
+  font-weight: var(--cg-font-weight-regular);
+}
+
+.cg-fab:active {
+  transform: scale(0.95);
+}
+
+/* ===== Top Bar ===== */
+.cg-topbar {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 16px;
+  background: var(--cg-bg-card);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.cg-topbar-title {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  color: var(--cg-text-primary);
+  flex: 1;
+  text-align: center;
+}
+
+.cg-topbar-back {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-text-primary);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+.cg-topbar-action {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+/* ===== Status Banner ===== */
+.cg-status-banner {
+  padding: 10px 16px;
+  border-radius: var(--cg-radius-md);
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-medium);
+}
+
+.cg-status-pending { background: #FFF8E7; color: #B8860B; }
+.cg-status-accepted { background: var(--cg-brand-soft); color: var(--cg-brand); }
+.cg-status-delivering { background: #E8F4FD; color: #2E7DB5; }
+.cg-status-confirming { background: #FFF1E6; color: #C4763E; }
+.cg-status-done { background: #E8F5EC; color: #3D7A52; }
+.cg-status-cancelled { background: #F5F5F5; color: #8A9099; }
+
+/* ===== Utility ===== */
+.cg-divider {
+  height: 1px;
+  background: var(--cg-divider);
+  border: none;
+  margin: 0;
+}
+
+.cg-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--cg-background);
+    --color-foreground: var(--cg-foreground);
+    --color-card: var(--cg-card);
+    --color-card-foreground: var(--cg-card-foreground);
+    --color-popover: var(--cg-popover);
+    --color-popover-foreground: var(--cg-popover-foreground);
+    --color-primary: var(--cg-primary);
+    --color-primary-foreground: var(--cg-primary-foreground);
+    --color-muted: var(--cg-muted);
+    --color-muted-foreground: var(--cg-muted-foreground);
+    --color-accent: var(--cg-accent);
+    --color-border: var(--cg-border);
+    --color-input: var(--cg-input);
+    --color-ring: var(--cg-ring);
+    --radius-sm: var(--cg-radius-sm);
+    --radius-md: var(--cg-radius-md);
+    --radius-lg: var(--cg-radius-lg);
+  }
+  @layer base {
+    body { background: var(--cg-background); color: var(--cg-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--cg-background); }
+      .text-background { color: var(--cg-background); }
+      .border-background { border-color: var(--cg-background); }
+      .ring-background { --tw-ring-color: var(--cg-background); }
+      .bg-foreground { background-color: var(--cg-foreground); }
+      .text-foreground { color: var(--cg-foreground); }
+      .border-foreground { border-color: var(--cg-foreground); }
+      .ring-foreground { --tw-ring-color: var(--cg-foreground); }
+      .bg-card { background-color: var(--cg-card); }
+      .text-card { color: var(--cg-card); }
+      .border-card { border-color: var(--cg-card); }
+      .ring-card { --tw-ring-color: var(--cg-card); }
+      .bg-card-foreground { background-color: var(--cg-card-foreground); }
+      .text-card-foreground { color: var(--cg-card-foreground); }
+      .border-card-foreground { border-color: var(--cg-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--cg-card-foreground); }
+      .bg-popover { background-color: var(--cg-popover); }
+      .text-popover { color: var(--cg-popover); }
+      .border-popover { border-color: var(--cg-popover); }
+      .ring-popover { --tw-ring-color: var(--cg-popover); }
+      .bg-popover-foreground { background-color: var(--cg-popover-foreground); }
+      .text-popover-foreground { color: var(--cg-popover-foreground); }
+      .border-popover-foreground { border-color: var(--cg-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--cg-popover-foreground); }
+      .bg-primary { background-color: var(--cg-primary); }
+      .text-primary { color: var(--cg-primary); }
+      .border-primary { border-color: var(--cg-primary); }
+      .ring-primary { --tw-ring-color: var(--cg-primary); }
+      .bg-primary-foreground { background-color: var(--cg-primary-foreground); }
+      .text-primary-foreground { color: var(--cg-primary-foreground); }
+      .border-primary-foreground { border-color: var(--cg-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--cg-primary-foreground); }
+      .bg-muted { background-color: var(--cg-muted); }
+      .text-muted { color: var(--cg-muted); }
+      .border-muted { border-color: var(--cg-muted); }
+      .ring-muted { --tw-ring-color: var(--cg-muted); }
+      .bg-muted-foreground { background-color: var(--cg-muted-foreground); }
+      .text-muted-foreground { color: var(--cg-muted-foreground); }
+      .border-muted-foreground { border-color: var(--cg-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--cg-muted-foreground); }
+      .bg-accent { background-color: var(--cg-accent); }
+      .text-accent { color: var(--cg-accent); }
+      .border-accent { border-color: var(--cg-accent); }
+      .ring-accent { --tw-ring-color: var(--cg-accent); }
+      .bg-border { background-color: var(--cg-border); }
+      .text-border { color: var(--cg-border); }
+      .border-border { border-color: var(--cg-border); }
+      .ring-border { --tw-ring-color: var(--cg-border); }
+      .bg-input { background-color: var(--cg-input); }
+      .text-input { color: var(--cg-input); }
+      .border-input { border-color: var(--cg-input); }
+      .ring-input { --tw-ring-color: var(--cg-input); }
+      .bg-ring { background-color: var(--cg-ring); }
+      .text-ring { color: var(--cg-ring); }
+      .border-ring { border-color: var(--cg-ring); }
+      .ring-ring { --tw-ring-color: var(--cg-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+    <style>
+      /* Heat Grid Styles */
+      .heat-grid {
+        display: grid;
+        grid-template-columns: 56px repeat(7, 1fr);
+        grid-template-rows: 28px repeat(6, 1fr);
+        gap: 4px;
+        align-items: center;
+      }
+      .heat-cell {
+        aspect-ratio: 1;
+        border-radius: 6px;
+        transition: all 200ms ease;
+        cursor: pointer;
+      }
+      .heat-cell:hover {
+        transform: scale(1.12);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      }
+      .heat-cell[data-level="0"] { background: var(--cg-bg-input); }
+      .heat-cell[data-level="1"] { background: var(--cg-brand-soft); }
+      .heat-cell[data-level="2"] { background: rgba(61,155,143,0.4); }
+      .heat-cell[data-level="3"] { background: rgba(61,155,143,0.7); }
+      .heat-cell[data-level="4"] { background: var(--cg-brand); }
+
+      .heat-label {
+        font-size: 11px;
+        color: var(--cg-text-tertiary);
+        text-align: center;
+        font-weight: var(--cg-font-weight-medium);
+      }
+      .heat-time-label {
+        font-size: 11px;
+        color: var(--cg-text-secondary);
+        font-weight: var(--cg-font-weight-medium);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 4px;
+      }
+
+      .legend-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 4px;
+        flex-shrink: 0;
+      }
+      .legend-dot.cold { background: var(--cg-bg-input); }
+      .legend-dot.low { background: var(--cg-brand-soft); }
+      .legend-dot.mid { background: rgba(61,155,143,0.4); }
+      .legend-dot.high { background: rgba(61,155,143,0.7); }
+      .legend-dot.peak { background: var(--cg-brand); }
+
+      .filter-btn {
+        padding: 8px 20px;
+        border-radius: var(--cg-radius-full);
+        font-size: var(--cg-font-caption);
+        font-weight: var(--cg-font-weight-medium);
+        border: none;
+        cursor: pointer;
+        transition: all 200ms ease;
+        background: var(--cg-bg-input);
+        color: var(--cg-text-secondary);
+      }
+      .filter-btn.active {
+        background: var(--cg-brand);
+        color: var(--cg-text-on-brand);
+        box-shadow: var(--cg-shadow-2);
+      }
+
+      .stat-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--cg-divider);
+      }
+      .stat-item:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .stat-rank {
+        width: 22px;
+        height: 22px;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: var(--cg-font-weight-semibold);
+        flex-shrink: 0;
+      }
+      .stat-rank.gold { background: #FFF1E6; color: #C4763E; }
+      .stat-rank.silver { background: #EEF1F5; color: #6B7380; }
+      .stat-rank.bronze { background: #FFF0EA; color: #C45C3E; }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased bg-background">
+
+    <!-- Top Bar -->
+    <div class="cg-topbar">
+        <button class="cg-topbar-back" onclick="history.back()">
+            <i data-lucide="arrow-left" style="width:22px;height:22px;"></i>
+        </button>
+        <span class="cg-topbar-title">任务热力图</span>
+        <div class="cg-topbar-action"></div>
+    </div>
+
+    <!-- Content -->
+    <main class="px-4 pt-4 pb-[80px] flex flex-col gap-4" style="max-width: 480px; margin: 0 auto;">
+
+        <!-- Time Filter -->
+        <div class="flex justify-center gap-3">
+            <button class="filter-btn active" id="btn-week" onclick="switchFilter('week')">本周</button>
+            <button class="filter-btn" id="btn-month" onclick="switchFilter('month')">本月</button>
+        </div>
+
+        <!-- Heatmap Card -->
+        <div class="cg-card" style="box-shadow: var(--cg-shadow-2); padding: 20px;">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="cg-h2" style="font-size:17px;">校园任务分布</h2>
+                <span class="cg-caption">共 186 单</span>
+            </div>
+
+            <!-- Heatmap Grid -->
+            <div class="heat-grid">
+                <!-- Corner empty -->
+                <div></div>
+                <!-- Day headers -->
+                <div class="heat-label">一</div>
+                <div class="heat-label">二</div>
+                <div class="heat-label">三</div>
+                <div class="heat-label">四</div>
+                <div class="heat-label">五</div>
+                <div class="heat-label">六</div>
+                <div class="heat-label">日</div>
+
+                <!-- Row 1: 8-10 -->
+                <div class="heat-time-label">8-10</div>
+                <div class="heat-cell" data-level="0" title="周一 8-10点: 无订单"></div>
+                <div class="heat-cell" data-level="1" title="周二 8-10点: 2单"></div>
+                <div class="heat-cell" data-level="0" title="周三 8-10点: 无订单"></div>
+                <div class="heat-cell" data-level="1" title="周四 8-10点: 1单"></div>
+                <div class="heat-cell" data-level="0" title="周五 8-10点: 无订单"></div>
+                <div class="heat-cell" data-level="0" title="周六 8-10点: 无订单"></div>
+                <div class="heat-cell" data-level="0" title="周日 8-10点: 无订单"></div>
+
+                <!-- Row 2: 10-12 -->
+                <div class="heat-time-label">10-12</div>
+                <div class="heat-cell" data-level="2" title="周一 10-12点: 5单"></div>
+                <div class="heat-cell" data-level="1" title="周二 10-12点: 3单"></div>
+                <div class="heat-cell" data-level="2" title="周三 10-12点: 4单"></div>
+                <div class="heat-cell" data-level="2" title="周四 10-12点: 5单"></div>
+                <div class="heat-cell" data-level="3" title="周五 10-12点: 7单"></div>
+                <div class="heat-cell" data-level="1" title="周六 10-12点: 2单"></div>
+                <div class="heat-cell" data-level="0" title="周日 10-12点: 无订单"></div>
+
+                <!-- Row 3: 12-14 -->
+                <div class="heat-time-label">12-14</div>
+                <div class="heat-cell" data-level="4" title="周一 12-14点: 12单"></div>
+                <div class="heat-cell" data-level="4" title="周二 12-14点: 11单"></div>
+                <div class="heat-cell" data-level="4" title="周三 12-14点: 14单"></div>
+                <div class="heat-cell" data-level="4" title="周四 12-14点: 13单"></div>
+                <div class="heat-cell" data-level="4" title="周五 12-14点: 15单"></div>
+                <div class="heat-cell" data-level="2" title="周六 12-14点: 6单"></div>
+                <div class="heat-cell" data-level="1" title="周日 12-14点: 3单"></div>
+
+                <!-- Row 4: 14-16 -->
+                <div class="heat-time-label">14-16</div>
+                <div class="heat-cell" data-level="1" title="周一 14-16点: 2单"></div>
+                <div class="heat-cell" data-level="2" title="周二 14-16点: 4单"></div>
+                <div class="heat-cell" data-level="1" title="周三 14-16点: 3单"></div>
+                <div class="heat-cell" data-level="2" title="周四 14-16点: 4单"></div>
+                <div class="heat-cell" data-level="3" title="周五 14-16点: 8单"></div>
+                <div class="heat-cell" data-level="1" title="周六 14-16点: 2单"></div>
+                <div class="heat-cell" data-level="0" title="周日 14-16点: 无订单"></div>
+
+                <!-- Row 5: 16-18 -->
+                <div class="heat-time-label">16-18</div>
+                <div class="heat-cell" data-level="3" title="周一 16-18点: 9单"></div>
+                <div class="heat-cell" data-level="3" title="周二 16-18点: 8单"></div>
+                <div class="heat-cell" data-level="3" title="周三 16-18点: 10单"></div>
+                <div class="heat-cell" data-level="3" title="周四 16-18点: 9单"></div>
+                <div class="heat-cell" data-level="4" title="周五 16-18点: 12单"></div>
+                <div class="heat-cell" data-level="2" title="周六 16-18点: 5单"></div>
+                <div class="heat-cell" data-level="1" title="周日 16-18点: 2单"></div>
+
+                <!-- Row 6: 18-20 -->
+                <div class="heat-time-label">18-20</div>
+                <div class="heat-cell" data-level="2" title="周一 18-20点: 5单"></div>
+                <div class="heat-cell" data-level="2" title="周二 18-20点: 6单"></div>
+                <div class="heat-cell" data-level="3" title="周三 18-20点: 7单"></div>
+                <div class="heat-cell" data-level="2" title="周四 18-20点: 6单"></div>
+                <div class="heat-cell" data-level="3" title="周五 18-20点: 8单"></div>
+                <div class="heat-cell" data-level="1" title="周六 18-20点: 3单"></div>
+                <div class="heat-cell" data-level="1" title="周日 18-20点: 1单"></div>
+            </div>
+
+            <!-- Legend -->
+            <div class="flex items-center justify-center gap-4 mt-5 pt-4" style="border-top: 1px solid var(--cg-divider);">
+                <div class="flex items-center gap-1.5">
+                    <div class="legend-dot cold"></div>
+                    <span class="cg-caption" style="font-size:10px;">订单少</span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <div class="legend-dot low"></div>
+                    <div class="legend-dot mid"></div>
+                    <div class="legend-dot high"></div>
+                    <div class="legend-dot peak"></div>
+                    <span class="cg-caption" style="font-size:10px;">订单多</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="grid grid-cols-2 gap-3">
+            <!-- Hot Time Slots -->
+            <div class="cg-card" style="box-shadow: var(--cg-shadow-2);">
+                <h3 class="cg-h3 mb-3">热门时段</h3>
+                <div class="stat-item">
+                    <div class="flex items-center gap-2">
+                        <span class="stat-rank gold">1</span>
+                        <span class="cg-body" style="font-weight: var(--cg-font-weight-medium);">12:00-14:00</span>
+                    </div>
+                    <span class="cg-caption" style="color: var(--cg-brand);">午间高峰</span>
+                </div>
+                <div class="stat-item">
+                    <div class="flex items-center gap-2">
+                        <span class="stat-rank silver">2</span>
+                        <span class="cg-body" style="font-weight: var(--cg-font-weight-medium);">16:00-18:00</span>
+                    </div>
+                    <span class="cg-caption" style="color: var(--cg-brand);">课后高峰</span>
+                </div>
+                <div class="stat-item">
+                    <div class="flex items-center gap-2">
+                        <span class="stat-rank bronze">3</span>
+                        <span class="cg-body" style="font-weight: var(--cg-font-weight-medium);">18:00-20:00</span>
+                    </div>
+                    <span class="cg-caption" style="color: var(--cg-brand);">晚间时段</span>
+                </div>
+            </div>
+
+            <!-- Hot Zones -->
+            <div class="cg-card" style="box-shadow: var(--cg-shadow-2);">
+                <h3 class="cg-h3 mb-3">热门区域</h3>
+                <div class="stat-item">
+                    <div class="flex items-center gap-2">
+                        <span class="stat-rank gold">1</span>
+                        <span class="cg-body" style="font-weight: var(--cg-font-weight-medium);">食堂</span>
+                    </div>
+                    <span class="cg-caption" style="color: var(--cg-brand);">42 单</span>
+                </div>
+                <div class="stat-item">
+                    <div class="flex items-center gap-2">
+                        <span class="stat-rank silver">2</span>
+                        <span class="cg-body" style="font-weight: var(--cg-font-weight-medium);">图书馆</span>
+                    </div>
+                    <span class="cg-caption" style="color: var(--cg-brand);">35 单</span>
+                </div>
+                <div class="stat-item">
+                    <div class="flex items-center gap-2">
+                        <span class="stat-rank bronze">3</span>
+                        <span class="cg-body" style="font-weight: var(--cg-font-weight-medium);">宿舍区</span>
+                    </div>
+                    <span class="cg-caption" style="color: var(--cg-brand);">28 单</span>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function switchFilter(period) {
+            const btnWeek = document.getElementById('btn-week');
+            const btnMonth = document.getElementById('btn-month');
+            if (period === 'week') {
+                btnWeek.classList.add('active');
+                btnMonth.classList.remove('active');
+            } else {
+                btnMonth.classList.add('active');
+                btnWeek.classList.remove('active');
+            }
+        }
+    </script>
+    <script>lucide.createIcons();</script>
+
+    <!-- Bottom Navigation -->
+    <nav data-mobile-nav="global" class="fixed bottom-0 left-0 right-0 bg-white h-[56px] z-50" style="box-shadow: 0 -1px 4px rgba(0,0,0,0.03)">
+      <div class="w-full max-w-md mx-auto grid grid-cols-4 h-full">
+        <a data-nav-key="home" data-dom-id="nav-home" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">首页</span>
+        </a>
+        <a data-nav-key="tasks" data-dom-id="nav-tasks" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">任务</span>
+        </a>
+        <a data-nav-key="messages" data-dom-id="nav-messages" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">消息</span>
+        </a>
+        <a data-nav-key="profile" data-dom-id="nav-profile" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">我的</span>
+        </a>
+      </div>
+    </nav>
+</body>
+</html>

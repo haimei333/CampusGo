@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: campusgo-server
+  profiles:
+    active: local
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  group-configs:
+    - group: task
+      display-name: Task
+      paths-to-match:
+        - /api/v1/tasks/**
+
+campusgo:
+  task:
+    # true=内存 Mock；local profile 覆盖为 false 走 PostgreSQL
+    mock: true
+  jwt:
+    secret: campusgo-dev-secret-change-me-in-production-32chars
+    access-expire-days: 7
+    refresh-expire-days: 30
+
+deepseek:
+  api-key: sk-189b035dc4f3430a91dea080b34d3891
+  api-url: https://api.deepseek.com/v1/chat/completions
+  model: deepseek-chat
+
+ai:
+  system-prompt: 你是CampusGo校园跑腿平台的智能助手。你的职责是：1) 帮助用户了解平台功能（任务发布、接单、积分、优惠券等）；2) 解答使用过程中的疑问；3) 提供任务推荐建议；4) 处理常见问题和投诉指引。请用友好、专业的语气回答，回答要简洁实用。
+
+logging:
+  level:
+    com.campusgo: INFO

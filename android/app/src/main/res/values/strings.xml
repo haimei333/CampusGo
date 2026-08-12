@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CampusGo</string>
+    <string name="common_loading">加载中…</string>
+    <string name="slogan">校园跑腿，轻松搞定</string>
+
+    <string name="nav_home">首页</string>
+    <string name="nav_tasks">任务</string>
+    <string name="nav_messages">消息</string>
+    <string name="nav_profile">我的</string>
+
+    <string name="login_phone_hint">请输入手机号</string>
+    <string name="login_password_hint">请输入密码</string>
+    <string name="login_agree_prefix">我已阅读并同意</string>
+    <string name="login_user_agreement">《用户协议》</string>
+    <string name="login_privacy">《隐私政策》</string>
+    <string name="login_and">和</string>
+    <string name="login_submit">登录</string>
+    <string name="login_other">其他登录方式</string>
+    <string name="login_need_agree">请先同意用户协议与隐私政策</string>
+    <string name="login_invalid_phone">请输入正确的手机号</string>
+    <string name="login_invalid_password">密码错误，演示默认密码为 123456</string>
+    <string name="login_demo_tip">演示账号：13800138000，密码 123456（须先注册）</string>
+    <string name="login_go_register">没有账号？去注册</string>
+    <string name="login_dialog_title">登录失败</string>
+    <string name="login_dialog_ok">知道了</string>
+    <string name="login_error_phone_empty">请输入手机号</string>
+    <string name="login_error_phone_length">手机号应为 11 位数字，请检查是否少输或多输</string>
+    <string name="login_error_phone_format">请输入以 1 开头的 11 位中国大陆手机号</string>
+    <string name="login_error_password_empty">请输入密码</string>
+    <string name="login_error_password_length">密码至少 6 位</string>
+    <string name="login_error_password_too_long">密码不能超过 32 位</string>
+    <string name="login_error_password_wrong">手机号或密码错误</string>
+    <string name="login_error_not_registered">账号不存在，请先注册</string>
+    <string name="login_error_network">无法连接服务器，请确认后端已启动且网络正常（模拟器需访问 10.0.2.2:8080）</string>
+    <string name="login_error_server">服务器异常（HTTP %1$d），请稍后重试</string>
+    <string name="login_error_unknown">登录失败：%1$s</string>
+    <string name="login_submitting">登录中…</string>
+
+    <string name="register_title">注册账号</string>
+    <string name="register_submit">注册并登录</string>
+    <string name="register_submitting">注册中…</string>
+    <string name="register_password_confirm_hint">请再次输入密码</string>
+    <string name="register_go_login">已有账号？去登录</string>
+    <string name="register_dialog_title">注册失败</string>
+    <string name="register_error_confirm_empty">请再次输入密码</string>
+    <string name="register_error_confirm_mismatch">两次输入的密码不一致</string>
+    <string name="register_error_already_exists">该手机号已注册，请直接登录</string>
+    <string name="register_error_unknown">注册失败：%1$s</string>
+    <string name="register_tip">注册成功后将自动登录</string>
+
+    <!-- AI Assistant -->
+    <string name="profile_menu_ai_assistant">AI 助手</string>
+    <string name="ai_chat_title">AI 智能助手</string>
+    <string name="ai_chat_clear">清空对话</string>
+    <string name="ai_chat_input_hint">问我任何问题...</string>
+    <string name="ai_chat_send">发送</string>
+    <string name="ai_chat_loading">AI 正在思考...</string>
+    <string name="ai_chat_error">发送失败，请重试</string>
+    <string name="ai_chat_clear_confirm_title">清空对话</string>
+    <string name="ai_chat_clear_confirm_message">确定要清空当前对话记录吗？</string>
+    <string name="ai_chat_clear_success">对话已清空</string>
+    <string name="ai_chat_clear_failed">清空失败</string>
+
+    <string name="home_greeting_publisher">你好，同学 👋</string>
+    <string name="home_greeting_runner">嗨，%1$s · 跑腿侠</string>
+    <string name="home_greeting_runner_simple">你好，跑腿侠 🏃</string>
+    <string name="home_runner_earnings_label">今日收益</string>
+    <string name="home_runner_earnings_value">¥38.00</string>
+    <string name="home_sub_publisher">今天需要发布什么任务？</string>
+    <string name="home_sub_runner">新的一天，接单赚钱吧</string>
+    <string name="home_checkin_title">每日签到</string>
+    <string name="home_checkin_sub">已连续签到6天，明天领20积分</string>
+    <string name="home_checkin_reward">+5</string>
+    <string name="home_checkin_reward_done">已签</string>
+    <string name="home_ongoing_title">进行中 · 取快递配送中</string>
+    <string name="home_ongoing_sub">点击查看进度与位置</string>
+    <string name="home_ongoing_action">查看 ›</string>
+    <string name="home_activity_title">今日校园活跃度</string>
+    <string name="home_activity_count">128 个任务</string>
+    <string name="home_activity_growth">比昨日增长 12%</string>
+    <string name="home_activity_percent">72% 活跃</string>
+    <string name="home_ref_price_title">参考价格</string>
+    <string name="home_ref_express">代取快递</string>
+    <string name="home_ref_express_price">¥5-8</string>
+    <string name="home_ref_food">代买餐饮</string>
+    <string name="home_ref_food_price">¥8-15</string>
+    <string name="home_ref_delivery">校内配送</string>
+    <string name="home_ref_delivery_price">¥3-6</string>
+    <string name="home_ref_file">代拿文件</string>
+    <string name="home_ref_file_price">¥3-5</string>
+    <string name="home_quick_title">快速发布</string>
+    <string name="home_quick_express">取快递</string>
+    <string name="home_quick_food">买餐饮</string>
+    <string name="home_quick_file">送文件</string>
+    <string name="home_quick_other">其他</string>
+    <string name="home_quick_buy">代买物品</string>
+    <string name="home_quick_errand">代办事务</string>
+    <string name="home_tips_title">小贴士</string>
+    <string name="home_tip_1">详细描述任务内容，能更快被接单哦</string>
+    <string name="home_tip_2">合理定价，建议参考平台参考价格</string>
+    <string name="home_tip_3">发布后可在「我的」中查看任务进度</string>
+    <string name="home_tips_bullets">• 详细描述任务内容，能更快被接单哦\n• 合理定价，建议参考平台参考价格\n• 发布后可在「我的」中查看任务进度</string>
+    <string name="home_auth_title">完成校园卡认证</string>
+    <string name="home_auth_sub">认证后可切换跑腿员身份接单</string>
+    <string name="home_auth_action">去认证 ›</string>
+    <string name="home_capacity_title">附近运力</string>
+    <string name="home_capacity_unit">位跑腿员在线</string>
+    <string name="home_capacity_eta">平均接单约 4 分钟</string>
+    <string name="home_suggest_title">建议酬劳</string>
+    <string name="home_suggest_body">代取快递建议 ¥6–10 · 基于近期成交</string>
+    <string name="home_tips">30分钟无人接？可在详情里加价或转紧急</string>
+    <string name="home_heat_title">校园需求热力</string>
+    <string name="home_heat_sub">看看哪片区域单子多</string>
+    <string name="home_heat_action">查看 ›</string>
+    <string name="home_heat_map_title">任务热力图</string>
+    <string name="home_heat_view_all">查看全部 →</string>
+    <string name="home_heat_row_library">图书馆</string>
+    <string name="home_heat_row_canteen">食堂</string>
+    <string name="home_heat_row_dorm">宿舍区</string>
+    <string name="home_heat_row_admin">行政楼</string>
+    <string name="home_heat_row_gate">校门口</string>
+    <string name="home_heat_legend_cold">较冷</string>
+    <string name="home_heat_legend_warm">适中</string>
+    <string name="home_heat_legend_hot">热门</string>
+    <string name="home_recommend_title">为你推荐</string>
+    <string name="home_recommend_runner_title">推荐任务</string>
+    <string name="home_recommend_more">查看更多</string>
+    <string name="home_chip_near">距离近</string>
+    <string name="home_chip_pay">酬劳高</string>
+    <string name="home_chip_route">顺路</string>
+    <string name="home_task_meta">%1$s · %2$s</string>
+    <string name="home_empty_recommend">暂无推荐，去任务大厅看看</string>
+    <string name="home_empty_go_hall">去任务大厅</string>
+    <string name="tag_emergency">紧急</string>
+    <string name="tag_normal">普通</string>
+
+    <string name="role_publisher">发布者</string>
+    <string name="role_runner">跑腿员</string>
+    <string name="fab_publish">发布任务</string>
+
+    <string name="tasks_placeholder">任务 Tab（大厅 / 我的发布等，后续接入）</string>
+    <string name="tasks_tab_mine_publish">我的发布</string>
+    <string name="tasks_tab_hall">任务大厅</string>
+    <string name="tasks_tab_pool">拼单池</string>
+    <string name="tasks_tab_mine_take">我的接单</string>
+    <string name="tasks_tab_reserve">我的预约</string>
+    <string name="tasks_filter_all">全部</string>
+    <string name="tasks_filter_express">代取快递</string>
+    <string name="tasks_filter_buy">代买物品</string>
+    <string name="tasks_filter_errand">代办事务</string>
+    <string name="tasks_filter_group">拼单</string>
+    <string name="tasks_filter_emergency">紧急</string>
+    <string name="tasks_filter_reserve">可预约</string>
+    <string name="tasks_empty_hall">暂时没有可接任务</string>
+    <string name="tasks_empty_mine_take">还没有接单，去大厅看看</string>
+    <string name="tasks_empty_go_hall">去任务大厅</string>
+    <string name="tasks_empty_default">暂无任务</string>
+
+    <string name="back">返回</string>
+    <string name="ok">确定</string>
+
+    <string name="publish_title">发布任务</string>
+    <string name="publish_save_draft">暂存</string>
+    <string name="publish_use_template">模板</string>
+    <string name="publish_draft_need_title">请至少填写任务标题后再暂存</string>
+    <string name="publish_step1">① 类型</string>
+    <string name="publish_step2">② 填写</string>
+    <string name="publish_step3">③ 确认</string>
+    <string name="publish_step1_hint">选择任务类型</string>
+    <string name="publish_mode_normal_title">普通任务</string>
+    <string name="publish_mode_normal_desc">标准跑腿，一人承担费用</string>
+    <string name="publish_mode_group_title">拼单任务</string>
+    <string name="publish_mode_group_desc">多人凑单，费用分摊</string>
+    <string name="publish_mode_emergency_title">紧急任务</string>
+    <string name="publish_mode_emergency_desc">加价 50%，优先推送</string>
+    <string name="publish_mode_reserve_title">预约任务</string>
+    <string name="publish_mode_reserve_desc">指定时间，跑腿员可先占位再确认接单</string>
+    <string name="publish_reserve_hint">发布后进入「可预约」状态，跑腿员占位后您确认其一接单</string>
+    <string name="publish_field_title">任务标题 *</string>
+    <string name="publish_title_hint">例如：东门快递站取件</string>
+    <string name="publish_field_desc">任务描述</string>
+    <string name="publish_desc_hint">补充说明物品大小、特殊要求等</string>
+    <string name="publish_field_category">服务分类 *</string>
+    <string name="publish_pickup">取件地点 *</string>
+    <string name="publish_delivery">送达地点 *</string>
+    <string name="publish_address_placeholder">点击选择 ›</string>
+    <string name="publish_address_unset">请选择地址</string>
+    <string name="publish_field_time">期望完成时间 *</string>
+    <string name="publish_time_asap">尽快</string>
+    <string name="publish_time_1h">1 小时内</string>
+    <string name="publish_time_2h">2 小时内</string>
+    <string name="publish_time_tomorrow_12">明日 12:00</string>
+    <string name="publish_time_tomorrow_18">明日 18:00</string>
+    <string name="publish_time_day_after_18">后天 18:00</string>
+    <string name="publish_error_reserve_time">预约任务请选择期望送达时间</string>
+    <string name="publish_field_reward">任务酬劳 *</string>
+    <string name="publish_group_settings">拼单设置</string>
+    <string name="publish_group_size_hint">目标人数 2–10</string>
+    <string name="publish_emergency_hint">紧急模式实付托管 %1$s（+50%%）</string>
+    <string name="publish_confirm_title">发布摘要</string>
+    <string name="publish_coupon">优惠券</string>
+    <string name="publish_coupon_none">暂无可用 ›</string>
+    <string name="publish_pay_total">实付托管</string>
+    <string name="publish_prev">上一步</string>
+    <string name="publish_next">下一步</string>
+    <string name="publish_submit">支付并发布</string>
+    <string name="publish_draft_saved">已存草稿，可在「我的发布」继续编辑</string>
+    <string name="publish_error_title">标题至少 2 个字</string>
+    <string name="publish_error_address">请选择取件和送达地址</string>
+    <string name="publish_error_reward">请输入有效酬劳</string>
+    <string name="publish_summary_template">标题：%1$s\n类型：%2$s · %3$s\n路线：%4$s → %5$s\n时间：%6$s\n描述：%7$s\n酬劳：%8$s</string>
+    <string name="publish_success_title">发布成功</string>
+    <string name="publish_success_summary">%1$s\n状态：%2$s\n实付：%3$s</string>
+    <string name="publish_success_status_pending">待接单</string>
+    <string name="publish_success_status_group">拼单中</string>
+    <string name="publish_success_view">查看任务</string>
+    <string name="publish_success_view_group">查看拼单</string>
+    <string name="publish_success_home">返回首页</string>
+    <string name="publish_success_share">分享任务</string>
+
+    <string name="task_detail_title">任务详情</string>
+    <string name="task_detail_pickup">取件地址</string>
+    <string name="task_detail_delivery">送达地址</string>
+    <string name="task_detail_reward">跑腿费</string>
+    <string name="task_detail_no_desc">暂无补充描述</string>
+    <string name="task_detail_order">订单号：%1$s</string>
+    <string name="task_detail_chat">联系ta</string>
+    <string name="task_detail_photo">送达照片</string>
+    <string name="task_detail_photo_placeholder">快递已放门口（示意）</string>
+    <string name="task_detail_photo_soon">拍照送达（T08）即将接入</string>
+    <string name="task_detail_timeline">配送进度</string>
+    <string name="task_detail_runner_meta">已完成 %1$d 单 · 信用分 %2$d</string>
+    <string name="task_status_pending">待接单</string>
+    <string name="task_status_pending_desc_pub">等待附近跑腿员接单；可加价或转紧急</string>
+    <string name="task_status_pending_desc_run">可抢单承接此任务</string>
+    <string name="task_status_accepted">已接单</string>
+    <string name="task_status_accepted_desc_pub">跑腿员已接单，等待开始配送</string>
+    <string name="task_status_accepted_desc_run">请尽快开始配送</string>
+    <string name="task_status_delivering">配送中</string>
+    <string name="task_status_delivering_desc_pub">跑腿员配送中，可查看实时位置</string>
+    <string name="task_status_delivering_desc_run">到达后请拍照确认送达</string>
+    <string name="task_status_confirming">待确认</string>
+    <string name="task_status_confirming_desc_pub">请核对送达照片后确认完成</string>
+    <string name="task_status_confirming_desc_run">等待发布者确认（24h 未操作将自动完成）</string>
+    <string name="task_status_completed">已完成</string>
+    <string name="task_status_completed_desc">任务已完成</string>
+    <string name="task_status_waiting_confirm">等待发布者确认…</string>
+    <string name="task_action_grab">立即抢单</string>
+    <string name="task_action_grabbing">抢单中…</string>
+    <string name="task_action_raise">加价</string>
+    <string name="task_action_emergency">转紧急</string>
+    <string name="task_action_cancel">取消</string>
+    <string name="task_action_contact">联系</string>
+    <string name="task_action_contact_runner">联系跑腿员</string>
+    <string name="task_action_contact_publisher">联系发布者</string>
+    <string name="task_action_complaint">投诉</string>
+    <string name="task_action_dispute">有异议</string>
+    <string name="task_action_track_location">查看配送位置</string>
+    <string name="task_action_start_delivery">开始配送</string>
+    <string name="task_action_track">查看位置</string>
+    <string name="task_action_delivered">我已送达</string>
+    <string name="task_action_confirm">确认完成</string>
+    <string name="task_action_review">去评价</string>
+    <string name="task_action_reserve_hold">预约占位</string>
+    <string name="task_action_reserve_release">取消占位</string>
+    <string name="task_action_reserve_confirm">确认接单</string>
+    <string name="task_action_reserve_holding">占位中…</string>
+    <string name="task_detail_reserve_hold_success">预约占位成功</string>
+    <string name="task_detail_reserve_release_success">已取消占位</string>
+    <string name="task_detail_reserve_confirm_success">已确认接单</string>
+    <string name="task_status_reserving_desc">预约任务：跑腿员可先占位，到时间后确认接单</string>
+    <string name="task_detail_grab_success">抢单成功</string>
+    <string name="task_detail_need_verify_title">需要校园卡认证</string>
+    <string name="task_detail_need_verify_msg">完成认证后即可抢单</string>
+    <string name="task_detail_go_verify">去认证</string>
+    <string name="task_detail_credit_blocked">信用分低于 400，暂不可抢单</string>
+    <string name="task_detail_confirmed">已确认完成</string>
+    <string name="task_detail_raise_soon">加价（SHEET-ADD）即将接入</string>
+    <string name="task_detail_emergency_soon">转紧急即将接入</string>
+    <string name="task_detail_cancel_soon">取消（T11）即将接入</string>
+    <string name="task_detail_track_soon">位置追踪（L01）即将接入</string>
+    <string name="task_detail_chat_soon">聊天（C01）即将接入</string>
+    <string name="task_detail_complaint_soon">投诉（S02）即将接入</string>
+    <string name="task_timeline_sub_published">2024-07-25 14:30</string>
+    <string name="task_timeline_sub_accepted">2024-07-25 14:35</string>
+    <string name="task_timeline_sub_started">2024-07-25 14:40</string>
+    <string name="task_timeline_sub_delivering">进行中...</string>
+    <string name="task_timeline_sub_confirming">待发布者确认</string>
+    <string name="task_detail_hint_pending_pub">规范：待接单可加价 / 转紧急 / 取消；分享可用。</string>
+    <string name="task_share">分享任务</string>
+    <string name="task_share_chooser">分享给好友</string>
+    <string name="task_share_subject">CampusGo 校园跑腿任务</string>
+    <string name="task_share_message">【CampusGo】帮我看看这个任务～\n\n%1$s\n酬劳：%2$s\n%3$s → %4$s\n\n快来接单吧！</string>
+    <string name="task_detail_hint_accepted_pub">规范：可聊天、规则内取消。</string>
+    <string name="task_detail_hint_delivering_pub">规范：配送中不可取消，可追踪、聊天、投诉。</string>
+    <string name="task_detail_hint_confirm_pub">规范：页内看图；确认完成或有异议→S02。</string>
+    <string name="task_detail_hint_pending_run">规范：抢单前校验校园卡认证与信用分≥400。</string>
+    <string name="task_detail_hint_accepted_run">规范：开始配送后进入配送中。</string>
+    <string name="task_detail_hint_delivering_run">规范：我已送达 → T08 拍照 → 回待确认。</string>
+    <string name="task_detail_hint_confirm_run">规范：等待确认；5 分钟内可补拍。</string>
+    <string name="messages_placeholder">消息 Tab（聊天 / 通知，后续接入）</string>
+    <string name="messages_tab_chat">聊天</string>
+    <string name="messages_tab_notify">通知</string>
+    <string name="messages_mark_all_read">一键已读</string>
+    <string name="messages_empty">还没有消息</string>
+    <string name="messages_chat_soon">聊天（C01）即将接入</string>
+    <string name="messages_notify_soon">通知详情即将接入</string>
+    <string name="messages_marked_read">已全部标为已读</string>
+    <string name="chat_peer_publisher">发布者</string>
+    <string name="chat_peer_runner">跑腿员</string>
+
+    <string name="profile_credit_label">信用分</string>
+    <string name="profile_credit_unit">分</string>
+    <string name="profile_credit_hint">范围 0–1000，初始 500；≥600 可接全部，&lt;400 暂停接单</string>
+    <string name="profile_credit_good">信用良好</string>
+    <string name="profile_credit_normal">信用一般</string>
+    <string name="profile_credit_low">信用偏低</string>
+    <string name="profile_stat_publish_count">累计发布</string>
+    <string name="profile_stat_complete_rate">完成率</string>
+    <string name="profile_stat_take_count">累计接单</string>
+    <string name="profile_stat_total_income">总收入</string>
+    <string name="profile_menu_dashboard">数据看板</string>
+    <string name="profile_menu_wallet">我的钱包</string>
+    <string name="profile_menu_mall">积分商城</string>
+    <string name="profile_menu_verify">校园卡认证</string>
+    <string name="profile_menu_complaint">投诉记录</string>
+    <string name="profile_menu_settings">设置</string>
+    <string name="profile_verify_done">已认证</string>
+    <string name="profile_verify_pending">未认证</string>
+    <string name="profile_edit_soon">编辑资料（A03）即将接入</string>
+    <string name="profile_dashboard_soon">数据看板（D01）即将接入</string>
+    <string name="profile_wallet_soon">我的钱包（W01）即将接入</string>
+    <string name="profile_mall_soon">积分商城（G01）即将接入</string>
+    <string name="profile_verify_soon">校园卡认证（S01）即将接入</string>
+    <string name="profile_points_value">%1$d 积分</string>
+    <string name="profile_complaint_soon">投诉记录（S03）即将接入</string>
+
+    <string name="settings_logout">退出登录</string>
+    <string name="settings_logout_title">退出登录</string>
+    <string name="settings_logout_message">确定要退出当前账号吗？</string>
+    <string name="settings_logout_confirm">退出</string>
+    <string name="cancel">取消</string>
+
+    <string name="profile_placeholder">我的（信用分 / 钱包等，后续接入）</string>
+    <string name="coming_soon">功能建设中</string>
+
+    <!-- C01 聊天 -->
+    <string name="chat_online">在线</string>
+    <string name="chat_view_task">查看任务</string>
+    <string name="chat_input_hint">输入消息…</string>
+    <string name="chat_archived">会话已归档，无法发送</string>
+    <string name="chat_voice_soon">语音消息即将接入</string>
+    <string name="chat_image_soon">图片消息即将接入</string>
+    <string name="chat_load_failed">加载会话失败</string>
+    <string name="chat_send_failed">发送失败，请重试</string>
+    <string name="chat_backend_unavailable">聊天服务未就绪，请确认后端已用最新包重启</string>
+
+    <!-- T08 拍照 -->
+    <string name="photo_title">拍照确认</string>
+    <string name="photo_preview_title">预览</string>
+    <string name="photo_hint">请拍摄清晰的物品照片，确认包裹已送达</string>
+    <string name="photo_frame_hint">将物品置于框内</string>
+    <string name="photo_preview_done">包裹已送达</string>
+    <string name="photo_retake">重拍</string>
+    <string name="photo_upload">确认上传</string>
+    <string name="photo_uploading">上传中…</string>
+    <string name="photo_upload_success">照片已上传</string>
+
+    <!-- T11 取消 -->
+    <string name="cancel_title">取消任务</string>
+    <string name="cancel_refund_pending">待接单状态取消，费用将全额退回钱包</string>
+    <string name="cancel_refund_accepted">已接单后取消，可能扣除少量取消费</string>
+    <string name="cancel_reason_other">其他原因</string>
+    <string name="cancel_other_hint">请补充说明</string>
+    <string name="cancel_confirm">确认取消</string>
+    <string name="cancel_dismiss">我再想想</string>
+    <string name="cancel_need_reason">请选择或填写取消原因</string>
+    <string name="task_detail_cancelled">任务已取消</string>
+    <string name="task_status_cancelled">已取消</string>
+    <string name="task_status_cancelled_desc">任务已关闭，如有疑问可联系客服</string>
+    <string name="task_status_cancelled_msg">任务已取消</string>
+
+    <!-- T07 拼单 -->
+    <string name="group_title">拼单详情</string>
+    <string name="group_progress_title">拼单进度</string>
+    <string name="group_progress_count">%1$d/%2$d</string>
+    <string name="group_need_more">还差 %1$d 人成团</string>
+    <string name="group_full_hint">已满员，等待跑腿员抢单</string>
+    <string name="group_pickup">取件</string>
+    <string name="group_delivery">送达</string>
+    <string name="group_reward">报酬</string>
+    <string name="group_reward_value">¥%1$.2f（均摊 ¥%2$.2f/人）</string>
+    <string name="group_time">时间</string>
+    <string name="group_members_title">拼单成员</string>
+    <string name="group_slot_empty">等待加入</string>
+    <string name="group_creator_tag">发起者</string>
+    <string name="group_paid">已支付 ¥%.2f</string>
+    <string name="group_join">加入拼单 ¥%.2f</string>
+    <string name="group_join_tip">加入拼单需要选择你的送达地址并支付分摊金额</string>
+    <string name="group_join_pick_address">选择你的送达地址</string>
+    <string name="group_join_confirm_title">确认加入拼单</string>
+    <string name="group_join_confirm_msg">送达地址：%1$s\n需支付 %2$s 加入拼单</string>
+    <string name="group_join_confirm">确认加入</string>
+    <string name="group_join_success">加入拼单成功</string>
+    <string name="group_join_failed">加入失败，请稍后重试</string>
+    <string name="group_join_insufficient_title">余额不足</string>
+    <string name="group_join_insufficient_msg">还需充值 ¥%.2f 才能加入拼单</string>
+    <string name="group_leave_title">退出拼单</string>
+    <string name="group_leave_msg">退出后分摊金额将退回钱包，确定退出吗？</string>
+    <string name="group_joined_tip">你已加入，可在成员满员后等待接单</string>
+    <string name="group_creator_tip">你是发起人，未满员前可取消拼单</string>
+    <string name="group_full_runner_tip">拼单已满员，跑腿员可在任务大厅抢单</string>
+    <string name="group_view_task">查看任务 ›</string>
+    <string name="group_cancel">取消拼单</string>
+    <string name="group_leave">退出拼单</string>
+    <string name="group_cancelled">拼单已取消</string>
+    <string name="group_leave_success">已退出拼单</string>
+    <string name="group_join_flow_soon">选地址与支付（T05/W04）即将接入</string>
+    <string name="group_not_found">未找到拼单信息</string>
+
+    <!-- T10 评价 -->
+    <string name="review_title">评价</string>
+    <string name="review_rate_hint">为本次服务评分</string>
+    <string name="review_tags_title">快速标签</string>
+    <string name="review_input_hint">写下你的评价…</string>
+    <string name="review_input_tip">分享你的体验，帮助更多同学</string>
+    <string name="review_submit">提交评价</string>
+    <string name="review_need_star">请先选择星级</string>
+    <string name="review_success">评价已提交</string>
+    <string name="task_status_reviewed_msg">感谢您的评价</string>
+
+    <!-- L01 配送追踪 -->
+    <string name="tracking_title">配送追踪</string>
+    <string name="tracking_pickup_pin">取件</string>
+    <string name="tracking_delivery_pin">送达</string>
+    <string name="tracking_eta_value">预计 5 分钟到达</string>
+    <string name="tracking_distance">距离 1.2km</string>
+    <string name="tracking_contact_runner">联系跑腿员</string>
+
+    <!-- L02 热力图 -->
+    <string name="heatmap_filter_week">本周</string>
+    <string name="heatmap_filter_month">本月</string>
+    <string name="heatmap_distribution_title">校园任务分布</string>
+    <string name="heatmap_total_orders">共 %1$d 单</string>
+    <string name="heatmap_legend_low">订单少</string>
+    <string name="heatmap_legend_high">订单多</string>
+    <string name="heatmap_hot_times">热门时段</string>
+    <string name="heatmap_hot_zones">热门区域</string>
+    <string name="heatmap_peak_noon">午间高峰</string>
+    <string name="heatmap_peak_afternoon">课后高峰</string>
+    <string name="heatmap_peak_evening">晚间时段</string>
+
+    <!-- S02 投诉 -->
+    <string name="complaint_title">投诉</string>
+    <string name="appeal_title">申诉</string>
+    <string name="complaint_status_pending">待处理</string>
+    <string name="complaint_type_title">投诉类型</string>
+    <string name="complaint_desc_title">问题描述</string>
+    <string name="complaint_desc_hint">请详细描述遇到的问题…</string>
+    <string name="complaint_upload_hint">点击上传图片（选填）</string>
+    <string name="complaint_submit">提交投诉</string>
+    <string name="appeal_submit">提交申诉</string>
+    <string name="complaint_tip">提交后客服将在 24 小时内处理</string>
+    <string name="complaint_need_desc">请填写问题描述</string>
+    <string name="complaint_success">投诉已提交</string>
+    <string name="appeal_success">申诉已提交</string>
+
+    <!-- T06 加价 / 转紧急 -->
+    <string name="raise_title">加价催单</string>
+    <string name="raise_hint">加价后任务将优先展示给跑腿员</string>
+    <string name="raise_current_reward">当前酬劳 %1$s</string>
+    <string name="raise_amount_3">+¥3</string>
+    <string name="raise_amount_5">+¥5</string>
+    <string name="raise_amount_10">+¥10</string>
+    <string name="raise_confirm">确认加价</string>
+    <string name="raise_success">已加价 ¥%1$d</string>
+    <string name="emergency_confirm_title">转紧急任务</string>
+    <string name="emergency_confirm_msg">转紧急将加价 50%%（%1$s → %2$s），确认？</string>
+    <string name="emergency_confirm_ok">确认转紧急</string>
+    <string name="emergency_already">已是紧急任务</string>
+    <string name="emergency_success">已转为紧急任务</string>
+
+    <!-- S01 校园卡认证 -->
+    <string name="verify_title">校园卡认证</string>
+    <string name="verify_banner">完成校园卡认证，即可接单赚钱</string>
+    <string name="verify_done_banner">已完成校园卡认证</string>
+    <string name="verify_field_school">学校</string>
+    <string name="verify_field_name">姓名</string>
+    <string name="verify_field_student_id">学号</string>
+    <string name="verify_school_value">北京大学</string>
+    <string name="verify_name_hint">请输入姓名</string>
+    <string name="verify_name_default">张三</string>
+    <string name="verify_student_id_hint">请输入学号</string>
+    <string name="verify_student_id_default">2021001234</string>
+    <string name="verify_photo_title">校园卡照片</string>
+    <string name="verify_photo_hint">点击拍照或上传校园卡</string>
+    <string name="verify_submit">提交认证</string>
+    <string name="verify_done_btn">返回</string>
+    <string name="verify_privacy">认证信息仅用于身份验证，我们不会泄露您的个人信息</string>
+    <string name="verify_need_info">请填写姓名和学号</string>
+    <string name="verify_success">认证成功，可以切换跑腿员了</string>
+
+    <!-- W01 钱包 -->
+    <string name="wallet_title">我的钱包</string>
+    <string name="wallet_balance_label">可用余额</string>
+    <string name="wallet_total_income">累计收入 %1$s</string>
+    <string name="wallet_frozen">托管中 %1$s</string>
+    <string name="wallet_topup">充值</string>
+    <string name="wallet_withdraw">提现</string>
+    <string name="wallet_withdraw_records">提现记录</string>
+    <string name="wallet_recent_title">最近交易</string>
+
+    <!-- W02 提现 -->
+    <string name="withdraw_title">提现</string>
+    <string name="withdraw_records_link">提现记录</string>
+    <string name="withdraw_available">可提现余额</string>
+    <string name="withdraw_amount_title">提现金额</string>
+    <string name="withdraw_amount_hint">请输入金额</string>
+    <string name="withdraw_chip_all">全部</string>
+    <string name="withdraw_account_title">提现账户</string>
+    <string name="withdraw_account_unbound">未绑定提现账户</string>
+    <string name="withdraw_account_unbound_hint">请先绑定微信、支付宝或银行卡</string>
+    <string name="withdraw_change_account">更换</string>
+    <string name="withdraw_bind_now">去绑定</string>
+    <string name="withdraw_fee_hint">提现免手续费，预计 1–3 个工作日到账</string>
+    <string name="withdraw_submit">确认提现</string>
+    <string name="withdraw_min_amount">最低提现 ¥10</string>
+    <string name="withdraw_max_amount">单次最高提现 ¥500</string>
+    <string name="withdraw_insufficient">余额不足</string>
+    <string name="withdraw_success">提现申请已提交</string>
+    <string name="withdraw_need_bind_title">请先绑定账户</string>
+    <string name="withdraw_need_bind_msg">提现前需绑定收款账户，是否前往绑定？</string>
+
+    <!-- W05 绑定账户 -->
+    <string name="withdraw_account_page_title">绑定提现账户</string>
+    <string name="withdraw_bind_hint">选择一种收款方式（演示环境 Mock 绑定）</string>
+    <string name="withdraw_type_wechat">微信零钱</string>
+    <string name="withdraw_type_alipay">支付宝</string>
+    <string name="withdraw_type_bank">银行卡</string>
+    <string name="withdraw_unbind">解绑</string>
+    <string name="withdraw_bind_confirm_title">确认绑定</string>
+    <string name="withdraw_bind_confirm_msg">将绑定 %1$s 账户 %2$s？</string>
+    <string name="withdraw_bind_confirm">确认绑定</string>
+    <string name="withdraw_bind_success">绑定成功</string>
+    <string name="withdraw_unbind_title">解绑账户</string>
+    <string name="withdraw_unbind_msg">解绑后将无法提现，确定解绑吗？</string>
+    <string name="withdraw_unbind_success">已解绑</string>
+
+    <!-- W03 提现记录 -->
+    <string name="withdraw_records_title">提现记录</string>
+    <string name="withdraw_records_empty">暂无提现记录</string>
+    <string name="withdraw_filter_all">全部</string>
+    <string name="withdraw_filter_processing">处理中</string>
+    <string name="withdraw_filter_completed">已完成</string>
+    <string name="withdraw_filter_failed">已失败</string>
+    <string name="withdraw_status_processing">处理中</string>
+    <string name="withdraw_status_completed">已完成</string>
+    <string name="withdraw_status_failed">已失败</string>
+
+    <!-- A03 编辑资料 -->
+    <string name="edit_profile_title">编辑资料</string>
+    <string name="edit_profile_save">保存</string>
+    <string name="edit_profile_avatar_hint">点击更换头像</string>
+    <string name="edit_profile_avatar_mock">演示环境暂不支持更换头像</string>
+    <string name="edit_profile_nickname">昵称</string>
+    <string name="edit_profile_nickname_hint">请输入昵称</string>
+    <string name="edit_profile_nickname_count">%1$d/%2$d</string>
+    <string name="edit_profile_nickname_empty">昵称不能为空</string>
+    <string name="edit_profile_saved">资料已保存</string>
+
+    <!-- A02 新手引导 -->
+    <string name="guide_skip">跳过</string>
+    <string name="guide_next">下一步</string>
+    <string name="guide_start">开始使用</string>
+    <string name="guide_step1_emoji">📋</string>
+    <string name="guide_step1_title">发布任务</string>
+    <string name="guide_step1_desc">快递代取、文件打印、帮买帮送，一键发布校园跑腿需求</string>
+    <string name="guide_step2_emoji">💰</string>
+    <string name="guide_step2_title">接单赚钱</string>
+    <string name="guide_step2_desc">认证成为跑腿员，自由接单，收入实时到账钱包</string>
+    <string name="guide_step3_emoji">🛡️</string>
+    <string name="guide_step3_title">安全保障</string>
+    <string name="guide_step3_desc">实名认证、实时追踪、投诉仲裁，让每笔交易更安心</string>
+    <string name="settings_reset_guide">重置新手引导</string>
+    <string name="settings_section_general">通用</string>
+    <string name="settings_section_notify">通知</string>
+    <string name="settings_section_other">其他</string>
+    <string name="settings_address">地址管理</string>
+    <string name="settings_security">安全中心</string>
+    <string name="settings_notify_message">消息通知</string>
+    <string name="settings_notify_sound">声音提醒</string>
+    <string name="settings_notify_vibrate">震动</string>
+    <string name="settings_clear_cache">清理缓存</string>
+    <string name="settings_clear_cache_msg">确定清理本地缓存吗？</string>
+    <string name="settings_clear_cache_confirm">清理</string>
+    <string name="settings_cache_size">%.1f MB</string>
+    <string name="settings_cache_empty">缓存已为空</string>
+    <string name="settings_cache_cleared">缓存已清理</string>
+    <string name="settings_about">关于 CampusGo</string>
+    <string name="settings_about_body">%1$s\n版本 v1.0.0\n\n校园跑腿互助平台，连接发布者与跑腿员。</string>
+    <string name="settings_app_version">v1.0.0</string>
+    <string name="settings_privacy">隐私政策</string>
+    <string name="settings_user_agreement">用户协议</string>
+
+    <!-- T03 任务模板 -->
+    <string name="template_title">任务模板</string>
+    <string name="template_section_system">系统模板</string>
+    <string name="template_section_user">我的模板</string>
+    <string name="template_add">新建模板</string>
+    <string name="template_name_hint">模板名称</string>
+    <string name="template_subtitle_hint">模板说明（可选）</string>
+    <string name="template_default_subtitle">自定义常用任务</string>
+    <string name="template_name_required">请填写模板名称</string>
+    <string name="template_added">模板已添加</string>
+    <string name="template_applied">模板已应用</string>
+    <string name="template_delete_title">删除模板</string>
+    <string name="template_delete_msg">确定删除「%1$s」吗？</string>
+    <string name="template_deleted">模板已删除</string>
+
+    <!-- 法律文档 Mock -->
+    <string name="legal_privacy_body">CampusGo 隐私政策（演示版）\n\n1. 我们仅收集提供服务所必需的信息，包括手机号、昵称与任务相关信息。\n\n2. 您的位置与地址信息仅用于任务履约，不会用于无关用途。\n\n3. 未经您同意，我们不会向第三方出售个人信息。\n\n4. 您可在设置中申请注销账号并删除本地数据。\n\n5. 本政策为演示 Mock 文案，正式上线时将更新完整版本。</string>
+    <string name="legal_user_agreement_body">CampusGo 用户协议（演示版）\n\n1. 您应遵守校园规章制度，不得发布违法违规任务。\n\n2. 发布任务即表示同意托管酬劳，任务完成后将结算给跑腿员。\n\n3. 跑腿员接单后应诚信履约，恶意违约将影响信用分。\n\n4. 平台提供投诉与仲裁机制，但不承担线下交易风险。\n\n5. 本协议为演示 Mock 文案，正式上线时将更新完整版本。</string>
+
+    <!-- T04 地址管理 -->
+    <string name="address_title">地址管理</string>
+    <string name="address_select_title">选择地址</string>
+    <string name="address_manual_input">手动输入地址</string>
+    <string name="address_manual_input_title">输入地址</string>
+    <string name="address_manual_input_hint">如 菜鸟驿站 · 东门 或 38号楼 512室</string>
+    <string name="address_manual_input_required">请输入地址</string>
+    <string name="address_select_empty">暂无保存地址，可手动输入</string>
+    <string name="address_add">添加新地址</string>
+    <string name="address_edit">编辑地址</string>
+    <string name="address_save">保存</string>
+    <string name="address_empty">暂无保存的地址</string>
+    <string name="address_default_tag">默认</string>
+    <string name="address_type_label">地址类型</string>
+    <string name="address_type_dorm">宿舍</string>
+    <string name="address_type_building">教学楼</string>
+    <string name="address_type_library">图书馆</string>
+    <string name="address_type_canteen">食堂</string>
+    <string name="address_type_other">其他</string>
+    <string name="address_title_label">地址名称</string>
+    <string name="address_title_hint">如 38号楼 512室</string>
+    <string name="address_detail_label">详细地址</string>
+    <string name="address_detail_hint">如 海淀区颐和园路5号北京大学</string>
+    <string name="address_set_default">设为默认地址</string>
+    <string name="address_delete">删除地址</string>
+    <string name="address_delete_title">删除地址</string>
+    <string name="address_delete_msg">确定删除「%1$s」吗？</string>
+    <string name="address_delete_confirm">删除后不可恢复，确定删除吗？</string>
+    <string name="address_deleted">地址已删除</string>
+    <string name="address_saved">地址已保存</string>
+    <string name="address_title_required">请填写地址名称</string>
+
+    <!-- S04 安全中心 -->
+    <string name="security_title">安全中心</string>
+    <string name="security_phone_label">当前手机号</string>
+    <string name="security_change_phone">更换</string>
+    <string name="security_level_label">账号安全</string>
+    <string name="security_level_high">安全等级: 高</string>
+    <string name="security_level_medium">安全等级: 中</string>
+    <string name="security_danger_title">危险操作</string>
+    <string name="security_delete_account">注销账号</string>
+    <string name="security_delete_hint">注销后30天内可恢复，超期永久删除</string>
+    <string name="security_delete_confirm">注销后本地数据将被清除，确定注销吗？</string>
+    <string name="security_delete_confirm_btn">确认注销</string>
+    <string name="security_delete_success">账号已注销</string>
+    <string name="security_change_phone_title">更换手机号</string>
+    <string name="security_change_phone_msg">演示环境：输入新手机号即可 Mock 更换</string>
+    <string name="security_change_phone_hint">请输入11位手机号</string>
+    <string name="security_change_phone_confirm">确认</string>
+    <string name="security_change_phone_success">手机号已更新</string>
+
+    <!-- W04 充值 -->
+    <string name="topup_title">充值</string>
+    <string name="topup_balance_label">当前余额</string>
+    <string name="topup_amount_title">选择充值金额</string>
+    <string name="topup_amount_value">¥%1$d</string>
+    <string name="topup_custom_title">其他金额</string>
+    <string name="topup_custom_hint">输入金额</string>
+    <string name="topup_wechat_pay">微信支付</string>
+    <string name="topup_submit">确认充值</string>
+    <string name="topup_invalid_amount">请输入有效充值金额</string>
+    <string name="topup_success">充值成功 ¥%.0f</string>
+    <string name="publish_insufficient_title">余额不足</string>
+    <string name="publish_insufficient_msg">还需充值 ¥%.2f 才能发布任务</string>
+    <string name="publish_go_topup">去充值</string>
+    <string name="publish_topup_return">充值成功，请确认发布</string>
+    <string name="publish_paid_success">已托管 ¥%.2f，任务发布成功</string>
+
+    <!-- G02 签到 -->
+    <string name="checkin_title">每日签到</string>
+    <string name="checkin_rules">签到规则</string>
+    <string name="checkin_rules_body">每日签到 +5 积分；连续 7 天额外 +20 积分。断签后连续天数重新计算。</string>
+    <string name="checkin_month">%1$d年%2$d月</string>
+    <string name="checkin_week_label">第4周</string>
+    <string name="checkin_streak_rewards">连续签到奖励</string>
+    <string name="checkin_streak_days">已连续签到%1$d天</string>
+    <string name="checkin_daily_reward">每日 +5 积分</string>
+    <string name="checkin_streak_7_hint">连续 7 天 +20 积分（明日达成）</string>
+    <string name="checkin_submit">立即签到</string>
+    <string name="checkin_done">今日已签到</string>
+    <string name="checkin_today_short">签</string>
+    <string name="checkin_success">签到成功，+%1$d 积分</string>
+    <string name="checkin_already">今日已签到</string>
+    <string name="home_checkin_sub_dynamic">已连续签到%1$d天，明天领20积分</string>
+
+    <!-- G01 积分商城 -->
+    <string name="mall_title">积分商城</string>
+    <string name="mall_points_label">我的积分</string>
+    <string name="mall_points_history">积分记录</string>
+    <string name="mall_points_history_soon">积分记录即将接入</string>
+    <string name="mall_cat_all">热门推荐</string>
+    <string name="mall_cat_voucher">兑换券</string>
+    <string name="mall_cat_goods">实物好物</string>
+    <string name="mall_cat_flash">限时秒杀</string>
+    <string name="mall_redeem">兑换</string>
+    <string name="mall_flash_redeem">秒杀</string>
+    <string name="mall_flash_badge">⚡ 限时</string>
+    <string name="mall_points_cost">%1$d分</string>
+    <string name="mall_redeem_title">确认兑换</string>
+    <string name="mall_redeem_msg">使用 %2$d 积分兑换「%1$s」？</string>
+    <string name="mall_redeem_success">兑换成功：%1$s</string>
+    <string name="mall_points_insufficient">积分不足</string>
+
+    <!-- D01 数据看板 -->
+    <string name="dashboard_title">数据看板</string>
+    <string name="dashboard_role_publisher">发布者</string>
+    <string name="dashboard_role_runner">跑腿员</string>
+    <string name="dashboard_trend_income">近7天收入趋势</string>
+    <string name="dashboard_trend_publish">近7天发布趋势</string>
+    <string name="dashboard_trend_unit">单位: %1$s</string>
+    <string name="dashboard_week_income">周总收入</string>
+    <string name="dashboard_week_publish">周总发布</string>
+    <string name="dashboard_category_title">任务分类统计</string>
+    <string name="dashboard_month_orders">本月总单量</string>
+    <string name="dashboard_month_publish">本月发布量</string>
+    <string name="dashboard_order_unit"> 单</string>
+    <string name="dashboard_task_unit"> 个</string>
+    <string name="dashboard_leaderboard">本月跑腿排行榜</string>
+    <string name="dashboard_leader_orders">完成 %1$s 单</string>
+
+    <!-- S03 投诉记录 -->
+    <string name="complaint_records_title">投诉记录</string>
+    <string name="complaint_records_task">关联任务：%1$s</string>
+    <string name="complaint_records_status_pending">处理中</string>
+    <string name="complaint_records_status_done">已完成</string>
+    <string name="complaint_records_status_rejected">已驳回</string>
+    <string name="complaint_records_empty">暂无投诉记录</string>
+    <string name="complaint_records_empty_sub">你还没有发起过任何投诉</string>
+
+    <!-- 积分记录 -->
+    <string name="points_history_title">积分记录</string>
+    <string name="points_history_list_title">积分明细</string>
+    <string name="points_history_empty">暂无积分记录</string>
+    <string name="points_earn_checkin">每日签到</string>
+    <string name="points_spend_redeem">兑换%1$s</string>
+
+    <!-- 投诉详情 -->
+    <string name="complaint_detail_title">投诉详情</string>
+    <string name="complaint_detail_type">投诉类型：%1$s</string>
+    <string name="complaint_detail_time">提交时间：%1$s</string>
+    <string name="complaint_detail_progress">处理进度</string>
+    <string name="complaint_detail_result">处理结果</string>
+    <string name="complaint_detail_contact">联系客服</string>
+    <string name="complaint_detail_step_submit">提交投诉</string>
+    <string name="complaint_detail_step_processing">客服处理中</string>
+    <string name="complaint_detail_step_processing_time">预计 24 小时内响应</string>
+    <string name="complaint_detail_step_wait">等待客服受理</string>
+    <string name="complaint_detail_step_done">处理完成</string>
+    <string name="complaint_detail_step_done_time">平台已核实并完成处理</string>
+    <string name="complaint_detail_step_rejected">已驳回</string>
+    <string name="complaint_detail_step_rejected_time">经核实不符合赔付条件</string>
+    <string name="complaint_detail_step_result">处理结果</string>
+    <string name="complaint_detail_step_pending">待处理</string>
+    <string name="complaint_detail_result_done">平台已核实情况并完成处理，如有疑问可继续联系在线客服。</string>
+    <string name="complaint_detail_result_rejected">经核实不符合赔付或仲裁条件，投诉已驳回。如有新证据可重新提交。</string>
+    <string name="complaint_detail_result_pending">客服正在处理中，请耐心等待。</string>
+
+    <!-- S06 帮助中心 -->
+    <string name="help_title">帮助与客服</string>
+    <string name="help_emergency_title">紧急情况</string>
+    <string name="help_emergency_sub">联系人工客服</string>
+    <string name="help_emergency_dialog">如遇人身安全或紧急纠纷，请立即联系 CampusGo 人工客服，我们将优先处理。</string>
+    <string name="help_emergency_call">立即联系</string>
+    <string name="help_emergency_call_toast">客服电话：400-888-0000（演示）</string>
+    <string name="help_faq_title">常见问题</string>
+    <string name="help_credit_title">信用分规则</string>
+    <string name="help_credit_info">信用分范围 0–1000 分，分值越高可信度越高，初始分为 500 分</string>
+    <string name="help_online_service">在线客服</string>
+    <string name="help_online_service_toast">在线客服接入中，请稍后再试</string>
+    <string name="help_view">查看帮助</string>
+    <string name="profile_menu_help">帮助与客服</string>
+
+    <string-array name="help_faq_questions">
+        <item>如何发布任务？</item>
+        <item>如何成为跑腿员？</item>
+        <item>提现需要多长时间？</item>
+        <item>如何取消订单？</item>
+        <item>遇到问题怎么投诉？</item>
+        <item>信用分规则说明</item>
+    </string-array>
+    <string-array name="help_faq_answers">
+        <item>在首页点击「发布任务」或底部 + 按钮，填写任务详情、酬劳和地址，确认支付后即可发布。发布后可在「任务」Tab 查看状态。</item>
+        <item>在首页切换为「跑腿员」。需先完成校园卡认证，且信用分 ≥ 400。切换成功后可在任务大厅浏览并抢单。</item>
+        <item>提现申请提交后，一般 1–3 个工作日内到账，节假日顺延。单笔最低 10 元，每日上限 500 元。</item>
+        <item>在「我的任务」进入详情页，待接单状态可直接取消；已接单后取消可能影响信用分，配送中请联系客服。</item>
+        <item>在任务详情页点击「投诉/有异议」，选择类型并描述问题。提交后可在「投诉记录」查看进度，客服 24 小时内响应。</item>
+        <item>信用分 0–1000，初始 500。按时完成、好评可提升；无故取消、投诉核实会扣分。≥600 信用良好；400–600 正常；&lt;400 暂停接单。</item>
+    </string-array>
+    <string-array name="help_credit_rules">
+        <item>完成订单</item>
+        <item>取消订单</item>
+        <item>被投诉</item>
+        <item>低于 400 分</item>
+    </string-array>
+    <string-array name="help_credit_values">
+        <item>+5 分</item>
+        <item>-10 分</item>
+        <item>-20 分</item>
+        <item>无法接单</item>
+    </string-array>
+
+    <!-- V01 我的券包 -->
+    <string name="voucher_title">我的券包</string>
+    <string name="voucher_tab_all">全部</string>
+    <string name="voucher_tab_unused">未使用</string>
+    <string name="voucher_tab_used">已使用</string>
+    <string name="voucher_empty">暂无券，快去积分商城兑换吧</string>
+    <string name="voucher_expire">有效期至</string>
+    <string name="voucher_use">立即使用</string>
+    <string name="voucher_status_unused">未使用</string>
+    <string name="voucher_status_used">已使用</string>
+    <string name="voucher_status_expired">已过期</string>
+    <string name="voucher_use_success">券已使用</string>
+    <string name="voucher_use_confirm_title">使用券</string>
+    <string name="voucher_use_confirm_msg">确认使用「%1$s」券？</string>
+    <string name="voucher_use_confirm_ok">确认使用</string>
+    <string name="voucher_profile_entry">我的券包</string>
+</resources>

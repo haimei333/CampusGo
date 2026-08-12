@@ -1,0 +1,46 @@
+# === Sensitive files (API keys, passwords) ===
+server/campusgo-bootstrap/src/main/resources/application-local.yml
+server/campusgo-bootstrap/target/
+
+# === Android build artifacts ===
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+android/.idea/
+*.iml
+*.apk
+*.aab
+
+# === Java / Spring Boot build artifacts ===
+server/.gradle/
+server/build/
+server/*/build/
+server/*/target/
+*.class
+*.jar
+*.war
+
+# === IDE files ===
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# === OS files ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === Logs ===
+*.log
+logs/
+
+# === Docker ===
+docker-compose.override.yml
+
+# === Misc ===
+*.env
+*.env.local

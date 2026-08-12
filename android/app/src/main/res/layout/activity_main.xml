@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cg_bg_app">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/navHostMain"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/cg_bottom_nav_height"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_main" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabPublish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="72dp"
+        android:contentDescription="@string/fab_publish"
+        android:src="@android:drawable/ic_input_add"
+        app:backgroundTint="@color/cg_brand"
+        app:tint="@color/cg_text_on_brand" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/cg_bottom_nav_height"
+        android:layout_gravity="bottom"
+        android:background="@color/cg_bg_card"
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_bottom_nav" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帮助与客服</title>
+    <style id="theme-vars">
+/* CampusGo Soft UI Design Token — Brand CSS */
+/* Brand prefix: cg */
+
+:root {
+  /* ===== Brand Colors ===== */
+  --cg-brand: #3D9B8F;
+  --cg-brand-pressed: #34857B;
+  --cg-brand-soft: #E6F5F2;
+
+  /* ===== Accent ===== */
+  --cg-accent: #E8A87C;
+  --cg-accent-soft: #FFF1E6;
+
+  /* ===== Semantic Colors ===== */
+  --cg-danger: #E57373;
+  --cg-danger-soft: #FDECEC;
+  --cg-warning: #F0B429;
+  --cg-success: #5BAE7A;
+  --cg-emergency: #E8896B;
+
+  /* ===== Neutral / Surface ===== */
+  --cg-bg-app: #F3F5F8;
+  --cg-bg-card: #FFFFFF;
+  --cg-bg-input: #F0F2F5;
+  --cg-text-primary: #2C3340;
+  --cg-text-secondary: #6B7380;
+  --cg-text-tertiary: #9AA3B2;
+  --cg-text-on-brand: #FFFFFF;
+  --cg-divider: #E8ECF1;
+  --cg-overlay: rgba(44, 51, 64, 0.4);
+
+  /* ===== Tag / Semantic Label Colors ===== */
+  --cg-tag-normal-bg: #EEF1F5;
+  --cg-tag-normal-text: #5A6575;
+  --cg-tag-group-bg: #E6F5F2;
+  --cg-tag-group-text: #2F7A70;
+  --cg-tag-emergency-bg: #FFF0EA;
+  --cg-tag-emergency-text: #C45C3E;
+  --cg-tag-reserve-bg: #EAF0FB;
+  --cg-tag-reserve-text: #4A6FA5;
+  --cg-tag-draft-bg: #F5F5F5;
+  --cg-tag-draft-text: #8A9099;
+
+  /* ===== Radius ===== */
+  --cg-radius-sm: 12px;
+  --cg-radius-md: 16px;
+  --cg-radius-lg: 24px;
+  --cg-radius-full: 9999px;
+
+  /* ===== Shadows (Soft) ===== */
+  --cg-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --cg-shadow-2: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --cg-shadow-3: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --cg-shadow-fab: 0 4px 12px rgba(61, 155, 143, 0.25);
+
+  /* ===== Semantic Aliases (required by apply-html-head-contract) ===== */
+  --cg-background: #F3F5F8;
+  --cg-foreground: #2C3340;
+  --cg-card: #FFFFFF;
+  --cg-card-foreground: #2C3340;
+  --cg-popover: #FFFFFF;
+  --cg-popover-foreground: #2C3340;
+  --cg-primary: #3D9B8F;
+  --cg-primary-foreground: #FFFFFF;
+  --cg-muted: #F0F2F5;
+  --cg-muted-foreground: #6B7380;
+  --cg-border: #E8ECF1;
+  --cg-input: #F0F2F5;
+  --cg-ring: rgba(61, 155, 143, 0.45);
+
+  /* ===== Typography ===== */
+  --cg-font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --cg-font-hero: 28px;
+  --cg-font-h1: 22px;
+  --cg-font-h2: 18px;
+  --cg-font-h3: 16px;
+  --cg-font-body: 14px;
+  --cg-font-caption: 12px;
+  --cg-font-amount: 20px;
+
+  --cg-font-weight-semibold: 600;
+  --cg-font-weight-medium: 500;
+  --cg-font-weight-regular: 400;
+
+  --cg-line-height-tight: 1.25;
+  --cg-line-height-normal: 1.5;
+  --cg-line-height-relaxed: 1.75;
+}
+
+/* ===== Base Styles ===== */
+body {
+  font-family: var(--cg-font-family);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  color: var(--cg-text-primary);
+  background-color: var(--cg-bg-app);
+  line-height: var(--cg-line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Typography Classes ===== */
+.cg-hero {
+  font-size: var(--cg-font-hero);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h1 {
+  font-size: var(--cg-font-h1);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h2 {
+  font-size: var(--cg-font-h2);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h3 {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-body {
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+}
+
+.cg-caption {
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+  color: var(--cg-text-secondary);
+}
+
+.cg-amount {
+  font-size: var(--cg-font-amount);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-text-secondary {
+  color: var(--cg-text-secondary);
+}
+
+.cg-text-tertiary {
+  color: var(--cg-text-tertiary);
+}
+
+/* ===== Component Base Classes ===== */
+.cg-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-2);
+}
+
+.cg-btn-primary:active {
+  transform: scale(0.97);
+  background: var(--cg-brand-pressed);
+}
+
+.cg-btn-primary:disabled {
+  background: #B7D9D3;
+  box-shadow: none;
+  transform: none;
+}
+
+.cg-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-bg-card);
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-btn-secondary:active {
+  transform: scale(0.97);
+}
+
+.cg-btn-danger-text {
+  background: none;
+  border: none;
+  color: var(--cg-danger);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  cursor: pointer;
+  padding: 12px 0;
+}
+
+.cg-card {
+  background: var(--cg-bg-card);
+  border-radius: var(--cg-radius-lg);
+  padding: 16px;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-input {
+  height: 50px;
+  padding: 0 20px;
+  background: var(--cg-bg-input);
+  border-radius: var(--cg-radius-md);
+  border: none;
+  font-size: var(--cg-font-body);
+  font-family: var(--cg-font-family);
+  color: var(--cg-text-primary);
+  outline: none;
+  transition: all 200ms ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cg-input:focus {
+  background: var(--cg-bg-card);
+  box-shadow: 0 0 0 2px var(--cg-ring);
+}
+
+.cg-input::placeholder {
+  color: var(--cg-text-tertiary);
+}
+
+.cg-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--cg-radius-sm);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-medium);
+  line-height: 1.4;
+}
+
+.cg-tag-normal {
+  background: var(--cg-tag-normal-bg);
+  color: var(--cg-tag-normal-text);
+}
+
+.cg-tag-group {
+  background: var(--cg-tag-group-bg);
+  color: var(--cg-tag-group-text);
+}
+
+.cg-tag-emergency {
+  background: var(--cg-tag-emergency-bg);
+  color: var(--cg-tag-emergency-text);
+}
+
+.cg-tag-reserve {
+  background: var(--cg-tag-reserve-bg);
+  color: var(--cg-tag-reserve-text);
+}
+
+.cg-tag-draft {
+  background: var(--cg-tag-draft-bg);
+  color: var(--cg-tag-draft-text);
+}
+
+/* ===== Bottom Navigation ===== */
+.cg-bottom-nav {
+  background: var(--cg-bg-card);
+  height: 56px;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+}
+
+.cg-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+  height: 100%;
+  color: var(--cg-text-tertiary);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-regular);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 200ms ease;
+  min-width: 0;
+}
+
+.cg-bottom-nav-item svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.cg-bottom-nav-item.active {
+  color: var(--cg-brand);
+}
+
+.cg-bottom-nav-item.active .nav-icon-bg {
+  background: var(--cg-brand-soft);
+  border-radius: var(--cg-radius-md);
+  padding: 4px;
+}
+
+/* ===== FAB ===== */
+.cg-fab {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--cg-radius-full);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--cg-shadow-fab);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  z-index: 50;
+  font-size: 24px;
+  font-weight: var(--cg-font-weight-regular);
+}
+
+.cg-fab:active {
+  transform: scale(0.95);
+}
+
+/* ===== Top Bar ===== */
+.cg-topbar {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 16px;
+  background: var(--cg-bg-card);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.cg-topbar-title {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  color: var(--cg-text-primary);
+  flex: 1;
+  text-align: center;
+}
+
+.cg-topbar-back {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-text-primary);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+.cg-topbar-action {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+/* ===== Status Banner ===== */
+.cg-status-banner {
+  padding: 10px 16px;
+  border-radius: var(--cg-radius-md);
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-medium);
+}
+
+.cg-status-pending { background: #FFF8E7; color: #B8860B; }
+.cg-status-accepted { background: var(--cg-brand-soft); color: var(--cg-brand); }
+.cg-status-delivering { background: #E8F4FD; color: #2E7DB5; }
+.cg-status-confirming { background: #FFF1E6; color: #C4763E; }
+.cg-status-done { background: #E8F5EC; color: #3D7A52; }
+.cg-status-cancelled { background: #F5F5F5; color: #8A9099; }
+
+/* ===== Utility ===== */
+.cg-divider {
+  height: 1px;
+  background: var(--cg-divider);
+  border: none;
+  margin: 0;
+}
+
+.cg-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--cg-background);
+    --color-foreground: var(--cg-foreground);
+    --color-card: var(--cg-card);
+    --color-card-foreground: var(--cg-card-foreground);
+    --color-popover: var(--cg-popover);
+    --color-popover-foreground: var(--cg-popover-foreground);
+    --color-primary: var(--cg-primary);
+    --color-primary-foreground: var(--cg-primary-foreground);
+    --color-muted: var(--cg-muted);
+    --color-muted-foreground: var(--cg-muted-foreground);
+    --color-accent: var(--cg-accent);
+    --color-border: var(--cg-border);
+    --color-input: var(--cg-input);
+    --color-ring: var(--cg-ring);
+    --radius-sm: var(--cg-radius-sm);
+    --radius-md: var(--cg-radius-md);
+    --radius-lg: var(--cg-radius-lg);
+  }
+  @layer base {
+    body { background: var(--cg-background); color: var(--cg-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--cg-background); }
+      .text-background { color: var(--cg-background); }
+      .border-background { border-color: var(--cg-background); }
+      .ring-background { --tw-ring-color: var(--cg-background); }
+      .bg-foreground { background-color: var(--cg-foreground); }
+      .text-foreground { color: var(--cg-foreground); }
+      .border-foreground { border-color: var(--cg-foreground); }
+      .ring-foreground { --tw-ring-color: var(--cg-foreground); }
+      .bg-card { background-color: var(--cg-card); }
+      .text-card { color: var(--cg-card); }
+      .border-card { border-color: var(--cg-card); }
+      .ring-card { --tw-ring-color: var(--cg-card); }
+      .bg-card-foreground { background-color: var(--cg-card-foreground); }
+      .text-card-foreground { color: var(--cg-card-foreground); }
+      .border-card-foreground { border-color: var(--cg-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--cg-card-foreground); }
+      .bg-popover { background-color: var(--cg-popover); }
+      .text-popover { color: var(--cg-popover); }
+      .border-popover { border-color: var(--cg-popover); }
+      .ring-popover { --tw-ring-color: var(--cg-popover); }
+      .bg-popover-foreground { background-color: var(--cg-popover-foreground); }
+      .text-popover-foreground { color: var(--cg-popover-foreground); }
+      .border-popover-foreground { border-color: var(--cg-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--cg-popover-foreground); }
+      .bg-primary { background-color: var(--cg-primary); }
+      .text-primary { color: var(--cg-primary); }
+      .border-primary { border-color: var(--cg-primary); }
+      .ring-primary { --tw-ring-color: var(--cg-primary); }
+      .bg-primary-foreground { background-color: var(--cg-primary-foreground); }
+      .text-primary-foreground { color: var(--cg-primary-foreground); }
+      .border-primary-foreground { border-color: var(--cg-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--cg-primary-foreground); }
+      .bg-muted { background-color: var(--cg-muted); }
+      .text-muted { color: var(--cg-muted); }
+      .border-muted { border-color: var(--cg-muted); }
+      .ring-muted { --tw-ring-color: var(--cg-muted); }
+      .bg-muted-foreground { background-color: var(--cg-muted-foreground); }
+      .text-muted-foreground { color: var(--cg-muted-foreground); }
+      .border-muted-foreground { border-color: var(--cg-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--cg-muted-foreground); }
+      .bg-accent { background-color: var(--cg-accent); }
+      .text-accent { color: var(--cg-accent); }
+      .border-accent { border-color: var(--cg-accent); }
+      .ring-accent { --tw-ring-color: var(--cg-accent); }
+      .bg-border { background-color: var(--cg-border); }
+      .text-border { color: var(--cg-border); }
+      .border-border { border-color: var(--cg-border); }
+      .ring-border { --tw-ring-color: var(--cg-border); }
+      .bg-input { background-color: var(--cg-input); }
+      .text-input { color: var(--cg-input); }
+      .border-input { border-color: var(--cg-input); }
+      .ring-input { --tw-ring-color: var(--cg-input); }
+      .bg-ring { background-color: var(--cg-ring); }
+      .text-ring { color: var(--cg-ring); }
+      .border-ring { border-color: var(--cg-ring); }
+      .ring-ring { --tw-ring-color: var(--cg-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main>
+        <!-- Top Bar -->
+        <div class="cg-topbar">
+            <button class="cg-topbar-back" onclick="history.back()">
+                <i data-lucide="chevron-left" style="width:22px;height:22px"></i>
+            </button>
+            <span class="cg-topbar-title">帮助与客服</span>
+            <div class="cg-topbar-back" style="pointer-events:none"></div>
+        </div>
+
+        <!-- Emergency Contact Card -->
+        <div class="px-4 pt-4">
+            <div class="rounded-[var(--cg-radius-lg)] p-4 flex items-center justify-between cursor-pointer active:scale-[0.98] transition-transform" style="background:var(--cg-danger-soft);box-shadow:var(--cg-shadow-1)">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(229,115,115,0.15)">
+                        <i data-lucide="phone" style="width:20px;height:20px;color:var(--cg-danger)"></i>
+                    </div>
+                    <div>
+                        <div class="font-semibold" style="color:var(--cg-danger);font-size:15px">紧急情况</div>
+                        <div class="text-sm mt-0.5" style="color:var(--cg-danger);opacity:0.85">联系人工客服</div>
+                    </div>
+                </div>
+                <i data-lucide="chevron-right" style="width:20px;height:20px;color:var(--cg-danger)"></i>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="px-4 pt-6">
+            <h2 class="cg-h2 mb-3">常见问题</h2>
+            <div class="rounded-[var(--cg-radius-lg)] overflow-hidden" style="background:var(--cg-bg-card);box-shadow:var(--cg-shadow-1)">
+                <!-- FAQ 1: Expanded -->
+                <div class="faq-item">
+                    <button class="faq-header w-full flex items-center justify-between p-4 text-left bg-transparent border-none cursor-pointer" onclick="toggleFaq(this)" style="font-family:inherit">
+                        <span class="font-medium" style="font-size:var(--cg-font-body);color:var(--cg-text-primary)">如何发布任务？</span>
+                        <i data-lucide="chevron-down" class="faq-chevron" style="width:18px;height:18px;color:var(--cg-text-tertiary);transition:transform 0.25s ease"></i>
+                    </button>
+                    <div class="faq-body px-4 pb-4" style="color:var(--cg-text-secondary);font-size:var(--cg-font-caption);line-height:var(--cg-line-height-relaxed)">
+                        在首页点击"发布任务"按钮，填写任务详情、悬赏金额和截止时间，选择任务分类后即可发布。发布后可在"我的"页面查看任务状态。
+                    </div>
+                </div>
+                <hr class="cg-divider">
+                <!-- FAQ 2 -->
+                <div class="faq-item">
+                    <button class="faq-header w-full flex items-center justify-between p-4 text-left bg-transparent border-none cursor-pointer" onclick="toggleFaq(this)" style="font-family:inherit">
+                        <span class="font-medium" style="font-size:var(--cg-font-body);color:var(--cg-text-primary)">如何成为跑腿员？</span>
+                        <i data-lucide="chevron-right" class="faq-chevron" style="width:18px;height:18px;color:var(--cg-text-tertiary);transition:transform 0.25s ease"></i>
+                    </button>
+                    <div class="faq-body hidden px-4 pb-4" style="color:var(--cg-text-secondary);font-size:var(--cg-font-caption);line-height:var(--cg-line-height-relaxed)">
+                        在首页顶栏切换为「跑腿员」。需先完成校园卡认证（S01），且信用分 ≥ 400。切换成功后可在任务大厅浏览并抢单。
+                    </div>
+                </div>
+                <hr class="cg-divider">
+                <!-- FAQ 3 -->
+                <div class="faq-item">
+                    <button class="faq-header w-full flex items-center justify-between p-4 text-left bg-transparent border-none cursor-pointer" onclick="toggleFaq(this)" style="font-family:inherit">
+                        <span class="font-medium" style="font-size:var(--cg-font-body);color:var(--cg-text-primary)">提现需要多长时间？</span>
+                        <i data-lucide="chevron-right" class="faq-chevron" style="width:18px;height:18px;color:var(--cg-text-tertiary);transition:transform 0.25s ease"></i>
+                    </button>
+                    <div class="faq-body hidden px-4 pb-4" style="color:var(--cg-text-secondary);font-size:var(--cg-font-caption);line-height:var(--cg-line-height-relaxed)">
+                        提现申请提交后，一般会在1-3个工作日内到账。如遇节假日顺延。单笔提现金额最低10元，每日提现上限为500元。
+                    </div>
+                </div>
+                <hr class="cg-divider">
+                <!-- FAQ 4 -->
+                <div class="faq-item">
+                    <button class="faq-header w-full flex items-center justify-between p-4 text-left bg-transparent border-none cursor-pointer" onclick="toggleFaq(this)" style="font-family:inherit">
+                        <span class="font-medium" style="font-size:var(--cg-font-body);color:var(--cg-text-primary)">如何取消订单？</span>
+                        <i data-lucide="chevron-right" class="faq-chevron" style="width:18px;height:18px;color:var(--cg-text-tertiary);transition:transform 0.25s ease"></i>
+                    </button>
+                    <div class="faq-body hidden px-4 pb-4" style="color:var(--cg-text-secondary);font-size:var(--cg-font-caption);line-height:var(--cg-line-height-relaxed)">
+                        在"我的任务"中找到对应订单，点击进入详情页，选择"取消订单"并根据提示选择取消原因。注意：任务已被接单后取消可能会影响信用分。
+                    </div>
+                </div>
+                <hr class="cg-divider">
+                <!-- FAQ 5 -->
+                <div class="faq-item">
+                    <button class="faq-header w-full flex items-center justify-between p-4 text-left bg-transparent border-none cursor-pointer" onclick="toggleFaq(this)" style="font-family:inherit">
+                        <span class="font-medium" style="font-size:var(--cg-font-body);color:var(--cg-text-primary)">遇到问题怎么投诉？</span>
+                        <i data-lucide="chevron-right" class="faq-chevron" style="width:18px;height:18px;color:var(--cg-text-tertiary);transition:transform 0.25s ease"></i>
+                    </button>
+                    <div class="faq-body hidden px-4 pb-4" style="color:var(--cg-text-secondary);font-size:var(--cg-font-caption);line-height:var(--cg-line-height-relaxed)">
+                        如遇到纠纷或服务质量问题，可在订单详情页点击"投诉"按钮，选择投诉类型并上传相关证据（截图、聊天记录等），客服将在24小时内介入处理。
+                    </div>
+                </div>
+                <hr class="cg-divider">
+                <!-- FAQ 6 -->
+                <div class="faq-item">
+                    <button class="faq-header w-full flex items-center justify-between p-4 text-left bg-transparent border-none cursor-pointer" onclick="toggleFaq(this)" style="font-family:inherit">
+                        <span class="font-medium" style="font-size:var(--cg-font-body);color:var(--cg-text-primary)">信用分规则说明</span>
+                        <i data-lucide="chevron-right" class="faq-chevron" style="width:18px;height:18px;color:var(--cg-text-tertiary);transition:transform 0.25s ease"></i>
+                    </button>
+                    <div class="faq-body hidden px-4 pb-4" style="color:var(--cg-text-secondary);font-size:var(--cg-font-caption);line-height:var(--cg-line-height-relaxed)">
+                        信用分范围 0–1000，初始 500。按时完成、好评可提升；无故取消、投诉核实会扣分。≥600 可接全部任务；400–600 仅普通任务；&lt;400 暂停接单；发布者 &lt;400 发布需额外押金。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Credit Rules Section -->
+        <div class="px-4 pt-6">
+            <h2 class="cg-h2 mb-3">信用分规则</h2>
+            <div class="rounded-[var(--cg-radius-lg)] p-4" style="background:var(--cg-bg-card);box-shadow:var(--cg-shadow-1)">
+                <!-- Info Card -->
+                <div class="rounded-[var(--cg-radius-md)] p-3 mb-4 flex items-center gap-3" style="background:var(--cg-brand-soft)">
+                    <i data-lucide="info" style="width:18px;height:18px;color:var(--cg-brand);flex-shrink:0"></i>
+                    <span style="font-size:var(--cg-font-caption);color:var(--cg-brand);line-height:1.5">信用分范围 <strong>0 - 1000</strong> 分，分值越高可信度越高，初始分为 <strong>500</strong> 分</span>
+                </div>
+                <!-- Rule Items -->
+                <div class="flex flex-col gap-2">
+                    <div class="flex items-center justify-between py-2.5 px-1">
+                        <span style="font-size:var(--cg-font-body);color:var(--cg-text-primary)">完成订单</span>
+                        <span class="font-semibold" style="color:var(--cg-success);font-size:var(--cg-font-body)">+5分</span>
+                    </div>
+                    <hr class="cg-divider">
+                    <div class="flex items-center justify-between py-2.5 px-1">
+                        <span style="font-size:var(--cg-font-body);color:var(--cg-text-primary)">取消订单</span>
+                        <span class="font-semibold" style="color:var(--cg-warning);font-size:var(--cg-font-body)">-10分</span>
+                    </div>
+                    <hr class="cg-divider">
+                    <div class="flex items-center justify-between py-2.5 px-1">
+                        <span style="font-size:var(--cg-font-body);color:var(--cg-text-primary)">被投诉</span>
+                        <span class="font-semibold" style="color:var(--cg-danger);font-size:var(--cg-font-body)">-20分</span>
+                    </div>
+                    <hr class="cg-divider">
+                    <div class="flex items-center justify-between py-2.5 px-1">
+                        <span style="font-size:var(--cg-font-body);color:var(--cg-text-primary)">低于400分</span>
+                        <span class="font-semibold" style="color:var(--cg-danger);font-size:var(--cg-font-body)">无法接单</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Button -->
+        <div class="px-4 pt-6 pb-8">
+            <button class="w-full h-12 rounded-[var(--cg-radius-md)] flex items-center justify-center gap-2 font-medium transition-all active:scale-[0.97] cursor-pointer" style="font-size:var(--cg-font-body);font-family:var(--cg-font-family);background:transparent;color:var(--cg-brand);border:1.5px solid var(--cg-brand)">
+                <i data-lucide="message-circle" style="width:18px;height:18px"></i>
+                在线客服
+            </button>
+        </div>
+    </main>
+
+    <script>
+    function toggleFaq(btn) {
+        const item = btn.parentElement;
+        const body = item.querySelector('.faq-body');
+        const chevron = btn.querySelector('.faq-chevron');
+        if (!body || !chevron) return;
+
+        const isOpen = !body.classList.contains('hidden');
+
+        if (isOpen) {
+            body.classList.add('hidden');
+            chevron.setAttribute('data-lucide', 'chevron-right');
+        } else {
+            body.classList.remove('hidden');
+            chevron.setAttribute('data-lucide', 'chevron-down');
+        }
+
+        // Re-render the changed icon
+        lucide.createIcons({ icons: { 'chevron-down': lucide.icons['chevron-down'], 'chevron-right': lucide.icons['chevron-right'] }, attrs: { width: 18, height: 18, color: 'var(--cg-text-tertiary)', style: 'transition:transform 0.25s ease' } });
+    }
+    </script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

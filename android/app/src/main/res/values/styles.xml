@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="HeatMapDotCell">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="HeatMapDot">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="HeatMapDotHot" parent="HeatMapDot">
+        <item name="android:background">@drawable/bg_heat_dot_hot</item>
+    </style>
+
+    <style name="HeatMapDotWarm" parent="HeatMapDot">
+        <item name="android:background">@drawable/bg_heat_dot_warm</item>
+    </style>
+
+    <style name="HeatMapDotCold" parent="HeatMapDot">
+        <item name="android:background">@drawable/bg_heat_dot_cold</item>
+    </style>
+
+</resources>

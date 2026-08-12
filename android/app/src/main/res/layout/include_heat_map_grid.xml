@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_heat_map_inner"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 图书馆：热 热 温 热 热 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:text="@string/home_heat_row_library"
+            android:textColor="@color/cg_text_secondary"
+            android:textSize="11sp" />
+
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotHot" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotHot" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotWarm" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotHot" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotHot" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- 食堂：温 温 冷 温 热 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:text="@string/home_heat_row_canteen"
+            android:textColor="@color/cg_text_secondary"
+            android:textSize="11sp" />
+
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotWarm" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotWarm" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotCold" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotWarm" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotHot" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- 宿舍区：冷 温 温 冷 温 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:text="@string/home_heat_row_dorm"
+            android:textColor="@color/cg_text_secondary"
+            android:textSize="11sp" />
+
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotCold" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotWarm" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotWarm" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotCold" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotWarm" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- 行政楼：冷 冷 冷 温 冷 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:text="@string/home_heat_row_admin"
+            android:textColor="@color/cg_text_secondary"
+            android:textSize="11sp" />
+
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotCold" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotCold" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotCold" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotWarm" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotCold" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- 校门口：冷 温 冷 冷 热 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="52dp"
+            android:layout_height="wrap_content"
+            android:text="@string/home_heat_row_gate"
+            android:textColor="@color/cg_text_secondary"
+            android:textSize="11sp" />
+
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotCold" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotWarm" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotCold" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotCold" />
+        </FrameLayout>
+        <FrameLayout style="@style/HeatMapDotCell">
+            <View style="@style/HeatMapDotHot" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/cg_divider" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/bg_heat_dot_cold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/home_heat_legend_cold"
+                android:textColor="@color/cg_text_tertiary"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/bg_heat_dot_warm" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/home_heat_legend_warm"
+                android:textColor="@color/cg_text_tertiary"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/bg_heat_dot_hot" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/home_heat_legend_hot"
+                android:textColor="@color/cg_text_tertiary"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.CampusGo" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/cg_brand</item>
+        <item name="colorPrimaryDark">@color/cg_brand_pressed</item>
+        <item name="colorAccent">@color/cg_accent</item>
+        <item name="colorOnPrimary">@color/cg_text_on_brand</item>
+        <item name="android:statusBarColor">@color/cg_bg_app</item>
+        <item name="android:navigationBarColor">@color/cg_bg_card</item>
+        <item name="android:windowBackground">@color/cg_bg_app</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="materialButtonStyle">@style/Widget.CampusGo.Button</item>
+    </style>
+
+    <style name="Widget.CampusGo.Button" parent="Widget.Material3.Button">
+        <item name="cornerRadius">@dimen/cg_radius_md</item>
+        <item name="backgroundTint">@color/cg_brand</item>
+        <item name="android:textColor">@color/cg_text_on_brand</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <style name="Widget.CampusGo.Button.Secondary" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="cornerRadius">@dimen/cg_radius_md</item>
+        <item name="strokeColor">@color/cg_brand</item>
+        <item name="android:textColor">@color/cg_brand</item>
+    </style>
+
+    <style name="TextAppearance.CampusGo.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/cg_text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.CampusGo.Body" parent="TextAppearance.Material3.BodyMedium">
+        <item name="android:textColor">@color/cg_text_secondary</item>
+    </style>
+</resources>

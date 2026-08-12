@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.campusgo'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.campusgo"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "0.1.0-mvp"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // 模拟器访问本机后端：10.0.2.2；真机联调改为电脑局域网 IP，如 http://192.168.1.100:8080/
+        buildConfigField "String", "API_BASE_URL", '"http://10.0.2.2:8080/"'
+        buildConfigField "boolean", "USE_REMOTE_API", "true"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-debug"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
+    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.8.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata:2.8.4'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.8.4'
+
+    implementation 'androidx.navigation:navigation-fragment:2.7.7'
+    implementation 'androidx.navigation:navigation-ui:2.7.7'
+
+    implementation 'androidx.activity:activity:1.9.1'
+    implementation 'androidx.fragment:fragment:1.8.2'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.11.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.11.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.12.0'
+    implementation 'com.google.code.gson:gson:2.11.0'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+}

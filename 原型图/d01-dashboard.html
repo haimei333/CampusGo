@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据看板</title>
+    <style id="theme-vars">
+/* CampusGo Soft UI Design Token — Brand CSS */
+/* Brand prefix: cg */
+
+:root {
+  /* ===== Brand Colors ===== */
+  --cg-brand: #3D9B8F;
+  --cg-brand-pressed: #34857B;
+  --cg-brand-soft: #E6F5F2;
+
+  /* ===== Accent ===== */
+  --cg-accent: #E8A87C;
+  --cg-accent-soft: #FFF1E6;
+
+  /* ===== Semantic Colors ===== */
+  --cg-danger: #E57373;
+  --cg-danger-soft: #FDECEC;
+  --cg-warning: #F0B429;
+  --cg-success: #5BAE7A;
+  --cg-emergency: #E8896B;
+
+  /* ===== Neutral / Surface ===== */
+  --cg-bg-app: #F3F5F8;
+  --cg-bg-card: #FFFFFF;
+  --cg-bg-input: #F0F2F5;
+  --cg-text-primary: #2C3340;
+  --cg-text-secondary: #6B7380;
+  --cg-text-tertiary: #9AA3B2;
+  --cg-text-on-brand: #FFFFFF;
+  --cg-divider: #E8ECF1;
+  --cg-overlay: rgba(44, 51, 64, 0.4);
+
+  /* ===== Tag / Semantic Label Colors ===== */
+  --cg-tag-normal-bg: #EEF1F5;
+  --cg-tag-normal-text: #5A6575;
+  --cg-tag-group-bg: #E6F5F2;
+  --cg-tag-group-text: #2F7A70;
+  --cg-tag-emergency-bg: #FFF0EA;
+  --cg-tag-emergency-text: #C45C3E;
+  --cg-tag-reserve-bg: #EAF0FB;
+  --cg-tag-reserve-text: #4A6FA5;
+  --cg-tag-draft-bg: #F5F5F5;
+  --cg-tag-draft-text: #8A9099;
+
+  /* ===== Radius ===== */
+  --cg-radius-sm: 12px;
+  --cg-radius-md: 16px;
+  --cg-radius-lg: 24px;
+  --cg-radius-full: 9999px;
+
+  /* ===== Shadows (Soft) ===== */
+  --cg-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --cg-shadow-2: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --cg-shadow-3: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --cg-shadow-fab: 0 4px 12px rgba(61, 155, 143, 0.25);
+
+  /* ===== Semantic Aliases (required by apply-html-head-contract) ===== */
+  --cg-background: #F3F5F8;
+  --cg-foreground: #2C3340;
+  --cg-card: #FFFFFF;
+  --cg-card-foreground: #2C3340;
+  --cg-popover: #FFFFFF;
+  --cg-popover-foreground: #2C3340;
+  --cg-primary: #3D9B8F;
+  --cg-primary-foreground: #FFFFFF;
+  --cg-muted: #F0F2F5;
+  --cg-muted-foreground: #6B7380;
+  --cg-border: #E8ECF1;
+  --cg-input: #F0F2F5;
+  --cg-ring: rgba(61, 155, 143, 0.45);
+
+  /* ===== Typography ===== */
+  --cg-font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --cg-font-hero: 28px;
+  --cg-font-h1: 22px;
+  --cg-font-h2: 18px;
+  --cg-font-h3: 16px;
+  --cg-font-body: 14px;
+  --cg-font-caption: 12px;
+  --cg-font-amount: 20px;
+
+  --cg-font-weight-semibold: 600;
+  --cg-font-weight-medium: 500;
+  --cg-font-weight-regular: 400;
+
+  --cg-line-height-tight: 1.25;
+  --cg-line-height-normal: 1.5;
+  --cg-line-height-relaxed: 1.75;
+}
+
+/* ===== Base Styles ===== */
+body {
+  font-family: var(--cg-font-family);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  color: var(--cg-text-primary);
+  background-color: var(--cg-bg-app);
+  line-height: var(--cg-line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Typography Classes ===== */
+.cg-hero {
+  font-size: var(--cg-font-hero);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h1 {
+  font-size: var(--cg-font-h1);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h2 {
+  font-size: var(--cg-font-h2);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h3 {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-body {
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+}
+
+.cg-caption {
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+  color: var(--cg-text-secondary);
+}
+
+.cg-amount {
+  font-size: var(--cg-font-amount);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-text-secondary {
+  color: var(--cg-text-secondary);
+}
+
+.cg-text-tertiary {
+  color: var(--cg-text-tertiary);
+}
+
+/* ===== Component Base Classes ===== */
+.cg-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-2);
+}
+
+.cg-btn-primary:active {
+  transform: scale(0.97);
+  background: var(--cg-brand-pressed);
+}
+
+.cg-btn-primary:disabled {
+  background: #B7D9D3;
+  box-shadow: none;
+  transform: none;
+}
+
+.cg-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-bg-card);
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-btn-secondary:active {
+  transform: scale(0.97);
+}
+
+.cg-btn-danger-text {
+  background: none;
+  border: none;
+  color: var(--cg-danger);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  cursor: pointer;
+  padding: 12px 0;
+}
+
+.cg-card {
+  background: var(--cg-bg-card);
+  border-radius: var(--cg-radius-lg);
+  padding: 16px;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-input {
+  height: 50px;
+  padding: 0 20px;
+  background: var(--cg-bg-input);
+  border-radius: var(--cg-radius-md);
+  border: none;
+  font-size: var(--cg-font-body);
+  font-family: var(--cg-font-family);
+  color: var(--cg-text-primary);
+  outline: none;
+  transition: all 200ms ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cg-input:focus {
+  background: var(--cg-bg-card);
+  box-shadow: 0 0 0 2px var(--cg-ring);
+}
+
+.cg-input::placeholder {
+  color: var(--cg-text-tertiary);
+}
+
+.cg-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--cg-radius-sm);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-medium);
+  line-height: 1.4;
+}
+
+.cg-tag-normal {
+  background: var(--cg-tag-normal-bg);
+  color: var(--cg-tag-normal-text);
+}
+
+.cg-tag-group {
+  background: var(--cg-tag-group-bg);
+  color: var(--cg-tag-group-text);
+}
+
+.cg-tag-emergency {
+  background: var(--cg-tag-emergency-bg);
+  color: var(--cg-tag-emergency-text);
+}
+
+.cg-tag-reserve {
+  background: var(--cg-tag-reserve-bg);
+  color: var(--cg-tag-reserve-text);
+}
+
+.cg-tag-draft {
+  background: var(--cg-tag-draft-bg);
+  color: var(--cg-tag-draft-text);
+}
+
+/* ===== Bottom Navigation ===== */
+.cg-bottom-nav {
+  background: var(--cg-bg-card);
+  height: 56px;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+}
+
+.cg-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+  height: 100%;
+  color: var(--cg-text-tertiary);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-regular);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 200ms ease;
+  min-width: 0;
+}
+
+.cg-bottom-nav-item svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.cg-bottom-nav-item.active {
+  color: var(--cg-brand);
+}
+
+.cg-bottom-nav-item.active .nav-icon-bg {
+  background: var(--cg-brand-soft);
+  border-radius: var(--cg-radius-md);
+  padding: 4px;
+}
+
+/* ===== FAB ===== */
+.cg-fab {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--cg-radius-full);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--cg-shadow-fab);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  z-index: 50;
+  font-size: 24px;
+  font-weight: var(--cg-font-weight-regular);
+}
+
+.cg-fab:active {
+  transform: scale(0.95);
+}
+
+/* ===== Top Bar ===== */
+.cg-topbar {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 16px;
+  background: var(--cg-bg-card);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.cg-topbar-title {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  color: var(--cg-text-primary);
+  flex: 1;
+  text-align: center;
+}
+
+.cg-topbar-back {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-text-primary);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+.cg-topbar-action {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+/* ===== Status Banner ===== */
+.cg-status-banner {
+  padding: 10px 16px;
+  border-radius: var(--cg-radius-md);
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-medium);
+}
+
+.cg-status-pending { background: #FFF8E7; color: #B8860B; }
+.cg-status-accepted { background: var(--cg-brand-soft); color: var(--cg-brand); }
+.cg-status-delivering { background: #E8F4FD; color: #2E7DB5; }
+.cg-status-confirming { background: #FFF1E6; color: #C4763E; }
+.cg-status-done { background: #E8F5EC; color: #3D7A52; }
+.cg-status-cancelled { background: #F5F5F5; color: #8A9099; }
+
+/* ===== Utility ===== */
+.cg-divider {
+  height: 1px;
+  background: var(--cg-divider);
+  border: none;
+  margin: 0;
+}
+
+.cg-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--cg-background);
+    --color-foreground: var(--cg-foreground);
+    --color-card: var(--cg-card);
+    --color-card-foreground: var(--cg-card-foreground);
+    --color-popover: var(--cg-popover);
+    --color-popover-foreground: var(--cg-popover-foreground);
+    --color-primary: var(--cg-primary);
+    --color-primary-foreground: var(--cg-primary-foreground);
+    --color-muted: var(--cg-muted);
+    --color-muted-foreground: var(--cg-muted-foreground);
+    --color-accent: var(--cg-accent);
+    --color-border: var(--cg-border);
+    --color-input: var(--cg-input);
+    --color-ring: var(--cg-ring);
+    --radius-sm: var(--cg-radius-sm);
+    --radius-md: var(--cg-radius-md);
+    --radius-lg: var(--cg-radius-lg);
+  }
+  @layer base {
+    body { background: var(--cg-background); color: var(--cg-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--cg-background); }
+      .text-background { color: var(--cg-background); }
+      .border-background { border-color: var(--cg-background); }
+      .ring-background { --tw-ring-color: var(--cg-background); }
+      .bg-foreground { background-color: var(--cg-foreground); }
+      .text-foreground { color: var(--cg-foreground); }
+      .border-foreground { border-color: var(--cg-foreground); }
+      .ring-foreground { --tw-ring-color: var(--cg-foreground); }
+      .bg-card { background-color: var(--cg-card); }
+      .text-card { color: var(--cg-card); }
+      .border-card { border-color: var(--cg-card); }
+      .ring-card { --tw-ring-color: var(--cg-card); }
+      .bg-card-foreground { background-color: var(--cg-card-foreground); }
+      .text-card-foreground { color: var(--cg-card-foreground); }
+      .border-card-foreground { border-color: var(--cg-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--cg-card-foreground); }
+      .bg-popover { background-color: var(--cg-popover); }
+      .text-popover { color: var(--cg-popover); }
+      .border-popover { border-color: var(--cg-popover); }
+      .ring-popover { --tw-ring-color: var(--cg-popover); }
+      .bg-popover-foreground { background-color: var(--cg-popover-foreground); }
+      .text-popover-foreground { color: var(--cg-popover-foreground); }
+      .border-popover-foreground { border-color: var(--cg-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--cg-popover-foreground); }
+      .bg-primary { background-color: var(--cg-primary); }
+      .text-primary { color: var(--cg-primary); }
+      .border-primary { border-color: var(--cg-primary); }
+      .ring-primary { --tw-ring-color: var(--cg-primary); }
+      .bg-primary-foreground { background-color: var(--cg-primary-foreground); }
+      .text-primary-foreground { color: var(--cg-primary-foreground); }
+      .border-primary-foreground { border-color: var(--cg-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--cg-primary-foreground); }
+      .bg-muted { background-color: var(--cg-muted); }
+      .text-muted { color: var(--cg-muted); }
+      .border-muted { border-color: var(--cg-muted); }
+      .ring-muted { --tw-ring-color: var(--cg-muted); }
+      .bg-muted-foreground { background-color: var(--cg-muted-foreground); }
+      .text-muted-foreground { color: var(--cg-muted-foreground); }
+      .border-muted-foreground { border-color: var(--cg-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--cg-muted-foreground); }
+      .bg-accent { background-color: var(--cg-accent); }
+      .text-accent { color: var(--cg-accent); }
+      .border-accent { border-color: var(--cg-accent); }
+      .ring-accent { --tw-ring-color: var(--cg-accent); }
+      .bg-border { background-color: var(--cg-border); }
+      .text-border { color: var(--cg-border); }
+      .border-border { border-color: var(--cg-border); }
+      .ring-border { --tw-ring-color: var(--cg-border); }
+      .bg-input { background-color: var(--cg-input); }
+      .text-input { color: var(--cg-input); }
+      .border-input { border-color: var(--cg-input); }
+      .ring-input { --tw-ring-color: var(--cg-input); }
+      .bg-ring { background-color: var(--cg-ring); }
+      .text-ring { color: var(--cg-ring); }
+      .border-ring { border-color: var(--cg-ring); }
+      .ring-ring { --tw-ring-color: var(--cg-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased bg-background">
+
+    <!-- Top Bar -->
+    <div class="cg-topbar">
+        <button class="cg-topbar-back" onclick="history.back()">
+            <i data-lucide="arrow-left" style="width:22px;height:22px;"></i>
+        </button>
+        <span class="cg-topbar-title">数据看板</span>
+        <div style="width:44px;flex-shrink:0;"></div>
+    </div>
+
+    <!-- Role Toggle -->
+    <div class="px-4 pt-3">
+        <div class="flex bg-[#F0F2F5] rounded-2xl p-1">
+            <button id="rolePublisher" class="flex-1 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 text-[#6B7380] active:scale-[0.97]" onclick="switchRole('publisher')">发布者</button>
+            <button id="roleRunner" class="flex-1 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 bg-[#3D9B8F] text-white shadow-[0_1px_3px_rgba(0,0,0,0.08)] active:scale-[0.97]" onclick="switchRole('runner')">跑腿员</button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="px-4 pt-4 pb-[80px] flex flex-col gap-4">
+
+        <!-- ===== RUNNER PANEL ===== -->
+        <div id="runnerPanel" class="flex flex-col gap-4">
+
+        <!-- Overview Stat Cards: 2x2 Grid -->
+        <div class="grid grid-cols-2 gap-3">
+            <!-- Card: 今日收入 -->
+            <div class="cg-card flex flex-col gap-2" style="box-shadow: var(--cg-shadow-2);">
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: var(--cg-brand-soft);">
+                        <i data-lucide="wallet" style="width:20px;height:20px;color: var(--cg-brand);"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="cg-caption">今日收入</div>
+                    <div class="cg-amount text-foreground">¥328.50</div>
+                    <div class="flex items-center gap-1 mt-0.5">
+                        <i data-lucide="trending-up" style="width:12px;height:12px;color: var(--cg-success);"></i>
+                        <span class="cg-caption" style="color: var(--cg-success);">+12.5%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card: 今日订单 -->
+            <div class="cg-card flex flex-col gap-2" style="box-shadow: var(--cg-shadow-2);">
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: var(--cg-accent-soft);">
+                        <i data-lucide="clipboard-list" style="width:20px;height:20px;color: var(--cg-accent);"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="cg-caption">今日订单</div>
+                    <div class="cg-amount text-foreground">47</div>
+                    <div class="flex items-center gap-1 mt-0.5">
+                        <i data-lucide="trending-up" style="width:12px;height:12px;color: var(--cg-success);"></i>
+                        <span class="cg-caption" style="color: var(--cg-success);">+8.3%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card: 完成率 -->
+            <div class="cg-card flex flex-col gap-2" style="box-shadow: var(--cg-shadow-2);">
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: #E8F5EC;">
+                        <i data-lucide="check-circle" style="width:20px;height:20px;color: var(--cg-success);"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="cg-caption">完成率</div>
+                    <div class="cg-amount text-foreground">94.2%</div>
+                    <div class="flex items-center gap-1 mt-0.5">
+                        <i data-lucide="trending-up" style="width:12px;height:12px;color: var(--cg-success);"></i>
+                        <span class="cg-caption" style="color: var(--cg-success);">+2.1%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card: 评分 -->
+            <div class="cg-card flex flex-col gap-2" style="box-shadow: var(--cg-shadow-2);">
+                <div class="flex items-center gap-2">
+                    <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: #FFF8E7;">
+                        <i data-lucide="star" style="width:20px;height:20px;color: var(--cg-warning);"></i>
+                    </div>
+                </div>
+                <div>
+                    <div class="cg-caption">评分</div>
+                    <div class="cg-amount text-foreground">4.9</div>
+                    <div class="flex items-center gap-1 mt-0.5">
+                        <span class="cg-caption">共 1,286 条评价</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trend Chart: 近7天收入趋势 -->
+        <div class="cg-card" style="box-shadow: var(--cg-shadow-2);">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="cg-h3 text-foreground">近7天收入趋势</h3>
+                <span class="cg-caption">单位: 元</span>
+            </div>
+            <div class="flex items-end justify-between gap-1" style="height:140px; padding: 0 2px;">
+                <!-- Day 1 -->
+                <div class="flex flex-col items-center gap-1 flex-1">
+                    <span class="cg-caption" style="font-size:11px; color: var(--cg-text-primary);">280</span>
+                    <div style="width:100%; max-width:40px; height:90px; background: var(--cg-brand-soft); border-radius: 10px 10px 4px 4px; position: relative; overflow: hidden;">
+                        <div style="position:absolute; bottom:0; left:0; right:0; height:70%; background: var(--cg-brand); border-radius: 10px 10px 4px 4px; opacity: 0.85;"></div>
+                    </div>
+                    <span class="cg-caption" style="font-size:11px;">07/20</span>
+                </div>
+                <!-- Day 2 -->
+                <div class="flex flex-col items-center gap-1 flex-1">
+                    <span class="cg-caption" style="font-size:11px; color: var(--cg-text-primary);">345</span>
+                    <div style="width:100%; max-width:40px; height:90px; background: var(--cg-brand-soft); border-radius: 10px 10px 4px 4px; position: relative; overflow: hidden;">
+                        <div style="position:absolute; bottom:0; left:0; right:0; height:86%; background: var(--cg-brand); border-radius: 10px 10px 4px 4px; opacity: 0.85;"></div>
+                    </div>
+                    <span class="cg-caption" style="font-size:11px;">07/21</span>
+                </div>
+                <!-- Day 3 -->
+                <div class="flex flex-col items-center gap-1 flex-1">
+                    <span class="cg-caption" style="font-size:11px; color: var(--cg-text-primary);">210</span>
+                    <div style="width:100%; max-width:40px; height:90px; background: var(--cg-brand-soft); border-radius: 10px 10px 4px 4px; position: relative; overflow: hidden;">
+                        <div style="position:absolute; bottom:0; left:0; right:0; height:53%; background: var(--cg-brand); border-radius: 10px 10px 4px 4px; opacity: 0.85;"></div>
+                    </div>
+                    <span class="cg-caption" style="font-size:11px;">07/22</span>
+                </div>
+                <!-- Day 4 -->
+                <div class="flex flex-col items-center gap-1 flex-1">
+                    <span class="cg-caption" style="font-size:11px; color: var(--cg-text-primary);">398</span>
+                    <div style="width:100%; max-width:40px; height:90px; background: var(--cg-brand-soft); border-radius: 10px 10px 4px 4px; position: relative; overflow: hidden;">
+                        <div style="position:absolute; bottom:0; left:0; right:0; height:100%; background: var(--cg-brand); border-radius: 10px 10px 4px 4px; opacity: 0.85;"></div>
+                    </div>
+                    <span class="cg-caption" style="font-size:11px;">07/23</span>
+                </div>
+                <!-- Day 5 -->
+                <div class="flex flex-col items-center gap-1 flex-1">
+                    <span class="cg-caption" style="font-size:11px; color: var(--cg-text-primary);">315</span>
+                    <div style="width:100%; max-width:40px; height:90px; background: var(--cg-brand-soft); border-radius: 10px 10px 4px 4px; position: relative; overflow: hidden;">
+                        <div style="position:absolute; bottom:0; left:0; right:0; height:79%; background: var(--cg-brand); border-radius: 10px 10px 4px 4px; opacity: 0.85;"></div>
+                    </div>
+                    <span class="cg-caption" style="font-size:11px;">07/24</span>
+                </div>
+                <!-- Day 6 -->
+                <div class="flex flex-col items-center gap-1 flex-1">
+                    <span class="cg-caption" style="font-size:11px; color: var(--cg-text-primary);">420</span>
+                    <div style="width:100%; max-width:40px; height:90px; background: var(--cg-brand-soft); border-radius: 10px 10px 4px 4px; position: relative; overflow: hidden;">
+                        <div style="position:absolute; bottom:0; left:0; right:0; height:100%; background: var(--cg-brand); border-radius: 10px 10px 4px 4px; opacity: 0.85; box-shadow: 0 0 8px rgba(61,155,143,0.3);"></div>
+                    </div>
+                    <span class="cg-caption" style="font-size:11px;">07/25</span>
+                </div>
+                <!-- Day 7 -->
+                <div class="flex flex-col items-center gap-1 flex-1">
+                    <span class="cg-caption" style="font-size:11px; color: var(--cg-text-primary); font-weight:600;">328</span>
+                    <div style="width:100%; max-width:40px; height:90px; background: var(--cg-brand-soft); border-radius: 10px 10px 4px 4px; position: relative; overflow: hidden;">
+                        <div style="position:absolute; bottom:0; left:0; right:0; height:82%; background: var(--cg-brand); border-radius: 10px 10px 4px 4px; opacity: 1;"></div>
+                    </div>
+                    <span class="cg-caption" style="font-size:11px; font-weight:600;">今天</span>
+                </div>
+            </div>
+            <!-- Trend Summary -->
+            <div class="flex items-center justify-between mt-3 pt-3" style="border-top: 1px solid var(--cg-divider);">
+                <span class="cg-caption">周总收入</span>
+                <span class="cg-h3 text-foreground">¥2,296.50</span>
+            </div>
+        </div>
+
+        <!-- Category Stats: 任务分类统计 -->
+        <div class="cg-card" style="box-shadow: var(--cg-shadow-2);">
+            <h3 class="cg-h3 text-foreground mb-3">任务分类统计</h3>
+            <div class="flex flex-col gap-3">
+                <!-- 取快递 -->
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2.5 h-2.5 rounded-full" style="background: var(--cg-brand);"></div>
+                            <span class="cg-body text-foreground">取快递</span>
+                        </div>
+                        <span class="cg-caption" style="font-weight: var(--cg-font-weight-medium);">42%</span>
+                    </div>
+                    <div style="height:8px; background: var(--cg-muted); border-radius: var(--cg-radius-full); overflow: hidden;">
+                        <div style="height:100%; width:42%; background: var(--cg-brand); border-radius: var(--cg-radius-full);"></div>
+                    </div>
+                    <span class="cg-caption" style="font-size:11px;">186 单</span>
+                </div>
+
+                <!-- 代买 -->
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2.5 h-2.5 rounded-full" style="background: var(--cg-accent);"></div>
+                            <span class="cg-body text-foreground">代买</span>
+                        </div>
+                        <span class="cg-caption" style="font-weight: var(--cg-font-weight-medium);">28%</span>
+                    </div>
+                    <div style="height:8px; background: var(--cg-muted); border-radius: var(--cg-radius-full); overflow: hidden;">
+                        <div style="height:100%; width:28%; background: var(--cg-accent); border-radius: var(--cg-radius-full);"></div>
+                    </div>
+                    <span class="cg-caption" style="font-size:11px;">124 单</span>
+                </div>
+
+                <!-- 送文件 -->
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2.5 h-2.5 rounded-full" style="background: var(--cg-warning);"></div>
+                            <span class="cg-body text-foreground">送文件</span>
+                        </div>
+                        <span class="cg-caption" style="font-weight: var(--cg-font-weight-medium);">18%</span>
+                    </div>
+                    <div style="height:8px; background: var(--cg-muted); border-radius: var(--cg-radius-full); overflow: hidden;">
+                        <div style="height:100%; width:18%; background: var(--cg-warning); border-radius: var(--cg-radius-full);"></div>
+                    </div>
+                    <span class="cg-caption" style="font-size:11px;">80 单</span>
+                </div>
+
+                <!-- 其他 -->
+                <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <div class="w-2.5 h-2.5 rounded-full" style="background: var(--cg-text-tertiary);"></div>
+                            <span class="cg-body text-foreground">其他</span>
+                        </div>
+                        <span class="cg-caption" style="font-weight: var(--cg-font-weight-medium);">12%</span>
+                    </div>
+                    <div style="height:8px; background: var(--cg-muted); border-radius: var(--cg-radius-full); overflow: hidden;">
+                        <div style="height:100%; width:12%; background: var(--cg-text-tertiary); border-radius: var(--cg-radius-full);"></div>
+                    </div>
+                    <span class="cg-caption" style="font-size:11px;">53 单</span>
+                </div>
+            </div>
+            <!-- Total -->
+            <div class="flex items-center justify-between mt-3 pt-3" style="border-top: 1px solid var(--cg-divider);">
+                <span class="cg-caption">本月总单量</span>
+                <span class="cg-h3 text-foreground">443</span>
+            </div>
+        </div>
+
+        <!-- Leaderboard: 本月跑腿排行榜 TOP5 -->
+        <div class="cg-card" style="box-shadow: var(--cg-shadow-2);">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="cg-h3 text-foreground">本月跑腿排行榜</h3>
+                <span class="cg-caption">TOP 5</span>
+            </div>
+
+            <!-- Rank 1 -->
+            <div class="flex items-center gap-3 py-2.5" style="border-bottom: 1px solid var(--cg-divider);">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #FFD700, #FFA500);">
+                    <span class="cg-caption" style="color:#FFFFFF; font-weight:700; font-size:13px;">1</span>
+                </div>
+                <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--cg-brand-soft); color: var(--cg-brand); font-weight: var(--cg-font-weight-semibold); font-size: 14px;">
+                    张
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="cg-body text-foreground font-medium">张伟明</div>
+                    <div class="cg-caption" style="font-size:11px;">完成 186 单</div>
+                </div>
+                <div class="flex items-center gap-1 flex-shrink-0">
+                    <i data-lucide="medal" style="width:16px;height:16px;color: var(--cg-warning);"></i>
+                    <span class="cg-caption" style="font-weight: var(--cg-font-weight-medium); color: var(--cg-warning);">金牌</span>
+                </div>
+            </div>
+
+            <!-- Rank 2 -->
+            <div class="flex items-center gap-3 py-2.5" style="border-bottom: 1px solid var(--cg-divider);">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #C0C0C0, #9E9E9E);">
+                    <span class="cg-caption" style="color:#FFFFFF; font-weight:700; font-size:13px;">2</span>
+                </div>
+                <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--cg-accent-soft); color: var(--cg-accent); font-weight: var(--cg-font-weight-semibold); font-size: 14px;">
+                    李
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="cg-body text-foreground font-medium">李晓婷</div>
+                    <div class="cg-caption" style="font-size:11px;">完成 152 单</div>
+                </div>
+                <div class="flex items-center gap-1 flex-shrink-0">
+                    <i data-lucide="medal" style="width:16px;height:16px; color: var(--cg-text-tertiary);"></i>
+                    <span class="cg-caption" style="font-weight: var(--cg-font-weight-medium);">银牌</span>
+                </div>
+            </div>
+
+            <!-- Rank 3 -->
+            <div class="flex items-center gap-3 py-2.5" style="border-bottom: 1px solid var(--cg-divider);">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #CD7F32, #A0522D);">
+                    <span class="cg-caption" style="color:#FFFFFF; font-weight:700; font-size:13px;">3</span>
+                </div>
+                <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: #E8F4FD; color: #2E7DB5; font-weight: var(--cg-font-weight-semibold); font-size: 14px;">
+                    王
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="cg-body text-foreground font-medium">王浩然</div>
+                    <div class="cg-caption" style="font-size:11px;">完成 138 单</div>
+                </div>
+                <div class="flex items-center gap-1 flex-shrink-0">
+                    <i data-lucide="medal" style="width:16px;height:16px; color: var(--cg-text-tertiary);"></i>
+                    <span class="cg-caption" style="font-weight: var(--cg-font-weight-medium);">铜牌</span>
+                </div>
+            </div>
+
+            <!-- Rank 4 -->
+            <div class="flex items-center gap-3 py-2.5" style="border-bottom: 1px solid var(--cg-divider);">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--cg-muted);">
+                    <span class="cg-caption" style="font-weight:700; font-size:13px;">4</span>
+                </div>
+                <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--cg-brand-soft); color: var(--cg-brand); font-weight: var(--cg-font-weight-semibold); font-size: 14px;">
+                    赵
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="cg-body text-foreground font-medium">赵雨桐</div>
+                    <div class="cg-caption" style="font-size:11px;">完成 115 单</div>
+                </div>
+                <span class="cg-caption" style="font-size:11px;">#4</span>
+            </div>
+
+            <!-- Rank 5 -->
+            <div class="flex items-center gap-3 py-2.5">
+                <div class="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style="background: var(--cg-muted);">
+                    <span class="cg-caption" style="font-weight:700; font-size:13px;">5</span>
+                </div>
+                <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background: var(--cg-accent-soft); color: var(--cg-accent); font-weight: var(--cg-font-weight-semibold); font-size: 14px;">
+                    陈
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="cg-body text-foreground font-medium">陈思远</div>
+                    <div class="cg-caption" style="font-size:11px;">完成 97 单</div>
+                </div>
+                <span class="cg-caption" style="font-size:11px;">#5</span>
+            </div>
+        </div>
+
+        </div><!-- /runnerPanel -->
+
+        <!-- ===== PUBLISHER PANEL ===== -->
+        <div id="publisherPanel" class="flex flex-col gap-4" style="display:none;">
+
+            <!-- Publisher Stat Cards: 2x2 Grid -->
+            <div class="grid grid-cols-2 gap-3">
+                <!-- Card: 已发布任务 -->
+                <div class="cg-card flex flex-col gap-2" style="box-shadow: var(--cg-shadow-2);">
+                    <div class="flex items-center gap-2">
+                        <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: var(--cg-brand-soft);">
+                            <i data-lucide="send" style="width:20px;height:20px;color: var(--cg-brand);"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="cg-caption">已发布任务</div>
+                        <div class="cg-amount text-foreground">56</div>
+                        <div class="flex items-center gap-1 mt-0.5">
+                            <i data-lucide="trending-up" style="width:12px;height:12px;color: var(--cg-success);"></i>
+                            <span class="cg-caption" style="color: var(--cg-success);">+18.2%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card: 本月支出 -->
+                <div class="cg-card flex flex-col gap-2" style="box-shadow: var(--cg-shadow-2);">
+                    <div class="flex items-center gap-2">
+                        <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: var(--cg-accent-soft);">
+                            <i data-lucide="credit-card" style="width:20px;height:20px;color: var(--cg-accent);"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="cg-caption">本月支出</div>
+                        <div class="cg-amount text-foreground">¥1,847.00</div>
+                        <div class="flex items-center gap-1 mt-0.5">
+                            <i data-lucide="trending-up" style="width:12px;height:12px;color: var(--cg-danger);"></i>
+                            <span class="cg-caption" style="color: var(--cg-danger);">+15.3%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card: 完成率 -->
+                <div class="cg-card flex flex-col gap-2" style="box-shadow: var(--cg-shadow-2);">
+                    <div class="flex items-center gap-2">
+                        <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: #E8F5EC;">
+                            <i data-lucide="check-circle" style="width:20px;height:20px;color: var(--cg-success);"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="cg-caption">完成率</div>
+                        <div class="cg-amount text-foreground">91.8%</div>
+                        <div class="flex items-center gap-1 mt-0.5">
+                            <i data-lucide="trending-up" style="width:12px;height:12px;color: var(--cg-success);"></i>
+                            <span class="cg-caption" style="color: var(--cg-success);">+3.5%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card: 平均响应 -->
+                <div class="cg-card flex flex-col gap-2" style="box-shadow: var(--cg-shadow-2);">
+                    <div class="flex items-center gap-2">
+                        <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background: #E8F4FD;">
+                            <i data-lucide="clock" style="width:20px;height:20px;color: #2E7DB5;"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="cg-caption">平均响应</div>
+                        <div class="cg-amount text-foreground">8<small style="font-size:14px;font-weight:400;"> 分钟</small></div>
+                        <div class="flex items-center gap-1 mt-0.5">
+                            <span class="cg-caption">跑腿员接单速度</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trend Chart: 近7天发布趋势 -->
+            <div class="cg-card" style="box-shadow: var(--cg-shadow-2);">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="cg-h3 text-foreground">近7天发布趋势</h3>
+                    <span class="cg-caption">单位: 单</span>
+                </div>
+                <div class="flex items-end justify-between gap-1" style="height:140px; padding: 0 2px;">
+                    <div class="flex flex-col items-center gap-1 flex-1">
+                        <span class="cg-caption" style="font-size:11px;color:var(--cg-text-primary);">6</span>
+                        <div style="width:100%;max-width:40px;height:90px;background:var(--cg-brand-soft);border-radius:10px 10px 4px 4px;position:relative;overflow:hidden;">
+                            <div style="position:absolute;bottom:0;left:0;right:0;height:60%;background:var(--cg-brand);border-radius:10px 10px 4px 4px;opacity:0.85;"></div>
+                        </div><span class="cg-caption" style="font-size:11px;">07/20</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 flex-1">
+                        <span class="cg-caption" style="font-size:11px;color:var(--cg-text-primary);">9</span>
+                        <div style="width:100%;max-width:40px;height:90px;background:var(--cg-brand-soft);border-radius:10px 10px 4px 4px;position:relative;overflow:hidden;">
+                            <div style="position:absolute;bottom:0;left:0;right:0;height:90%;background:var(--cg-brand);border-radius:10px 10px 4px 4px;opacity:0.85;"></div>
+                        </div><span class="cg-caption" style="font-size:11px;">07/21</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 flex-1">
+                        <span class="cg-caption" style="font-size:11px;color:var(--cg-text-primary);">5</span>
+                        <div style="width:100%;max-width:40px;height:90px;background:var(--cg-brand-soft);border-radius:10px 10px 4px 4px;position:relative;overflow:hidden;">
+                            <div style="position:absolute;bottom:0;left:0;right:0;height:50%;background:var(--cg-brand);border-radius:10px 10px 4px 4px;opacity:0.85;"></div>
+                        </div><span class="cg-caption" style="font-size:11px;">07/22</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 flex-1">
+                        <span class="cg-caption" style="font-size:11px;color:var(--cg-text-primary);">12</span>
+                        <div style="width:100%;max-width:40px;height:90px;background:var(--cg-brand-soft);border-radius:10px 10px 4px 4px;position:relative;overflow:hidden;">
+                            <div style="position:absolute;bottom:0;left:0;right:0;height:100%;background:var(--cg-brand);border-radius:10px 10px 4px 4px;opacity:0.85;box-shadow:0 0 8px rgba(61,155,143,0.3);"></div>
+                        </div><span class="cg-caption" style="font-size:11px;">07/23</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 flex-1">
+                        <span class="cg-caption" style="font-size:11px;color:var(--cg-text-primary);">7</span>
+                        <div style="width:100%;max-width:40px;height:90px;background:var(--cg-brand-soft);border-radius:10px 10px 4px 4px;position:relative;overflow:hidden;">
+                            <div style="position:absolute;bottom:0;left:0;right:0;height:70%;background:var(--cg-brand);border-radius:10px 10px 4px 4px;opacity:0.85;"></div>
+                        </div><span class="cg-caption" style="font-size:11px;">07/24</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 flex-1">
+                        <span class="cg-caption" style="font-size:11px;color:var(--cg-text-primary);">10</span>
+                        <div style="width:100%;max-width:40px;height:90px;background:var(--cg-brand-soft);border-radius:10px 10px 4px 4px;position:relative;overflow:hidden;">
+                            <div style="position:absolute;bottom:0;left:0;right:0;height:100%;background:var(--cg-brand);border-radius:10px 10px 4px 4px;opacity:0.85;"></div>
+                        </div><span class="cg-caption" style="font-size:11px;">07/25</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-1 flex-1">
+                        <span class="cg-caption" style="font-size:11px;color:var(--cg-text-primary);font-weight:600;">8</span>
+                        <div style="width:100%;max-width:40px;height:90px;background:var(--cg-brand-soft);border-radius:10px 10px 4px 4px;position:relative;overflow:hidden;">
+                            <div style="position:absolute;bottom:0;left:0;right:0;height:80%;background:var(--cg-brand);border-radius:10px 10px 4px 4px;opacity:1;"></div>
+                        </div><span class="cg-caption" style="font-size:11px;font-weight:600;">今天</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between mt-3 pt-3" style="border-top: 1px solid var(--cg-divider);">
+                    <span class="cg-caption">周总发布</span>
+                    <span class="cg-h3 text-foreground">57 单</span>
+                </div>
+            </div>
+
+            <!-- Task Status Distribution -->
+            <div class="cg-card" style="box-shadow: var(--cg-shadow-2);">
+                <h3 class="cg-h3 text-foreground mb-3">任务状态分布</h3>
+                <div class="flex flex-col gap-3">
+                    <div class="flex flex-col gap-1.5">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-2.5 h-2.5 rounded-full" style="background: var(--cg-warning);"></div>
+                                <span class="cg-body text-foreground">待接单</span>
+                            </div>
+                            <span class="cg-caption" style="font-weight: var(--cg-font-weight-medium);">8</span>
+                        </div>
+                        <div style="height:8px; background: var(--cg-muted); border-radius: var(--cg-radius-full); overflow: hidden;">
+                            <div style="height:100%; width:14%; background: var(--cg-warning); border-radius: var(--cg-radius-full);"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-2.5 h-2.5 rounded-full" style="background: #2E7DB5;"></div>
+                                <span class="cg-body text-foreground">进行中</span>
+                            </div>
+                            <span class="cg-caption" style="font-weight: var(--cg-font-weight-medium);">12</span>
+                        </div>
+                        <div style="height:8px; background: var(--cg-muted); border-radius: var(--cg-radius-full); overflow: hidden;">
+                            <div style="height:100%; width:21%; background: #2E7DB5; border-radius: var(--cg-radius-full);"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-2.5 h-2.5 rounded-full" style="background: var(--cg-success);"></div>
+                                <span class="cg-body text-foreground">已完成</span>
+                            </div>
+                            <span class="cg-caption" style="font-weight: var(--cg-font-weight-medium);">34</span>
+                        </div>
+                        <div style="height:8px; background: var(--cg-muted); border-radius: var(--cg-radius-full); overflow: hidden;">
+                            <div style="height:100%; width:61%; background: var(--cg-success); border-radius: var(--cg-radius-full);"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-1.5">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <div class="w-2.5 h-2.5 rounded-full" style="background: var(--cg-text-tertiary);"></div>
+                                <span class="cg-body text-foreground">已取消</span>
+                            </div>
+                            <span class="cg-caption" style="font-weight: var(--cg-font-weight-medium);">2</span>
+                        </div>
+                        <div style="height:8px; background: var(--cg-muted); border-radius: var(--cg-radius-full); overflow: hidden;">
+                            <div style="height:100%; width:4%; background: var(--cg-text-tertiary); border-radius: var(--cg-radius-full);"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between mt-3 pt-3" style="border-top: 1px solid var(--cg-divider);">
+                    <span class="cg-caption">本月总发布</span>
+                    <span class="cg-h3 text-foreground">56</span>
+                </div>
+            </div>
+
+            <!-- My Recent Tasks Summary -->
+            <div class="cg-card" style="box-shadow: var(--cg-shadow-2);">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="cg-h3 text-foreground">最近发布</h3>
+                    <span class="cg-caption">查看全部</span>
+                </div>
+                <div class="flex flex-col gap-3">
+                    <div class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--cg-warning);"></div>
+                        <div class="flex-1 min-w-0">
+                            <div class="cg-body text-foreground font-medium truncate">北门菜鸟驿站取快递</div>
+                            <div class="cg-caption" style="font-size:11px;">¥5 · 待接单</div>
+                        </div>
+                        <span class="cg-caption" style="font-size:11px;">10分钟前</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: #2E7DB5;"></div>
+                        <div class="flex-1 min-w-0">
+                            <div class="cg-body text-foreground font-medium truncate">二食堂麻辣烫代买</div>
+                            <div class="cg-caption" style="font-size:11px;">¥12 · 进行中</div>
+                        </div>
+                        <span class="cg-caption" style="font-size:11px;">25分钟前</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="w-2 h-2 rounded-full flex-shrink-0" style="background: var(--cg-success);"></div>
+                        <div class="flex-1 min-w-0">
+                            <div class="cg-body text-foreground font-medium truncate">图书馆送复习资料</div>
+                            <div class="cg-caption" style="font-size:11px;">¥3 · 已完成</div>
+                        </div>
+                        <span class="cg-caption" style="font-size:11px;">1小时前</span>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /publisherPanel -->
+
+    </main>
+
+    <script>
+        function switchRole(role) {
+            const pubBtn = document.getElementById('rolePublisher');
+            const runBtn = document.getElementById('roleRunner');
+            const pubPanel = document.getElementById('publisherPanel');
+            const runPanel = document.getElementById('runnerPanel');
+            if (role === 'publisher') {
+                pubBtn.className = 'flex-1 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 bg-[#3D9B8F] text-white shadow-[0_1px_3px_rgba(0,0,0,0.08)] active:scale-[0.97]';
+                runBtn.className = 'flex-1 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 text-[#6B7380] active:scale-[0.97]';
+                pubPanel.style.display = 'flex';
+                runPanel.style.display = 'none';
+            } else {
+                runBtn.className = 'flex-1 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 bg-[#3D9B8F] text-white shadow-[0_1px_3px_rgba(0,0,0,0.08)] active:scale-[0.97]';
+                pubBtn.className = 'flex-1 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 text-[#6B7380] active:scale-[0.97]';
+                runPanel.style.display = 'flex';
+                pubPanel.style.display = 'none';
+            }
+            lucide.createIcons();
+        }
+    </script>
+    <script>lucide.createIcons();</script>
+
+    <!-- Bottom Navigation -->
+    <nav data-mobile-nav="global" class="fixed bottom-0 left-0 right-0 bg-white h-[56px] z-50" style="box-shadow: 0 -1px 4px rgba(0,0,0,0.03)">
+      <div class="w-full max-w-md mx-auto grid grid-cols-4 h-full">
+        <a data-nav-key="home" data-dom-id="nav-home" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">首页</span>
+        </a>
+        <a data-nav-key="tasks" data-dom-id="nav-tasks" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">任务</span>
+        </a>
+        <a data-nav-key="messages" data-dom-id="nav-messages" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">消息</span>
+        </a>
+        <a data-nav-key="profile" data-dom-id="nav-profile" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">我的</span>
+        </a>
+      </div>
+    </nav>
+</body>
+</html>

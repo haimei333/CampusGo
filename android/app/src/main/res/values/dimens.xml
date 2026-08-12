@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="cg_radius_sm">12dp</dimen>
+    <dimen name="cg_radius_md">16dp</dimen>
+    <dimen name="cg_radius_lg">24dp</dimen>
+    <dimen name="cg_radius_full">9999dp</dimen>
+    <dimen name="cg_page_padding">16dp</dimen>
+    <dimen name="cg_bottom_nav_height">56dp</dimen>
+    <dimen name="cg_card_padding">16dp</dimen>
+</resources>

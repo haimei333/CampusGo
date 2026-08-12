@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cg_bg_app"
+    android:clipToPadding="false"
+    android:paddingBottom="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/cg_bg_card"
+            android:elevation="1dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/back"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/cg_text_primary" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/home_heat_map_title"
+                android:textColor="@color/cg_text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="44dp"
+                android:layout_height="44dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="16dp">
+
+            <TextView
+                android:id="@+id/btnFilterWeek"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:background="@drawable/bg_filter_chip_selected"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/heatmap_filter_week"
+                android:textColor="@color/cg_text_on_brand"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnFilterMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="12dp"
+                android:background="@drawable/bg_filter_chip"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="@string/heatmap_filter_month"
+                android:textColor="@color/cg_text_secondary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/heatmap_distribution_title"
+                    android:textColor="@color/cg_text_primary"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTotalOrders"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/cg_text_tertiary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <GridLayout
+                android:id="@+id/heatGrid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:columnCount="8"
+                android:rowCount="7" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="12dp">
+
+                <View
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:background="@drawable/bg_heat_cell_0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/heatmap_legend_low"
+                    android:textColor="@color/cg_text_tertiary"
+                    android:textSize="10sp" />
+
+                <View
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/bg_heat_cell_1" />
+
+                <View
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="2dp"
+                    android:background="@drawable/bg_heat_cell_2" />
+
+                <View
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="2dp"
+                    android:background="@drawable/bg_heat_cell_3" />
+
+                <View
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="2dp"
+                    android:background="@drawable/bg_heat_cell_4" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="@string/heatmap_legend_high"
+                    android:textColor="@color/cg_text_tertiary"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/cardHotTimes"
+                layout="@layout/include_heatmap_stat_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1" />
+
+            <include
+                android:id="@+id/cardHotZones"
+                layout="@layout/include_heatmap_stat_card"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

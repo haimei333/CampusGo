@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 跑腿员</title>
+    <style id="theme-vars">
+/* CampusGo Soft UI Design Token — Brand CSS */
+/* Brand prefix: cg */
+
+:root {
+  /* ===== Brand Colors ===== */
+  --cg-brand: #3D9B8F;
+  --cg-brand-pressed: #34857B;
+  --cg-brand-soft: #E6F5F2;
+
+  /* ===== Accent ===== */
+  --cg-accent: #E8A87C;
+  --cg-accent-soft: #FFF1E6;
+
+  /* ===== Semantic Colors ===== */
+  --cg-danger: #E57373;
+  --cg-danger-soft: #FDECEC;
+  --cg-warning: #F0B429;
+  --cg-success: #5BAE7A;
+  --cg-emergency: #E8896B;
+
+  /* ===== Neutral / Surface ===== */
+  --cg-bg-app: #F3F5F8;
+  --cg-bg-card: #FFFFFF;
+  --cg-bg-input: #F0F2F5;
+  --cg-text-primary: #2C3340;
+  --cg-text-secondary: #6B7380;
+  --cg-text-tertiary: #9AA3B2;
+  --cg-text-on-brand: #FFFFFF;
+  --cg-divider: #E8ECF1;
+  --cg-overlay: rgba(44, 51, 64, 0.4);
+
+  /* ===== Tag / Semantic Label Colors ===== */
+  --cg-tag-normal-bg: #EEF1F5;
+  --cg-tag-normal-text: #5A6575;
+  --cg-tag-group-bg: #E6F5F2;
+  --cg-tag-group-text: #2F7A70;
+  --cg-tag-emergency-bg: #FFF0EA;
+  --cg-tag-emergency-text: #C45C3E;
+  --cg-tag-reserve-bg: #EAF0FB;
+  --cg-tag-reserve-text: #4A6FA5;
+  --cg-tag-draft-bg: #F5F5F5;
+  --cg-tag-draft-text: #8A9099;
+
+  /* ===== Radius ===== */
+  --cg-radius-sm: 12px;
+  --cg-radius-md: 16px;
+  --cg-radius-lg: 24px;
+  --cg-radius-full: 9999px;
+
+  /* ===== Shadows (Soft) ===== */
+  --cg-shadow-1: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --cg-shadow-2: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --cg-shadow-3: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --cg-shadow-fab: 0 4px 12px rgba(61, 155, 143, 0.25);
+
+  /* ===== Semantic Aliases (required by apply-html-head-contract) ===== */
+  --cg-background: #F3F5F8;
+  --cg-foreground: #2C3340;
+  --cg-card: #FFFFFF;
+  --cg-card-foreground: #2C3340;
+  --cg-popover: #FFFFFF;
+  --cg-popover-foreground: #2C3340;
+  --cg-primary: #3D9B8F;
+  --cg-primary-foreground: #FFFFFF;
+  --cg-muted: #F0F2F5;
+  --cg-muted-foreground: #6B7380;
+  --cg-border: #E8ECF1;
+  --cg-input: #F0F2F5;
+  --cg-ring: rgba(61, 155, 143, 0.45);
+
+  /* ===== Typography ===== */
+  --cg-font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --cg-font-hero: 28px;
+  --cg-font-h1: 22px;
+  --cg-font-h2: 18px;
+  --cg-font-h3: 16px;
+  --cg-font-body: 14px;
+  --cg-font-caption: 12px;
+  --cg-font-amount: 20px;
+
+  --cg-font-weight-semibold: 600;
+  --cg-font-weight-medium: 500;
+  --cg-font-weight-regular: 400;
+
+  --cg-line-height-tight: 1.25;
+  --cg-line-height-normal: 1.5;
+  --cg-line-height-relaxed: 1.75;
+}
+
+/* ===== Base Styles ===== */
+body {
+  font-family: var(--cg-font-family);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  color: var(--cg-text-primary);
+  background-color: var(--cg-bg-app);
+  line-height: var(--cg-line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Typography Classes ===== */
+.cg-hero {
+  font-size: var(--cg-font-hero);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h1 {
+  font-size: var(--cg-font-h1);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h2 {
+  font-size: var(--cg-font-h2);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-h3 {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-body {
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+}
+
+.cg-caption {
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-regular);
+  line-height: var(--cg-line-height-normal);
+  color: var(--cg-text-secondary);
+}
+
+.cg-amount {
+  font-size: var(--cg-font-amount);
+  font-weight: var(--cg-font-weight-semibold);
+  line-height: var(--cg-line-height-tight);
+}
+
+.cg-text-secondary {
+  color: var(--cg-text-secondary);
+}
+
+.cg-text-tertiary {
+  color: var(--cg-text-tertiary);
+}
+
+/* ===== Component Base Classes ===== */
+.cg-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-2);
+}
+
+.cg-btn-primary:active {
+  transform: scale(0.97);
+  background: var(--cg-brand-pressed);
+}
+
+.cg-btn-primary:disabled {
+  background: #B7D9D3;
+  box-shadow: none;
+  transform: none;
+}
+
+.cg-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 24px;
+  border-radius: var(--cg-radius-md);
+  background: var(--cg-bg-card);
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-btn-secondary:active {
+  transform: scale(0.97);
+}
+
+.cg-btn-danger-text {
+  background: none;
+  border: none;
+  color: var(--cg-danger);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  cursor: pointer;
+  padding: 12px 0;
+}
+
+.cg-card {
+  background: var(--cg-bg-card);
+  border-radius: var(--cg-radius-lg);
+  padding: 16px;
+  box-shadow: var(--cg-shadow-1);
+}
+
+.cg-input {
+  height: 50px;
+  padding: 0 20px;
+  background: var(--cg-bg-input);
+  border-radius: var(--cg-radius-md);
+  border: none;
+  font-size: var(--cg-font-body);
+  font-family: var(--cg-font-family);
+  color: var(--cg-text-primary);
+  outline: none;
+  transition: all 200ms ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cg-input:focus {
+  background: var(--cg-bg-card);
+  box-shadow: 0 0 0 2px var(--cg-ring);
+}
+
+.cg-input::placeholder {
+  color: var(--cg-text-tertiary);
+}
+
+.cg-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--cg-radius-sm);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-medium);
+  line-height: 1.4;
+}
+
+.cg-tag-normal {
+  background: var(--cg-tag-normal-bg);
+  color: var(--cg-tag-normal-text);
+}
+
+.cg-tag-group {
+  background: var(--cg-tag-group-bg);
+  color: var(--cg-tag-group-text);
+}
+
+.cg-tag-emergency {
+  background: var(--cg-tag-emergency-bg);
+  color: var(--cg-tag-emergency-text);
+}
+
+.cg-tag-reserve {
+  background: var(--cg-tag-reserve-bg);
+  color: var(--cg-tag-reserve-text);
+}
+
+.cg-tag-draft {
+  background: var(--cg-tag-draft-bg);
+  color: var(--cg-tag-draft-text);
+}
+
+/* ===== Bottom Navigation ===== */
+.cg-bottom-nav {
+  background: var(--cg-bg-card);
+  height: 56px;
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+}
+
+.cg-bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex: 1;
+  height: 100%;
+  color: var(--cg-text-tertiary);
+  font-size: 11px;
+  font-weight: var(--cg-font-weight-regular);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 200ms ease;
+  min-width: 0;
+}
+
+.cg-bottom-nav-item svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.cg-bottom-nav-item.active {
+  color: var(--cg-brand);
+}
+
+.cg-bottom-nav-item.active .nav-icon-bg {
+  background: var(--cg-brand-soft);
+  border-radius: var(--cg-radius-md);
+  padding: 4px;
+}
+
+/* ===== FAB ===== */
+.cg-fab {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--cg-radius-full);
+  background: var(--cg-brand);
+  color: var(--cg-text-on-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--cg-shadow-fab);
+  border: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+  z-index: 50;
+  font-size: 24px;
+  font-weight: var(--cg-font-weight-regular);
+}
+
+.cg-fab:active {
+  transform: scale(0.95);
+}
+
+/* ===== Top Bar ===== */
+.cg-topbar {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 16px;
+  background: var(--cg-bg-card);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.cg-topbar-title {
+  font-size: var(--cg-font-h3);
+  font-weight: var(--cg-font-weight-semibold);
+  color: var(--cg-text-primary);
+  flex: 1;
+  text-align: center;
+}
+
+.cg-topbar-back {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-text-primary);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+.cg-topbar-action {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cg-brand);
+  font-size: var(--cg-font-body);
+  font-weight: var(--cg-font-weight-medium);
+  background: none;
+  border: none;
+  flex-shrink: 0;
+}
+
+/* ===== Status Banner ===== */
+.cg-status-banner {
+  padding: 10px 16px;
+  border-radius: var(--cg-radius-md);
+  font-size: var(--cg-font-caption);
+  font-weight: var(--cg-font-weight-medium);
+}
+
+.cg-status-pending { background: #FFF8E7; color: #B8860B; }
+.cg-status-accepted { background: var(--cg-brand-soft); color: var(--cg-brand); }
+.cg-status-delivering { background: #E8F4FD; color: #2E7DB5; }
+.cg-status-confirming { background: #FFF1E6; color: #C4763E; }
+.cg-status-done { background: #E8F5EC; color: #3D7A52; }
+.cg-status-cancelled { background: #F5F5F5; color: #8A9099; }
+
+/* ===== Utility ===== */
+.cg-divider {
+  height: 1px;
+  background: var(--cg-divider);
+  border: none;
+  margin: 0;
+}
+
+.cg-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.1/dist/index.global.js"></script>
+    <script src="https://unpkg.com/lucide@1.8.0/dist/umd/lucide.min.js"></script>
+    <style type="text/tailwindcss">
+  @theme inline {
+    --color-background: var(--cg-background);
+    --color-foreground: var(--cg-foreground);
+    --color-card: var(--cg-card);
+    --color-card-foreground: var(--cg-card-foreground);
+    --color-popover: var(--cg-popover);
+    --color-popover-foreground: var(--cg-popover-foreground);
+    --color-primary: var(--cg-primary);
+    --color-primary-foreground: var(--cg-primary-foreground);
+    --color-muted: var(--cg-muted);
+    --color-muted-foreground: var(--cg-muted-foreground);
+    --color-accent: var(--cg-accent);
+    --color-border: var(--cg-border);
+    --color-input: var(--cg-input);
+    --color-ring: var(--cg-ring);
+    --radius-sm: var(--cg-radius-sm);
+    --radius-md: var(--cg-radius-md);
+    --radius-lg: var(--cg-radius-lg);
+  }
+  @layer base {
+    body { background: var(--cg-background); color: var(--cg-foreground); }
+    td, th { @apply break-words; word-break: break-all; word-break: auto-phrase; }
+    th { @apply whitespace-nowrap; }
+  }
+    </style>
+    <style id="semantic-token-fallback">
+      .bg-background { background-color: var(--cg-background); }
+      .text-background { color: var(--cg-background); }
+      .border-background { border-color: var(--cg-background); }
+      .ring-background { --tw-ring-color: var(--cg-background); }
+      .bg-foreground { background-color: var(--cg-foreground); }
+      .text-foreground { color: var(--cg-foreground); }
+      .border-foreground { border-color: var(--cg-foreground); }
+      .ring-foreground { --tw-ring-color: var(--cg-foreground); }
+      .bg-card { background-color: var(--cg-card); }
+      .text-card { color: var(--cg-card); }
+      .border-card { border-color: var(--cg-card); }
+      .ring-card { --tw-ring-color: var(--cg-card); }
+      .bg-card-foreground { background-color: var(--cg-card-foreground); }
+      .text-card-foreground { color: var(--cg-card-foreground); }
+      .border-card-foreground { border-color: var(--cg-card-foreground); }
+      .ring-card-foreground { --tw-ring-color: var(--cg-card-foreground); }
+      .bg-popover { background-color: var(--cg-popover); }
+      .text-popover { color: var(--cg-popover); }
+      .border-popover { border-color: var(--cg-popover); }
+      .ring-popover { --tw-ring-color: var(--cg-popover); }
+      .bg-popover-foreground { background-color: var(--cg-popover-foreground); }
+      .text-popover-foreground { color: var(--cg-popover-foreground); }
+      .border-popover-foreground { border-color: var(--cg-popover-foreground); }
+      .ring-popover-foreground { --tw-ring-color: var(--cg-popover-foreground); }
+      .bg-primary { background-color: var(--cg-primary); }
+      .text-primary { color: var(--cg-primary); }
+      .border-primary { border-color: var(--cg-primary); }
+      .ring-primary { --tw-ring-color: var(--cg-primary); }
+      .bg-primary-foreground { background-color: var(--cg-primary-foreground); }
+      .text-primary-foreground { color: var(--cg-primary-foreground); }
+      .border-primary-foreground { border-color: var(--cg-primary-foreground); }
+      .ring-primary-foreground { --tw-ring-color: var(--cg-primary-foreground); }
+      .bg-muted { background-color: var(--cg-muted); }
+      .text-muted { color: var(--cg-muted); }
+      .border-muted { border-color: var(--cg-muted); }
+      .ring-muted { --tw-ring-color: var(--cg-muted); }
+      .bg-muted-foreground { background-color: var(--cg-muted-foreground); }
+      .text-muted-foreground { color: var(--cg-muted-foreground); }
+      .border-muted-foreground { border-color: var(--cg-muted-foreground); }
+      .ring-muted-foreground { --tw-ring-color: var(--cg-muted-foreground); }
+      .bg-accent { background-color: var(--cg-accent); }
+      .text-accent { color: var(--cg-accent); }
+      .border-accent { border-color: var(--cg-accent); }
+      .ring-accent { --tw-ring-color: var(--cg-accent); }
+      .bg-border { background-color: var(--cg-border); }
+      .text-border { color: var(--cg-border); }
+      .border-border { border-color: var(--cg-border); }
+      .ring-border { --tw-ring-color: var(--cg-border); }
+      .bg-input { background-color: var(--cg-input); }
+      .text-input { color: var(--cg-input); }
+      .border-input { border-color: var(--cg-input); }
+      .ring-input { --tw-ring-color: var(--cg-input); }
+      .bg-ring { background-color: var(--cg-ring); }
+      .text-ring { color: var(--cg-ring); }
+      .border-ring { border-color: var(--cg-ring); }
+      .ring-ring { --tw-ring-color: var(--cg-ring); }
+    </style>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      [data-icon] {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        background-color: currentColor;
+      }
+    </style>
+</head>
+<body class="min-h-screen font-sans antialiased">
+    <main class="max-w-md mx-auto px-4 pt-6 pb-[80px] flex flex-col gap-3">
+      <!-- Greeting Header -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-full bg-[#3D9B8F] flex items-center justify-center text-white font-semibold text-base shrink-0">W</div>
+          <div>
+            <h1 class="text-[22px] font-semibold text-[#2C3340] leading-tight">你好，跑腿侠 🏃</h1>
+            <p class="text-[13px] text-[#6B7380] mt-0.5">新的一天，接单赚钱吧</p>
+          </div>
+        </div>
+        <div class="text-right shrink-0">
+          <p class="text-[11px] text-[#9AA3B2]">今日收益</p>
+          <p class="text-[20px] font-semibold text-[#3D9B8F] leading-tight">¥38.00</p>
+        </div>
+      </div>
+
+      <!-- Role Switch -->
+      <div data-dom-id="role-switch" onclick="if(confirm('切换为发布者？'))location.href='home-publisher.html'" class="flex bg-[#F0F2F5] rounded-[16px] p-1">
+        <button class="flex-1 h-10 rounded-[12px] text-sm font-medium text-[#6B7380] bg-transparent transition-all duration-200">发布者</button>
+        <button class="flex-1 h-10 rounded-[12px] text-sm font-medium text-white bg-[#3D9B8F] shadow-sm transition-all duration-200">跑腿员</button>
+      </div>
+
+      <!-- Check-in Banner -->
+      <div class="bg-white rounded-[24px] p-4 shadow-[0_1px_3px_rgba(0,0,0,0.04)] flex items-center justify-between cursor-pointer active:scale-[0.98] transition-transform" onclick="location.href='g02-checkin.html'">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #FFF1E6, #FFE0C0);">
+            <svg class="w-5 h-5 text-[#E8A87C]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div>
+            <div class="text-sm font-medium text-[#2C3340]">每日签到</div>
+            <div class="text-xs text-[#6B7380] mt-0.5">已连续签到6天，明天领20积分</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <span class="text-sm font-semibold text-[#E8A87C]">+5</span>
+          <svg class="w-4 h-4 text-[#CDD2D9]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+
+      <!-- Heatmap Entry Card -->
+      <div class="bg-white rounded-[24px] p-4 shadow-sm">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-[#E8A87C] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="text-[16px] font-semibold text-[#2C3340]">任务热力图</span>
+          </div>
+          <a href="l02-heatmap.html" class="text-[12px] text-[#3D9B8F] cursor-pointer no-underline">查看全部 →</a>
+        </div>
+        <div class="bg-[#F3F5F8] rounded-[16px] p-4">
+          <div class="grid grid-cols-[auto_repeat(5,1fr)] gap-x-1.5 gap-y-2 items-center">
+            <span class="text-[11px] text-[#6B7380] pr-2">图书馆</span>
+            <span class="w-5 h-5 rounded-full bg-[#E57373] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#E57373] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#F0B429] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#E57373] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#E57373] justify-self-center"></span>
+            <span class="text-[11px] text-[#6B7380] pr-2">食堂</span>
+            <span class="w-5 h-5 rounded-full bg-[#F0B429] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#F0B429] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#5BAE7A] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#F0B429] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#E57373] justify-self-center"></span>
+            <span class="text-[11px] text-[#6B7380] pr-2">宿舍区</span>
+            <span class="w-5 h-5 rounded-full bg-[#5BAE7A] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#F0B429] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#F0B429] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#5BAE7A] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#F0B429] justify-self-center"></span>
+            <span class="text-[11px] text-[#6B7380] pr-2">行政楼</span>
+            <span class="w-5 h-5 rounded-full bg-[#5BAE7A] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#5BAE7A] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#5BAE7A] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#F0B429] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#5BAE7A] justify-self-center"></span>
+            <span class="text-[11px] text-[#6B7380] pr-2">校门口</span>
+            <span class="w-5 h-5 rounded-full bg-[#5BAE7A] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#F0B429] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#5BAE7A] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#5BAE7A] justify-self-center"></span>
+            <span class="w-5 h-5 rounded-full bg-[#E57373] justify-self-center"></span>
+          </div>
+          <div class="flex items-center justify-center gap-4 mt-3 pt-2 border-t border-[#E8ECF1]">
+            <div class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#5BAE7A]"></span><span class="text-[10px] text-[#9AA3B2]">较冷</span></div>
+            <div class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#F0B429]"></span><span class="text-[10px] text-[#9AA3B2]">适中</span></div>
+            <div class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-[#E57373]"></span><span class="text-[10px] text-[#9AA3B2]">热门</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Title -->
+      <div class="flex items-center justify-between mt-1">
+        <h2 class="text-[18px] font-semibold text-[#2C3340]">推荐任务</h2>
+        <a href="tasks.html?role=runner" class="text-[12px] text-[#3D9B8F] cursor-pointer no-underline">查看更多</a>
+      </div>
+
+      <!-- Task Card 1: 取快递 -->
+      <div class="bg-white rounded-[16px] p-4 shadow-sm cursor-pointer" onclick="location.href='t06-task-detail.html?role=runner&status=pending'">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-[12px] bg-[#E6F5F2] flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-[#3D9B8F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] font-medium text-[#3D9B8F] bg-[#E6F5F2] px-2 py-0.5 rounded-[6px]">取快递</span>
+              <span class="text-[11px] text-[#9AA3B2]">10分钟前</span>
+            </div>
+            <p class="text-[14px] font-medium text-[#2C3340] mt-1">菜鸟驿站取件</p>
+            <p class="text-[12px] text-[#9AA3B2] mt-0.5">菜鸟驿站 → 宿舍楼 5栋 | 约500m</p>
+          </div>
+          <div class="text-right shrink-0">
+            <p class="text-[20px] font-semibold text-[#3D9B8F] leading-tight">¥5.00</p>
+            <span class="text-[11px] text-[#9AA3B2]">小件</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task Card 2: 代买奶茶 -->
+      <div class="bg-white rounded-[16px] p-4 shadow-sm cursor-pointer" onclick="location.href='t07-group-detail.html'">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-[12px] bg-[#FFF1E6] flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-[#E8A87C]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] font-medium text-[#E8A87C] bg-[#FFF1E6] px-2 py-0.5 rounded-[6px]">代买</span>
+              <span class="text-[11px] text-[#9AA3B2]">刚刚</span>
+            </div>
+            <p class="text-[14px] font-medium text-[#2C3340] mt-1">代买奶茶 - 食堂</p>
+            <p class="text-[12px] text-[#9AA3B2] mt-0.5">二食堂 → 教学楼 A座 | 约300m</p>
+          </div>
+          <div class="text-right shrink-0">
+            <p class="text-[20px] font-semibold text-[#3D9B8F] leading-tight">¥8.00</p>
+            <span class="text-[11px] text-[#9AA3B2]">轻件</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Task Card 3: 送文件 -->
+      <div class="bg-white rounded-[16px] p-4 shadow-sm cursor-pointer" onclick="location.href='t06-task-detail.html?role=runner&status=pending&emergency=1'">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-[12px] bg-[#EAF0FB] flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-[#4A6FA5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] font-medium text-[#4A6FA5] bg-[#EAF0FB] px-2 py-0.5 rounded-[6px]">配送</span>
+              <span class="text-[11px] text-[#9AA3B2]">30分钟前</span>
+            </div>
+            <p class="text-[14px] font-medium text-[#2C3340] mt-1">送文件 - 行政楼</p>
+            <p class="text-[12px] text-[#9AA3B2] mt-0.5">图书馆 → 行政楼 3层 | 约800m</p>
+          </div>
+          <div class="text-right shrink-0">
+            <p class="text-[20px] font-semibold text-[#3D9B8F] leading-tight">¥6.00</p>
+            <span class="text-[11px] text-[#9AA3B2]">文件</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FAB -->
+    <button data-dom-id="fab-publish" class="cg-fab" aria-label="发布任务" onclick="location.href='t01-publish.html'">+</button>
+
+    <!-- Bottom Navigation -->
+    <nav data-mobile-nav="global" class="fixed bottom-0 left-0 right-0 bg-white h-[56px] z-50" style="box-shadow: 0 -1px 4px rgba(0,0,0,0.03)">
+      <div class="w-full max-w-md mx-auto grid grid-cols-4 h-full">
+        <a data-nav-key="home" data-dom-id="nav-home" href="home-runner.html" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#3D9B8F]" data-active="true">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">首页</span>
+        </a>
+        <a data-nav-key="tasks" data-dom-id="nav-tasks" href="tasks.html?role=runner" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">任务</span>
+        </a>
+        <a data-nav-key="messages" data-dom-id="nav-messages" href="messages.html" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">消息</span>
+        </a>
+        <a data-nav-key="profile" data-dom-id="nav-profile" href="profile.html" class="min-w-0 flex flex-col items-center justify-center gap-0.5 px-1 h-full text-[#9AA3B2]">
+          <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+          <span class="text-[11px] leading-none whitespace-nowrap max-w-full truncate">我的</span>
+        </a>
+      </div>
+    </nav>
+
+    <script>lucide.createIcons();</script>
+</body>
+</html>
