@@ -27,12 +27,12 @@ campusgo:
     # true=内存 Mock；local profile 覆盖为 false 走 PostgreSQL
     mock: true
   jwt:
-    secret: campusgo-dev-secret-change-me-in-production-32chars
+    secret: ${JWT_SECRET:campusgo-dev-secret-change-me-in-production-32chars}
     access-expire-days: 7
     refresh-expire-days: 30
 
 deepseek:
-  api-key: sk-189b035dc4f3430a91dea080b34d3891
+  api-key: ${DEEPSEEK_API_KEY:your-api-key-here}
   api-url: https://api.deepseek.com/v1/chat/completions
   model: deepseek-chat
 
